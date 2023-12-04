@@ -49,6 +49,8 @@ const routes = [
       requiresAuth: false
     }
   }
+
+// forbidden components
 ];
 
 // Create the router
