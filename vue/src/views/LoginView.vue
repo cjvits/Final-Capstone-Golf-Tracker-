@@ -70,6 +70,7 @@ export default {
 
 <style scoped>
 .form-input-group {
+  
   margin-bottom: 1rem;
 }
 label {
