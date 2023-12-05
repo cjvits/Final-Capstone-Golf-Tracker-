@@ -1,5 +1,5 @@
 <template>
-  <div id="login">
+  <div id="login" class="login">
     <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -16,9 +16,9 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button class="submitBtn" type="submit">Sign in</button>
       <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">Need an account? Sign up here!</router-link></p>
     </form>
   </div>
 </template>
@@ -67,4 +67,41 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+.login {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+form {
+  height: 30%;
+  width: 30%;
+  background-color: darkkhaki;
+  padding: 10px;
+  border: 4px solid #0e0e0e;
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 85%;
+  margin: 5px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+label {
+  font-size: 1.25em;
+}
+
+.submitBtn {
+  font-size: 1em;
+  font-weight: 600;
+}
+
 </style>
