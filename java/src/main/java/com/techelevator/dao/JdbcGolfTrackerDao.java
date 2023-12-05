@@ -46,26 +46,39 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public List<Match> getAllMatchesInLeague(int leagueId) {
-//        List<Match> result = new ArrayList<>();
-//        String sql = "select match_id, tee_date, tee_time from matches WHERE league_id = ?;";
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
-//        while (rowSet.next()) {
-//            Match match = mapRowToUser(rowSet);
-//            result.add(match);
-//        }
-//        return result;
+        List<Match> result = new ArrayList<>();
+        String sql = "select match_id, tee_date, tee_time FROM matches WHERE league_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
+        while (rowSet.next()) {
+            Match match = mapRowToMatch(rowSet);
+            result.add(match);
+        }
+        return result;
 
-
-        return null;
     }
 
     @Override
     public Match getMatch(int matchId) {
-        return null;
+        String sql = "Select match_id, tee_date, tee_time FROM matches WHERE match_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, matchId);
+        if (rowSet.next()) {
+            Match match = mapRowToMatch(rowSet);
+            return match;
+        } else {
+            return null;
+        }
     }
-
+lea
     @Override
     public League getLeague(int leagueId) {
+        String sql = "Select tee_date, tee_time FROM matches WHERE match_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
+        if (rowSet.next()) {
+            League league = mapRowToLeague(rowSet);
+            return league;
+        } else {
+            return null;
+        }
         return null;
     }
 
@@ -105,6 +118,24 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setUsername(rowSet.getString("username"));
 //        result.setFirstName(rowSet.getString("first_name"));
 //        result.setLastName(rowSet.getString("last_name"));
+        return result;
+    }
+
+    private Match mapRowToMatch(SqlRowSet rowSet) {
+        Match result = new Match();
+        result.setMatchId(rowSet.getInt("match_id"));
+        result.setTeeDate(rowSet.getDate("tee_date").toLocalDate());
+        result.setTeeTime(rowSet.getTime("tee_time").toLocalTime());
+
+        return result;
+    }
+
+    private Match mapRowToLeague(SqlRowSet rowSet) {
+        League result = new League();
+        result.setLeagueId(rowSet.getInt("match_id"));
+        result.setLeagueName(rowSet.getDate("tee_date").toLocalDate());
+        result.setTeeTime(rowSet.getTime("tee_time").toLocalTime());
+
         return result;
     }
 }
