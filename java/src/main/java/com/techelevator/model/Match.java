@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Match {
+
     private int matchId;
 
     private int leagueId;
@@ -17,6 +18,25 @@ public class Match {
     private List<User> golfers;
 
     private Map<User, Integer> matchGolferScores;
+
+    public Match(int matchId, int leagueId, LocalDate teeDate, LocalTime teeTime, List<User> golfers, Map<User, Integer> matchGolferScores) {
+        this.matchId = matchId;
+        this.leagueId = leagueId;
+        this.teeDate = teeDate;
+        this.teeTime = teeTime;
+        this.golfers = golfers;
+        this.matchGolferScores = matchGolferScores;
+    }
+
+    public Match(int matchId, LocalDate teeDate, LocalTime teeTime) {
+        this.matchId = matchId;
+        this.teeDate = teeDate;
+        this.teeTime = teeTime;
+    }
+
+    public Match(){
+
+    };
 
     public int getMatchId() {
         return matchId;

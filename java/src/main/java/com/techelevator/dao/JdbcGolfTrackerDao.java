@@ -46,6 +46,16 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public List<Match> getAllMatchesInLeague(int leagueId) {
+//        List<Match> result = new ArrayList<>();
+//        String sql = "select match_id, tee_date, tee_time from matches WHERE league_id = ?;";
+//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
+//        while (rowSet.next()) {
+//            Match match = mapRowToUser(rowSet);
+//            result.add(match);
+//        }
+//        return result;
+
+
         return null;
     }
 
