@@ -6,8 +6,33 @@
 -->
 
 <template>
+  <div id="div1">
+    <p id="AppName">Tee Time N'at</p>
+    <img class="logo2" src="../assets\Tee Time N'At (Ya JAG)_2 (1).png" alt="">
+  </div>
+  <div id="loginDiv">
+    <button type="button" id="loginBtn" @click="login">Login</button></div>
+  <div id="registerBtn"><button>Register</button></div>
+  <div class="api"><textarea name="" id="" cols="0" rows="1" placeholder="Search Courses"></textarea></div>
     <div></div>
 </template>
-
 <script>
+import LoginView from './LoginView.vue';
+
+export default {
+  name: "App",
+  data() {
+    return {
+    };
+  },
+  methods: {
+    login() {
+      LoginView
+    }
+  },
+  
+};
 </script>
+<style>
+
+</style>
