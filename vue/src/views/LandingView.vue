@@ -6,34 +6,33 @@
 -->
 
 <template>
-  <div>
-    <p>Welcome {{ name }}</p>
-    <p>The time is {{ dateTime }}</p>
+  <div id="div1">
+    <p id="AppName">Tee Time N'at</p>
+    <img class="logo2" src="../assets\Tee Time N'At (Ya JAG)_2 (1).png" alt="">
   </div>
+  <div id="loginDiv">
+    <button type="button" id="loginBtn" @click="login">Login</button></div>
+  <div id="registerBtn"><button>Register</button></div>
+  <div class="api"><textarea name="" id="" cols="0" rows="1" placeholder="Search Courses"></textarea></div>
+    <div></div>
 </template>
 <script>
+import LoginView from './LoginView.vue';
+
 export default {
   name: "App",
   data() {
     return {
-      name: "",
-      dateTime: new Date(),
-      timer: undefined,
-      submitted: false,
     };
   },
   methods: {
-    setDate() {
-      this.dateTime = new Date();
-    },
+    login() {
+      LoginView
+    }
   },
-  mounted() {
-    this.timer = setInterval(() => {
-      this.setDate();
-    }, 1000);
-  },
-  beforeUnmount() {
-    clearInterval(this.timer);
-  },
+  
 };
 </script>
+<style>
+
+</style>
