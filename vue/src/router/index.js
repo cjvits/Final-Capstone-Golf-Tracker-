@@ -6,6 +6,7 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import LandingView from '../views/LandingView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -18,10 +19,19 @@ import RegisterView from '../views/RegisterView.vue';
 const routes = [
   {
     path: '/',
+    name: 'landing',
+    component: LandingView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView,
     meta: {
       requiresAuth: true
+      //requiresRoles: ['',''] if we have different roles within users
     }
   },
   {
@@ -52,6 +62,8 @@ const routes = [
   {
     //component: ForbiddenView
   }
+
+// forbidden components
 ];
 
 // Create the router
@@ -71,7 +83,8 @@ router.beforeEach((to) => {
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
     return {name: "login"};
-  }
+
+  } 
   // Otherwise, do nothing and they'll go to their next destination
 });
 
