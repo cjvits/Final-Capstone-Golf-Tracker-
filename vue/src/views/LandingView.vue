@@ -6,17 +6,24 @@
 -->
 
 <template>
-  <div id="div1">
-    <p id="AppName">Tee Time N'at</p>
-    <img class="logo2" src="../assets\Tee Time N'At (Ya JAG)_2 (1).png" alt="">
+
+  <!-- <nav>
+    <div id="loginDiv">
+    <button type="button" id="loginBtn" @click="login">Login</button>
+    <button type="button" id="registerBtn" @click="newAccount" >Register</button></div>
+  </nav> -->
+
+<div class="landing">
+  <div class="subdiv">
+  <h1 id="appName">Tee Time N'at</h1>
   </div>
-  <div id="loginDiv">
-    <button type="button" id="loginBtn" @click="login">Login</button></div>
-  <div id="registerBtn"><button>Register</button></div>
-  <div class="api"><textarea name="" id="" cols="0" rows="1" placeholder="Search Courses"></textarea></div>
-    <div></div>
+  <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p>
+</div>
+
 </template>
+
 <script>
+import RegisterView from './RegisterView.vue';
 import LoginView from './LoginView.vue';
 
 export default {
@@ -27,12 +34,65 @@ export default {
   },
   methods: {
     login() {
-      LoginView
+      this.$router.push({name: 'login'});
+    },
+    newAccount() {
+      this.$router.push({name: 'register'})
     }
   },
   
 };
 </script>
-<style>
+
+<style scoped>
+
+/* nav {
+  display: flex;
+  justify-content: flex-end;
+} */
+
+ .api {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; 
+  padding-top: 3rem;
+} 
+
+.landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../assets/goldenGolf.jpeg");
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Hedvig Letters Serif', serif;
+  color: #093708;
+  font-weight: 600;
+  font-size: x-large;
+}
+.subdiv {
+  /* display: flex-content;
+  justify-content: center;
+  align-items: center; */
+  background-color: white;
+  opacity: .3;
+  position: sticky;
+  flex-grow: 1;
+} 
+
+h1 {
+  text-align: center;
+  justify-self: center;
+  flex-grow: 1;
+  font-size: 2em;
+  font-weight: 700;
+  font-family: 'Hedvig Letters Serif', serif;
+}
+
+
+
+
 
 </style>
