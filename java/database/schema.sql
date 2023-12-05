@@ -56,9 +56,11 @@ CREATE TABLE matches(
 CREATE TABLE league_golfer (
 	league_id int NOT NULL,
 	user_id int NOT NULL,
+	score int NOT NULL,
 	CONSTRAINT PK_league_user PRIMARY KEY (league_id, user_id),
 	CONSTRAINT FK_league_golfer_league FOREIGN KEY (league_id) REFERENCES leagues(league_id),
-	CONSTRAINT FK_league_golfer_golfer FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT FK_league_golfer_golfer FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT score_positive CHECK (score > 0)
 );
 
 CREATE TABLE match_golfer (
