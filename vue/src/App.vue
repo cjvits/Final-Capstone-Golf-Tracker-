@@ -7,3 +7,8 @@
     <router-view />
   </div>
 </template>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
+</style>
