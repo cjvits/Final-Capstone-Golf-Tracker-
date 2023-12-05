@@ -22,7 +22,7 @@ CREATE TABLE users (
 CREATE TABLE courses(
     course_id SERIAL,
     course_name varchar(100) NOT NULL UNIQUE,
-    street_address varchar(100) NOT NULL,
+    street_address varchar(100),
     city varchar (50) NOT NULL,
     state_abb varchar (2) NOT NULL,
     zip_code integer NOT NULL,
@@ -60,7 +60,6 @@ CREATE TABLE league_golfer (
 	CONSTRAINT PK_league_user PRIMARY KEY (league_id, user_id),
 	CONSTRAINT FK_league_golfer_league FOREIGN KEY (league_id) REFERENCES leagues(league_id),
 	CONSTRAINT FK_league_golfer_golfer FOREIGN KEY (user_id) REFERENCES users(user_id),
-	CONSTRAINT score_positive CHECK (score > 0)
 );
 
 CREATE TABLE match_golfer (
