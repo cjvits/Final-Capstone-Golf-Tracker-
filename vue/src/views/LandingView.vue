@@ -38,6 +38,10 @@ export default {
     },
     newAccount() {
       this.$router.push({name: 'register'})
+      this.$router.push({name: 'login'});
+    },
+    newAccount() {
+      this.$router.push({name: 'register'})
     }
   },
   
