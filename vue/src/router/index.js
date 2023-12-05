@@ -47,6 +47,10 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+
+  {
+    //component: ForbiddenView
   }
 ];
 
