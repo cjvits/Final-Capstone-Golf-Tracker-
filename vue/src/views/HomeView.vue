@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>Welcome to the Home View, ya Jag!</h1>
+    <Home />
+    <!-- HomeView specific shit here... -->
   </div>
 
   <nav>
@@ -33,13 +35,18 @@ TODO: IF ADMIN
 </template>
 
 <script>
+// import LeaderBoard from "../components/HomePage";
+
 export default {
   methods: {
+    // components: {
+    //   LeaderBoard,
+    // },
     logOut(){
       this.$store.commit("LOGOUT");
       this.$router.push("/");
-    }
-  }
+    },
+  },
 };
 </script> 
 
