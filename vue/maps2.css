@@ -19,7 +19,6 @@
     margin: 4px 2px;
     cursor: pointer;
     opacity: 80%;
-    
 }
 
 /* set the input box style */
@@ -37,7 +36,6 @@
     font-size: 16px;
     margin: 4px 2px;
     image-rendering: auto;
-    
 }
 
 #autocomplete {
@@ -65,3 +63,4 @@
     text-align: middle;
     background-color: aliceblue;
 }
+

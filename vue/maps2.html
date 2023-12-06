@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Title to our Map -->
         <title>Tee Time N'at Locater</title>
+
+        <!-- Linking CSS to Map -->
         <link rel="stylesheet" type="text/css" href="./maps2.css" />
         
     </head>
@@ -25,58 +28,67 @@
 
                 <!-- <div id = 'get-distance'> -->
                 <!-- <input id = 'start' type = 'text' placeholder = 'Travel From' />
-                <br/>
                 <input id = 'end' type = 'text' placeholder = 'Destination' />
                 <button id = 'get-distance-button'>Get Distance N'At</button> -->
             
         </div>
-    <br/>
+   
         <div id="map">
             <!--The div element for the map where the map shows.-->
         </div>
        
-       
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY&libraries=places&callback=initMap&v=weekly" defer></script>
-
+        <!-- Google Maps JavaScript API -->
+        <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY&libraries=places&callback=initMap&v=weekly" defer>
+        </script>
 
         <script>
+            let map; // Declaring our Map
+            let current_pos; // Current position of the map
+            let search_pos; // Position on map when search is initiated
+            let autocomplete; // Declaring the autocomplete search bar
+            let infoWindow; // Declaring infoWindow Variable
 
-            let map;
-            let current_pos;
-            let search_pos;
-            let autocomplete;
-            let infoWindow; //declaring infoWindow Variable
 
+            // This is our function to initialize the Google Map. Important***********
             function initMap() {
               writeIntro();
               map = new google.maps.Map(document.getElementById("map"), {
+                // Pittsburgh Coordinates & zoom on map
                 center: { lat: 40.4406,lng: -79.9959 },
                 zoom: 10,
                 }); 
 
-
-
-
+              // Find my Location button 
               const locationButton = document.getElementById("button");
-              locationButton.textContent = "Find My Location";
-              locationButton.classList.add("custom-map-control-button");
+              // Sets text on the button
+              locationButton.textContent = "Find My Location"; 
+
+              // This relocates the "Find My Location" button to inside of the map
               map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
 
+                        //****** commented out *********//
+              // locationButton.classList.add("custom-map-control-button");
 
+              // This event listener is added to the "button" element to handle when the user clicks
               locationButton.addEventListener("click", () => {
-                // Try HTML5 geolocation.
+                // This checks that the browser has geolocation enabled
                 if (navigator.geolocation) {
+                  // Gets the current user's position using geolocation
                   navigator.geolocation.getCurrentPosition(
                     (position) => {
+                      // Extracts the latitude and longitude from the position object
                       current_pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                       };
+                      // Sets the map center to the user's current location
                       map.setCenter(current_pos);
-                      //add a marker to the current location
+                      // Adds a marker to the current location on the map
                       addMarker(current_pos,map);
                     },
                     () => {
+                      // This will handle any errors when trying to get the users location
                       handleLocationError(true, infoWindow, map.getCenter());
                     }
                   );
@@ -105,10 +117,12 @@
                 document.getElementById("intro").innerHTML = content;
             }
             
-            // Find my location marker
+            // Find my location marker - 
             function addMarker(coords,map){
                 var marker = new google.maps.Marker({position:coords, map: map,icon:"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"});
                 var infoWindow = new google.maps.InfoWindow({content:"<h1>Current Location</h1>"});
+
+
                 //set zooming to 15
                 map.setZoom(15);
                 marker.addEventListener("click", () => {
@@ -149,7 +163,8 @@
             
                 auto_marker.setPosition(place.geometry.location);
                 auto_marker.setVisible(true);
-                //create a new infoWindow
+                
+                // This creates a new info window for the location after we search for a location
                 const info = new google.maps.InfoWindow();
                 const InfoContent = document.getElementById('infoWindow');
                 InfoContent.children['place-name'].textContent = place.name;
@@ -159,73 +174,75 @@
                 
               });  
             }
-            class GetDirection {
-              map;
-              originId;
-              destinationId;
-              travelMode;
-              directionService;
-              directionRenderer;
-              constructor(map){
-                this.map = map;
-                this.originId = "";
-                this.destinationId = "";
-                this.travelMode = google.maps.TravelMode.DRIVING;
-                this.directionService = new google.maps.DirectionsService();
-                this.directionRenderer = new google.maps.DirectionsRenderer();
-                this.directionRenderer.setMap(map);
+
+
+
+            // Commented Out ***** Was previously used for directions *************
+            // class GetDirection {
+            //   map;
+            //   originId;
+            //   destinationId;
+            //   travelMode;
+            //   directionService;
+            //   directionRenderer;
+            //   constructor(map){
+            //     this.map = map;
+            //     this.originId = "";
+            //     this.destinationId = "";
+            //     this.travelMode = google.maps.TravelMode.DRIVING;
+            //     this.directionService = new google.maps.DirectionsService();
+            //     this.directionRenderer = new google.maps.DirectionsRenderer();
+            //     this.directionRenderer.setMap(map);
             
-                const originId = document.getElementById("start");
-                const destinationId = document.getElementById("end");
-                const originAutoComplete = new google.maps.places.Autocomplete(originId,
-                  {fields:['place_id']});
-                const destinationAutoComplete = new google.maps.places.Autocomplete(destinationId,
-                  {fields:['place_id']});
-                this.setupPlaceChangedListener(originAutoComplete, "ORIG");
-                this.setupPlaceChangedListener(destinationAutoComplete, "DEST");
-                }
+            //     const originId = document.getElementById("start");
+            //     const destinationId = document.getElementById("end");
+            //     const originAutoComplete = new google.maps.places.Autocomplete(originId,
+            //       {fields:['place_id']});
+            //     const destinationAutoComplete = new google.maps.places.Autocomplete(destinationId,
+            //       {fields:['place_id']});
+            //     this.setupPlaceChangedListener(originAutoComplete, "ORIG");
+            //     this.setupPlaceChangedListener(destinationAutoComplete, "DEST");
+            //     }
             
-                setupPlaceChangedListener(autocomplete, mode){
-                  autocomplete.bindTo("bounds",this.map);
-                  autocomplete.addListener("place_changed", () => {
-                    const place = autocomplete.getPlace();
-                    if (!place.place_id) {
-                      window.alert("Please select an option from the dropdown list.");
-                      return;
-                    }
-                    if (mode === "ORIG") {
-                      this.originId = place.place_id;
-                    } else {
-                      this.destinationId = place.place_id;
-                    }
-                    this.route();
-                  });
-                }
+            //     setupPlaceChangedListener(autocomplete, mode){
+            //       autocomplete.bindTo("bounds",this.map);
+            //       autocomplete.addListener("place_changed", () => {
+            //         const place = autocomplete.getPlace();
+            //         if (!place.place_id) {
+            //           window.alert("Please select an option from the dropdown list.");
+            //           return;
+            //         }
+            //         if (mode === "ORIG") {
+            //           this.originId = place.place_id;
+            //         } else {
+            //           this.destinationId = place.place_id;
+            //         }
+            //         this.route();
+            //       });
+            //     }
             
-                route(){
-                  if (!this.originId || !this.destinationId) {
-                    return;
-                  }
-                  const me = this;
-                  this.directionService.route(
-                    {origin: {placeId: this.originId},
-                  destination: {placeId:this.destinationId},
-                travelMode: this.travelMode},
-                    (res, status) => {
-                      if (status ==="OK") {
-                        me.directionRenderer.setDirections(res);
-                      } else {
-                        console.log("Directions request failed due to " + status);
-                      }
-                    }
-                  )
-                }
-            }
+            //     route(){
+            //       if (!this.originId || !this.destinationId) {
+            //         return;
+            //       }
+            //       const me = this;
+            //       this.directionService.route(
+            //         {origin: {placeId: this.originId},
+            //       destination: {placeId:this.destinationId},
+            //     travelMode: this.travelMode},
+            //         (res, status) => {
+            //           if (status ==="OK") {
+            //             me.directionRenderer.setDirections(res);
+            //           } else {
+            //             console.log("Directions request failed due to " + status);
+            //           }
+            //         }
+            //       )
+            //     }
+            // }
             
-            function getDirectionAfterSearch(map,search_pos){
-            
-            }
-            </script>
+          
+        </script>
         </body>
 
 </html>
