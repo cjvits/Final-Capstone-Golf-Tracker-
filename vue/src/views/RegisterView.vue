@@ -1,36 +1,36 @@
 <template>
   <div id="register" class="register">
     <form v-on:submit.prevent="register">
-      <h1>Create Account</h1>
+      <h1>New Yinzer Golfer</h1>
       <div class="alert" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">yinzer name</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">yinzer password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">confirm password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <div class="form-input-group">
-        <label for="firstName">First Name</label>
+        <label for="firstName">first name</label>
         <input type="text" id="firstName" v-model="user.firstName" required />
       </div>
       <div class="form-input-group">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">last name</label>
         <input type="text" id="lastName" v-model="user.lastName" required />
       </div>
       <div class="form-input-group">
-        <label for="email">Email</label>
+        <label for="email">email</label>
         <input type="email" id="email" v-model="user.email" required />
       </div>
-      <button class="submitBtn" type="submit">Create Account</button>
-      <p><router-link class="sign-in-link" v-bind:to="{ name: 'login' }">Already a member? Log in.</router-link></p>
+      <button class="submitBtn" type="submit">create yinzer account</button>
+      <p><router-link class="sign-in-link" v-bind:to="{ name: 'login' }">already a yinzer? go here.</router-link></p>
     </form>
   </div>
 </template>
@@ -103,7 +103,7 @@ form {
   background-repeat: no-repeat;
   background-color: white;
   padding: 1rem;
-  opacity: .45;
+  opacity: .85;
   display: flexbox;
   position: sticky;
 }
