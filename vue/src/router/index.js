@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import LandingView from '../views/LandingView.vue';
+// import LeagueOrganizerView from '../views/LeagueOrganizerView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -58,10 +59,15 @@ const routes = [
       requiresAuth: false
     }
   },
+  //   {
+  //   path: "/league-organizer",
+  //   name: "league-organizer",
+  //   component: LeagueOrganizerView
+  // },
 
-  {
-    //component: ForbiddenView
-  }
+{
+  //component: ForbiddenView
+}
 
 // forbidden components
 ];
@@ -82,10 +88,10 @@ router.beforeEach((to) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+    return { name: "login" };
 
-   }
-    
+  }
+
   // Otherwise, do nothing and they'll go to their next destination
 });
 
