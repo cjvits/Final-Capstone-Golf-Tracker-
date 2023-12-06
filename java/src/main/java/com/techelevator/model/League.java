@@ -36,12 +36,20 @@ public class League {
         return leagueCoordinator;
     }
 
+    public int getLeagueCoordinatorId() {
+        return leagueCoordinator.getId();
+    }
+
     public void setLeagueCoordinator(User leagueCoordinator) {
         this.leagueCoordinator = leagueCoordinator;
     }
 
     public Course getLeagueCourse() {
         return leagueCourse;
+    }
+
+    public int getLeagueCourseId() {
+        return leagueCourse.getCourseId();
     }
 
     public void setLeagueCourse(Course leagueCourse) {
