@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome to the Home View, ya Jag!</h1>
+    <h1>Welcome to the Home View!</h1>
     <Home />
     <!-- HomeView specific shit here... -->
   </div>
@@ -35,19 +35,20 @@ TODO: IF ADMIN
 </template>
 
 <script>
-// import LeaderBoard from "../components/HomePage";
+import HomePage from "@/components/HomePage";
 
 export default {
   methods: {
-    // components: {
-    //   LeaderBoard,
-    // },
+    components: {
+      HomePage,
+    },
     logOut(){
       this.$store.commit("LOGOUT");
       this.$router.push("/");
     },
   },
 };
+
 </script> 
 
 

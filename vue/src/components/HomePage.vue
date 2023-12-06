@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Welcome to Tee Time N'at, {{ username }}!</h1>
-        <LeaderBoard users="users" />
+        <LeaderBoard :users="users" />
     </div>
 </template>
 
