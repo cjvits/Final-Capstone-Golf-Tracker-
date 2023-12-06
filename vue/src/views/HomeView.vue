@@ -3,6 +3,7 @@
     <h1>Home</h1>
   </div>
 
+<<<<<<< HEAD
   <nav>
     <!-- leaderboard stuff -->
 
@@ -20,7 +21,10 @@
     <!-- my upcoming -->
   </div>
 
+<!-- TODO: Include links/show:
+=======
   <!-- TODO: Include links/show:
+>>>>>>> bf13accb44c46b73325d2c7232e5ae3fe9674a0a
   - leader board
   - tee-times
   - create a new league
