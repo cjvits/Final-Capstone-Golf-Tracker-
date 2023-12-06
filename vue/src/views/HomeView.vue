@@ -98,7 +98,6 @@
   font-family: 'Hedvig Letters Serif', serif;
   color: #093708;
   font-weight: 600;
-
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
