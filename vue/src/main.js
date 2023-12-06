@@ -16,6 +16,8 @@ axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
 let currentToken = localStorage.getItem('token');
 let currentUser = {};
 
+
+
 try {
   currentUser = JSON.parse(localStorage.getItem('user'));
 } catch {

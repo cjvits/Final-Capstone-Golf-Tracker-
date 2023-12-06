@@ -114,9 +114,14 @@ form {
   display: flex;
   background-image: url("../assets/goldenGolf.jpeg");
   height: 100vh;
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
   font-family: 'Hedvig Letters Serif', serif;
   color: #093708;
   font-weight: 600;

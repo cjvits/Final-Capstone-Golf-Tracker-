@@ -15,7 +15,9 @@
 
 <div class="landing">
   <div class="subdiv">
-  <h1 id="appName">Tee Time N'at</h1>
+  <transition name="fade">
+    <h1 id="appName">Tee Time N'at</h1>
+  </transition>
   </div>
   <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p>
 </div>
@@ -38,10 +40,6 @@ export default {
     },
     newAccount() {
       this.$router.push({name: 'register'})
-      this.$router.push({name: 'login'});
-    },
-    newAccount() {
-      this.$router.push({name: 'register'})
     }
   },
   
@@ -49,11 +47,6 @@ export default {
 </script>
 
 <style scoped>
-
-/* nav {
-  display: flex;
-  justify-content: flex-end;
-} */
 
  .api {
   display: flex;
@@ -63,16 +56,18 @@ export default {
 } 
 
 .landing {
+  flex-direction: column;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
+  padding-top: 15%;
   background-image: url("../assets/goldenGolf.jpeg");
   height: 100vh;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   font-family: 'Hedvig Letters Serif', serif;
-  color: #093708;
+  color: #06612f;
   font-weight: 600;
   font-size: x-large;
 }
@@ -80,10 +75,13 @@ export default {
   /* display: flex-content;
   justify-content: center;
   align-items: center; */
+  display: flex;
   background-color: white;
   opacity: .3;
   position: sticky;
-  flex-grow: 1;
+  width: 100%;
+  flex-grow: .1;
+  flex-basis: auto;
 } 
 
 h1 {
@@ -93,10 +91,7 @@ h1 {
   font-size: 2em;
   font-weight: 700;
   font-family: 'Hedvig Letters Serif', serif;
+  padding-top: 1rem;
 }
-
-
-
-
 
 </style>
