@@ -38,10 +38,6 @@ export default {
     },
     newAccount() {
       this.$router.push({name: 'register'})
-      this.$router.push({name: 'login'});
-    },
-    newAccount() {
-      this.$router.push({name: 'register'})
     }
   },
   
@@ -49,11 +45,6 @@ export default {
 </script>
 
 <style scoped>
-
-/* nav {
-  display: flex;
-  justify-content: flex-end;
-} */
 
  .api {
   display: flex;
@@ -77,9 +68,6 @@ export default {
   font-size: x-large;
 }
 .subdiv {
-  /* display: flex-content;
-  justify-content: center;
-  align-items: center; */
   background-color: white;
   opacity: .3;
   position: sticky;
@@ -94,9 +82,5 @@ h1 {
   font-weight: 700;
   font-family: 'Hedvig Letters Serif', serif;
 }
-
-
-
-
 
 </style>

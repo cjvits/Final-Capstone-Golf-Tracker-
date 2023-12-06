@@ -3,7 +3,7 @@
     <h1>Home</h1>
   </div>
 
-<!-- TODO: Include links/show:
+  <!-- TODO: Include links/show:
   - leader board
   - tee-times
   - create a new league
@@ -13,8 +13,6 @@ TODO: IF LEAGUE ORGANIZER
 
 TODO: IF ADMIN
   - include ability/form to add a golf course -->
-
-
 </template>
 
 <script>
@@ -23,3 +21,22 @@ export default {
 </script>
 
 
+<style scoped>
+.home {
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/goldenGolf.jpeg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flexbox;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Hedvig Letters Serif', serif;
+  color: #093708;
+  font-weight: 600;
+}
+</style>
