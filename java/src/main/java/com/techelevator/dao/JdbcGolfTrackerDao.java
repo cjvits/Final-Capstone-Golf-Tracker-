@@ -68,10 +68,10 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             return null;
         }
     }
-lea
+
     @Override
     public League getLeague(int leagueId) {
-        String sql = "Select tee_date, tee_time FROM matches WHERE match_id = ?;";
+        String sql = "Select league_id, league_name FROM leagues WHERE league_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
         if (rowSet.next()) {
             League league = mapRowToLeague(rowSet);
@@ -79,7 +79,6 @@ lea
         } else {
             return null;
         }
-        return null;
     }
 
     @Override
@@ -130,11 +129,10 @@ lea
         return result;
     }
 
-    private Match mapRowToLeague(SqlRowSet rowSet) {
+    private League mapRowToLeague(SqlRowSet rowSet) {
         League result = new League();
         result.setLeagueId(rowSet.getInt("match_id"));
-        result.setLeagueName(rowSet.getDate("tee_date").toLocalDate());
-        result.setTeeTime(rowSet.getTime("tee_time").toLocalTime());
+        result.setLeagueName(rowSet.getString("league_name"));
 
         return result;
     }
