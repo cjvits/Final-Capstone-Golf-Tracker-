@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Traveler's Map</title>
+        <title>Tee Time N'at Locater</title>
         <link rel="stylesheet" type="text/css" href="./maps2.css" />
         
     </head>
-    <body > 
+
+    <body>
+
+        <!-- This is the Map Title / Search Bar -->
         <div id = "nav-bar">
-            <h1>Interactive Map</h1>
+            <h1>Interactive Map N'At</h1>
             <p id = 'intro'>
             </p>
             <div id = 'search-area'>
                 <input type="text" id="autocomplete" placeholder="Search for a place" />
                 <button id="search-button">Search</button>
             </div>
+
+
+            <!-- This is my "Find My Location" button -->
             <div id = 'button'> </div>
-             <!-- <div id = 'get-distance'>
-                <input id = 'start' type = 'text' placeholder = 'Travel From' />
+
+
+                <!-- <div id = 'get-distance'> -->
+                <!-- <input id = 'start' type = 'text' placeholder = 'Travel From' />
                 <br/>
-                <input id = 'end' type = 'text' placeholder = 'Destination' /> -->
-                <!-- <button id = 'get-distance-button'>Get Distance</button> -->
+                <input id = 'end' type = 'text' placeholder = 'Destination' />
+                <button id = 'get-distance-button'>Get Distance N'At</button> -->
             
-             </div>
         </div>
     <br/>
         <div id="map">
             <!--The div element for the map where the map shows.-->
         </div>
-        <div id = 'infoWindow'>
-            <p id = 'place-name'></p><br/>
-            <p id = 'place-address'></p><br/>
-        </div>
+       
        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY&libraries=places&callback=initMap&v=weekly" defer></script>
+
+
         <script>
-        
+
             let map;
-
-
             let current_pos;
             let search_pos;
             let autocomplete;
-
+            let infoWindow; //declaring infoWindow Variable
 
             function initMap() {
               writeIntro();
@@ -49,10 +53,16 @@
                 center: { lat: 40.4406,lng: -79.9959 },
                 zoom: 10,
                 }); 
+
+
+
+
               const locationButton = document.getElementById("button");
               locationButton.textContent = "Find My Location";
               locationButton.classList.add("custom-map-control-button");
               map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+
+
               locationButton.addEventListener("click", () => {
                 // Try HTML5 geolocation.
                 if (navigator.geolocation) {
@@ -88,7 +98,6 @@
                   : "Error: Your browser doesn't support geolocation."
               );
               infoWindow.open(map);
-              
             }
             
             function writeIntro() {
@@ -99,11 +108,11 @@
             // Find my location marker
             function addMarker(coords,map){
                 var marker = new google.maps.Marker({position:coords, map: map,icon:"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"});
-                var inforWindow = new google.maps.InfoWindow({content:"<h1>Current Location</h1>"});
+                var infoWindow = new google.maps.InfoWindow({content:"<h1>Current Location</h1>"});
                 //set zooming to 15
                 map.setZoom(15);
                 marker.addEventListener("click", () => {
-                  inforWindow.open(map, marker);
+                  infoWindow.open(map, marker);
                 });
             }
             
@@ -161,7 +170,7 @@
                 this.map = map;
                 this.originId = "";
                 this.destinationId = "";
-                this.tranvelMode = google.maps.TravelMode.DRIVING;
+                this.travelMode = google.maps.TravelMode.DRIVING;
                 this.directionService = new google.maps.DirectionsService();
                 this.directionRenderer = new google.maps.DirectionsRenderer();
                 this.directionRenderer.setMap(map);
@@ -200,8 +209,8 @@
                   const me = this;
                   this.directionService.route(
                     {origin: {placeId: this.originId},
-                  destination: {placeID:this.destinationId},
-                travelMode: this.tranvelMode},
+                  destination: {placeId:this.destinationId},
+                travelMode: this.travelMode},
                     (res, status) => {
                       if (status ==="OK") {
                         me.directionRenderer.setDirections(res);
@@ -211,11 +220,12 @@
                     }
                   )
                 }
-            
             }
+            
             function getDirectionAfterSearch(map,search_pos){
             
-            }</script>
+            }
+            </script>
         </body>
 
 </html>

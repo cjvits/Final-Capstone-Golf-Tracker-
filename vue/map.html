@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocomplete Places Search Box using Google Maps Javascript API</title>
-        <h1 id="map-title">Use our interactive map to find a course near you!</h1>
+    <title>Autocomplete Places Search Box using Google newMaps Javascript API</title>
+        <h1 id="newMap-title">Use our interactive newMap to find a course near you!</h1>
 
     <!-- Bootstrap Library ***********************--> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <!-- Google Maps JavaScript API ***************************************************************-->
+    <!-- Google newMaps JavaScript API ***************************************************************-->
       <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY&callback=initMap">
+        src="https://newMaps.googleapis.com/newMaps/api/js?key=AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY&callback=initnewMap">
       </script>
 
     <!-- CSS *****************************************************************************************-->
     <link rel="stylesheet" href="style.css">
 
     <!-- JavaScript File -->
-    <link rel="stylesheet" href="maps.js">
+    <link rel="stylesheet" href="newMaps.js">
     </head>
 
 
@@ -34,11 +34,11 @@
 <!-- This section is used to change the location when the marker position is changed by drag and drop **-->
     <script>
         let geocoder;
-        let map;
+        let newMap;
         let marker;
     
     /*
-     * Google Map with marker *****************************************************************************
+     * Google newMap with marker *****************************************************************************
      */
     function initialize() {
         let initialLat = $('.search_latitude').val();
@@ -46,29 +46,29 @@
         initialLat = initialLat?initialLat:36.169648;
         initialLong = initialLong?initialLong:-115.141000;
     
-        let latlng = new google.maps.LatLng(initialLat, initialLong);
+        let latlng = new google.newMaps.LatLng(initialLat, initialLong);
         let options = {
             zoom: 16,
             center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            newMapTypeId: google.newMaps.newMapTypeId.ROADnewMap
         };
     
-        map = new google.maps.Map(document.getElementById("geomap"), options);
+        newMap = new google.newMaps.newMap(document.getElementById("geonewMap"), options);
     
-        geocoder = new google.maps.Geocoder();
+        geocoder = new google.newMaps.Geocoder();
     
-        marker = new google.maps.Marker({
-            map: map,
+        marker = new google.newMaps.Marker({
+            newMap: newMap,
             draggable: true,
             position: latlng
         });
     
-        google.maps.event.addListener(marker, "dragend", function () {
+        google.newMaps.event.addListener(marker, "dragend", function () {
             let point = marker.getPosition();
-            map.panTo(point);
+            newMap.panTo(point);
             geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
+                if (status == google.newMaps.GeocoderStatus.OK) {
+                    newMap.setCenter(results[0].geometry.location);
                     marker.setPosition(results[0].geometry.location);
                     $('.search_addr').val(results[0].formatted_address);
                     $('.search_latitude').val(marker.getPosition().lat());
@@ -80,7 +80,7 @@
     }
     
     $(document).ready(function () {
-        //load the google map **************************************************************
+        //load the google newMap **************************************************************
         initialize();
         
         /*
@@ -93,7 +93,7 @@
                     geocoder.geocode({
                         'address': request.term
                     }, function (results, status) {
-                        response($.map(results, function (item) {
+                        response($.newMap(results, function (item) {
                             return {
                                 label: item.formatted_address,
                                 value: item.formatted_address,
@@ -107,7 +107,7 @@
                     $('.search_addr').val(ui.item.value);
                     $('.search_latitude').val(ui.item.lat);
                     $('.search_longitude').val(ui.item.lon);
-                    let latlng = new google.maps.LatLng(ui.item.lat, ui.item.lon);
+                    let latlng = new google.newMaps.LatLng(ui.item.lat, ui.item.lon);
                     marker.setPosition(latlng);
                     initialize();
                 }
@@ -115,13 +115,13 @@
         });
         
         /*
-         * Point location on google map *******************************************************************
+         * Point location on google newMap *******************************************************************
          */
-        $('.get_map').click(function (e) {
+        $('.get_newMap').click(function (e) {
             let address = $(PostCodeid).val();
             geocoder.geocode({'address': address}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
+                if (status == google.newMaps.GeocoderStatus.OK) {
+                    newMap.setCenter(results[0].geometry.location);
                     marker.setPosition(results[0].geometry.location);
                     $('.search_addr').val(results[0].formatted_address);
                     $('.search_latitude').val(marker.getPosition().lat());
@@ -134,9 +134,9 @@
         });
     
         //Add listener to marker for reverse geocoding ***********************************************************
-        google.maps.event.addListener(marker, 'drag', function () {
+        google.newMaps.event.addListener(marker, 'drag', function () {
             geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
+                if (status == google.newMaps.GeocoderStatus.OK) {
                     if (results[0]) {
                         $('.search_addr').val(results[0].formatted_address);
                         $('.search_latitude').val(marker.getPosition().lat());
@@ -154,15 +154,15 @@
     <div class="form-group input-group">
         <input type="text" id="search_location" class="form-control" placeholder="Search location">
         <div class="input-group-btn">
-            <button class="btn btn-default get_map" type="submit">
+            <button class="btn btn-default get_newMap" type="submit">
                 Locate
             </button>
         </div>
     </div>
     </form>
     
-    <!-- display google map ***********************************************************************-->
-    <div id="geomap"></div>
+    <!-- display google newMap ***********************************************************************-->
+    <div id="geonewMap"></div>
     <!-- display selected location information ****************************************************-->
     <h4>Location Details</h4>
     <p>Address: <input type="text" class="search_addr" size="45"></p>

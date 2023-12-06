@@ -4,7 +4,10 @@ let map;
 let current_pos;
 let search_pos;
 let autocomplete;
+
+
 function initMap() {
+
   writeIntro();
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 41.85,lng: -87.65 },

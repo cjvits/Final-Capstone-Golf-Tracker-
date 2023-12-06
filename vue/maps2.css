@@ -1,8 +1,8 @@
 #map {
-    height: 400px; 
-    width: 100%;
-    border: 3px solid black;
-    margin: 0px;
+    height: 600px; 
+    width: auto;
+    border: 10px solid green;
+    margin: 15px;
     padding: 0px;
   }
 
@@ -11,13 +11,14 @@
     background-color: #f0f7f0; /* White */
     border: solid;
     color: rgb(28, 25, 25);
-    padding: 15px 32px;
+    padding: 10px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    opacity: 80%;
     
 }
 
@@ -38,43 +39,25 @@
     image-rendering: auto;
     
 }
-/* set the search button style */
-#searchbutton {
-    background-color: #f0f7f0; /* White */
-    border: none;
-    width: 20%;
-    color: rgb(28, 25, 25);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
-    font: roboto;
-    margin: 4px 2px;
-    cursor: pointer;
-    
-}
 
 #autocomplete {
     background-color: aliceblue;
     width: 80%;
     height: 40px;
     text-align: middle;
-
 }
 
-/*
 #start,
 #end {
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
-    margin-left: 12px;
-    padding: 0 11px 0 13px;
+    margin-left: 15px;
+    padding: 5px;
     text-overflow: ellipsis;
     width: 200px;
-} */
+}
 
 #get-distance {
     width: 50%;
