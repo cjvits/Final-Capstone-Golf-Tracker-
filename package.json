@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.2",
+    "axios": "^1.6.2",
+    "bootstrap-vue": "^2.23.1",
+    "firebase": "^10.7.1",
+    "vue3-google-maps": "^0.0.1"
+  }
+}
