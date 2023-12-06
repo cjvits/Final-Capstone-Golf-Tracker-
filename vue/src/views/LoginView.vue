@@ -2,14 +2,14 @@
   <div id="login" class="login">
 
     <form v-on:submit.prevent="login">
-      <h1>Jag's Sign In</h1>
+      <h1>Yinzer Sign In</h1>
 
       <div class="alert" role="alert" v-if="invalidCredentials">
-        Invalid username and password, jag!
+        Invalid username and password!
       </div>
 
       <div class="alert" role="alert" v-if="this.$route.query.registration">
-        Thank you for registering! Sign in, ya jag.
+        Thank yinz for registering! Sign in.
       </div>
 
       <div class="form-input-group">
@@ -25,7 +25,7 @@
       <button class="submitBtn" type="submit">yinzer sign in</button>
 
       <p>
-        <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">new jag sign up</router-link>
+        <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">new yinzer sign up</router-link>
       </p>
     </form>
   </div>
@@ -83,7 +83,7 @@ form {
   border-radius: 15px;
   background-image: url("..\assets\Tee Time N'At (Ya JAG)_3.png");
   padding: 1rem;
-  opacity: .45;
+  opacity: .85;
   display: flexbox;
   position: sticky;
 }

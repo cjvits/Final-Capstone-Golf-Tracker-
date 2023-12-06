@@ -10,7 +10,7 @@
 
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
 
 .constant-nav {
   background-color: #093708;
@@ -22,8 +22,4 @@
 .link {
   color: darkkhaki;
 }
-
-
-
-
 </style>
