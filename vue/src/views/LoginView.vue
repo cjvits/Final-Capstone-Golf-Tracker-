@@ -1,31 +1,32 @@
 <template>
 
   <div id="login" class="login">
-    <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
 
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+    <form v-on:submit.prevent="login">
+      <h1 >Jag's Sign In</h1>
+
+      <div class="alert" role="alert" v-if="invalidCredentials">
+        Invalid username and password, jag!
       </div>
 
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
+      <div class="alert" role="alert" v-if="this.$route.query.registration">
+        Thank you for registering! Sign in, ya jag.
       </div>
 
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username">yinzer name</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
 
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password">yinzer password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
 
-      <button class="submitBtn" type="submit">Sign in</button>
+      <button class="submitBtn" type="submit">yinzer sign in</button>
       
       <p>
-      <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">New User</router-link>
+      <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">new jag sign up</router-link>
       </p>
     </form>
   </div>
@@ -68,22 +69,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .form-input-group {
-  
   margin-bottom: 1rem;
 }
+
 label {
   margin-right: 0.5rem;
 }
 
 form {
-  height: 300px;
-  width: 300px;
+  height: auto;
+  width: 18rem;
   border-radius: 15px;
   background-image: url("..\assets\Tee Time N'At (Ya JAG)_3.png");
-  padding: 10px;
-  border: 2px solid #f6f2f2;
+  padding: 1rem;
   opacity: .45;
   display: flexbox;
   position: sticky;
@@ -131,10 +131,8 @@ label {
   background-color: #071e06;
   font-weight: 600;
   font-family: 'Hedvig Letters Serif', serif;
-  color: darkkhaki;
-  
+  color: wheat;
 }
-
 
 p {
   text-align: center;
@@ -143,6 +141,12 @@ p {
 
 .sign-up-link{
   color: rgb(128, 124, 66);
+}
+
+.alert {
+  text-align: center;
+  font-size: .75rem;
+  padding: .5rem;
 }
 
 
