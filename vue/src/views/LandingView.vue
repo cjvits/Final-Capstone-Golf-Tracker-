@@ -40,35 +40,13 @@ export default {
     },
     newAccount() {
       this.$router.push({name: 'register'})
-      this.$router.push({name: 'login'});
-    },
-    // newAccount() {
-    //   this.$router.push({name: 'register'})
-    // }
+    }
   },
   
 };
 </script>
 
 <style scoped>
-
-.fade-enter-from {
-  opacity: 0;
-}
-.fade-enter-to {
-  opacity: 2;
-}
-.fade-enter-active {
-  transition: all 2s ease;
-}
-.fade-leave-from {}
-.fade-leave-to {}
-.fade-leave-active {}
-
-/* nav {
-  display: flex;
-  justify-content: flex-end;
-} */
 
  .api {
   display: flex;
@@ -115,9 +93,5 @@ h1 {
   font-family: 'Hedvig Letters Serif', serif;
   padding-top: 1rem;
 }
-
-
-
-
 
 </style>
