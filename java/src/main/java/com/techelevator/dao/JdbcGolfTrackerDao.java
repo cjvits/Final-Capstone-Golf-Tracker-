@@ -84,7 +84,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public League createLeague(League league) {
-        String sql = "INSERT INTO leagues (league_id, league_name, coordinator_id, course_id) VALUES (?, ?, ?, ?) RETURNING id;";
+        String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING id;";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class, league.getLeagueName(), league.getLeagueCoordinatorId(), league.getLeagueCourseId());
         league.setLeagueId(newId);
 
@@ -93,34 +93,62 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public Match createMatch(Match match) {
-        String sql = "INSERT INTO matches (match_id, league_id, tee_date, tee_time) VALUES (?, ?, ?, ?) RETURNING id;";
-        int newId = jdbcTemplate.queryForObject(sql, Integer.class, match.getLeagueId(), match.getTeeDate(), match.getTeeTime());
+        String sql = "INSERT INTO matches (league_id, tee_date, tee_time) VALUES (?, ?, ?) RETURNING id;";
+        int newId = jdbcTemplate.queryForObject(sql, Integer.class, match.getTeeDate(), match.getTeeTime());
         match.setMatchId(newId);
         return match;
     }
 
     @Override
     public List<User> addUserToLeague(int leagueId, int userId) {
+        List<User> golfersInLeague = new ArrayList<>();
         int initialScore = 0;
         String sql = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?) RETURNING league_id;";
-        int newId = jdbcTemplate.queryForObject(sql, Integer.class, leagueId, userId, initialScore);
-        String sql2 = "SELECT users.user_id, username, league_id, league_score FROM users JOIN league_golfer ON users.user_id = league_golfer.user_id where league_id = 2;";
-        return null;
+        jdbcTemplate.update(sql, leagueId, userId, initialScore);
+        String sql2 = "SELECT users.user_id, username FROM users JOIN league_golfer ON users.user_id = league_golfer.user_id where league_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql2, leagueId);
+        while (rowSet.next()) {
+            User user = mapRowToUser(rowSet);
+            golfersInLeague.add(user);
+        }
+        return golfersInLeague;
     }
 
     @Override
-    public List<User> addUserToMatch(int leagueId, int matchId) {
-        return null;
+    public List<User> addUserToMatch(int userId, int matchId) {
+        List<User> golfersInMatch = new ArrayList<>();
+        int initialScore = 0;
+        String sql = "INSERT INTO match_golfer (match_id, user_id, match_score) VALUES (?, ?, ?);";
+        jdbcTemplate.update(sql, matchId, userId, initialScore);
+        String sql2 = "SELECT users.user_id, username FROM users JOIN match_golfer ON users.user_id = match_golfer.user_id where match_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql2, matchId);
+        while (rowSet.next()) {
+            User user = mapRowToUser(rowSet);
+            golfersInMatch.add(user);
+        }
+        return golfersInMatch;
     }
 
     @Override
-    public List<User> updateMatchScores(Match match) {
-        return null;
+    public int updateMatchScore (Match match,int userId, int golferScore) {
+        String sql = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
+        int scoresUpdated = jdbcTemplate.update(sql, golferScore, userId, match.getMatchId());
+        return scoresUpdated;
+
     }
 
     @Override
     public Course addCourse(Course course) {
-        return null;
+        String sql = "INSERT INTO courses (course_name, street_address, city, state_abb, zip_code, course_rating) VALUES (?, ?, ?, ?, ?, ?) RETURNING course_id;";
+        int newId = jdbcTemplate.queryForObject(sql, Integer.class,
+                course.getCourseName(),
+                course.getStreetAddress(),
+                course.getCity(),
+                course.getState(),
+                course.getZipCode(),
+                course.getRating());
+        course.setCourseId(newId);
+        return course;
     }
 
     private User mapRowToUser(SqlRowSet rowSet) {

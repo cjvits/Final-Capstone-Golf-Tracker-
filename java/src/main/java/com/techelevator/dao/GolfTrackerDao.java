@@ -29,7 +29,7 @@ public interface GolfTrackerDao {
 
     public List<User> addUserToMatch (int leagueId, int matchId);
 
-    public List<User> updateMatchScores (Match match);
+    public int updateMatchScore (Match match,int userId, int golferScore);
 
     public Course addCourse (Course course);
 
