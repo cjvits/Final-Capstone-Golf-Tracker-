@@ -1,9 +1,8 @@
 <template>
-
   <div id="login" class="login">
 
     <form v-on:submit.prevent="login">
-      <h1 >Jag's Sign In</h1>
+      <h1>Jag's Sign In</h1>
 
       <div class="alert" role="alert" v-if="invalidCredentials">
         Invalid username and password, jag!
@@ -24,9 +23,9 @@
       </div>
 
       <button class="submitBtn" type="submit">yinzer sign in</button>
-      
+
       <p>
-      <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">new jag sign up</router-link>
+        <router-link class="sign-up-link" v-bind:to="{ name: 'register' }">new jag sign up</router-link>
       </p>
     </form>
   </div>
@@ -95,9 +94,13 @@ form {
   display: flex;
   background-image: url("../assets/goldenGolf.jpeg");
   height: 100vh;
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
+  display: flexbox;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
   font-family: 'Hedvig Letters Serif', serif;
   color: #093708;
   font-weight: 600;
@@ -139,7 +142,7 @@ p {
   padding-top: 15px;
 }
 
-.sign-up-link{
+.sign-up-link {
   color: rgb(128, 124, 66);
 }
 
@@ -148,6 +151,4 @@ p {
   font-size: .75rem;
   padding: .5rem;
 }
-
-
 </style>
