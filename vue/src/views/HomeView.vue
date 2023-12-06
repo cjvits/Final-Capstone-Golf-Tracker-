@@ -3,6 +3,23 @@
     <h1>Home</h1>
   </div>
 
+  <nav>
+    <!-- leaderboard stuff -->
+
+    <!-- tee times stuff -->
+
+    <!-- creating a new league -->
+
+    <!-- admin stuff IF ADMIN -->
+
+    <!-- logout -->
+    <button v-on:click="logOut">Log Out</button>
+  </nav>
+
+  <div>
+    <!-- my upcoming -->
+  </div>
+
   <!-- TODO: Include links/show:
   - leader board
   - tee-times
@@ -17,8 +34,14 @@ TODO: IF ADMIN
 
 <script>
 export default {
+  methods: {
+    logOut(){
+      this.$store.commit("LOGOUT");
+      this.$router.push("/");
+    }
+  }
 };
-</script>
+</script> 
 
 
 <style scoped>
