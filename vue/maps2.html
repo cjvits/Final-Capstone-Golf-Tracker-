@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Title to our Map -->
-        <title>Tee Time N'at Locater</title>
-
         <!-- Linking CSS to Map -->
         <link rel="stylesheet" type="text/css" href="./maps2.css" />
-        
     </head>
 
     <body>
-
         <!-- This is the Map Title / Search Bar -->
         <div id = "nav-bar">
-            <h1>Interactive Map N'At</h1>
             <p id = 'intro'>
             </p>
             <div id = 'search-area'>
@@ -21,22 +15,17 @@
                 <button id="search-button">Search</button>
             </div>
 
-
             <!-- This is my "Find My Location" button -->
             <div id = 'button'> </div>
-
-
                 <!-- <div id = 'get-distance'> -->
                 <!-- <input id = 'start' type = 'text' placeholder = 'Travel From' />
                 <input id = 'end' type = 'text' placeholder = 'Destination' />
                 <button id = 'get-distance-button'>Get Distance N'At</button> -->
+        </div>
+
+        <!-- The div element for the map where the map shows -->
+        <div id="map"></div>
             
-        </div>
-   
-        <div id="map">
-            <!--The div element for the map where the map shows.-->
-        </div>
-       
         <!-- Google Maps JavaScript API -->
         <script 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY&libraries=places&callback=initMap&v=weekly" defer>
@@ -93,57 +82,70 @@
                     }
                   );
                 } else {
-                  // Browser doesn't support Geolocation
+                  // This will handle an event when the user's browser doesn't support geolocation
                   handleLocationError(false, infoWindow, map.getCenter());
                 }
               });
+              // Completes the search in the search bar
               completeSearch();
-              new GetDirection(map);
+              // Creating a new object, passing the map as the param ******* I think this gets commented out *******
+              // new GetDirection(map);
             }
             
+            //******************** Commented out, I believe this is repetitive **************************************
+            // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            //   infoWindow.setPosition(pos);
+            //   infoWindow.setContent(
+            //     browserHasGeolocation
+            //       ? "Error: The Geolocation service failed."
+            //       : "Error: Your browser doesn't support geolocation."
+            //   );
+            //   infoWindow.open(map);
+            // }
             
-            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-              infoWindow.setPosition(pos);
-              infoWindow.setContent(
-                browserHasGeolocation
-                  ? "Error: The Geolocation service failed."
-                  : "Error: Your browser doesn't support geolocation."
-              );
-              infoWindow.open(map);
-            }
-            
+            // If we want to have a description for our map 
             function writeIntro() {
-                const content = "Click the button on the map to find your current location."
+                const content = "Interactive Map N'At."
                 document.getElementById("intro").innerHTML = content;
             }
             
-            // Find my location marker - 
+            // Find my location marker
             function addMarker(coords,map){
-                var marker = new google.maps.Marker({position:coords, map: map,icon:"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"});
-                var infoWindow = new google.maps.InfoWindow({content:"<h1>Current Location</h1>"});
 
-
-                //set zooming to 15
+                // This creates a new marker at the specified coordinates on the map
+                let marker = new google.maps.Marker({position:coords, map: map,icon:"http://maps.google.com/mapfiles/kml/paddle/orange-stars.png"});
+                // I don't think we need this line of code, but not 100% sure.
+                let infoWindow = new google.maps.InfoWindow({content:"<h1>Current Location</h1>"});
+                // Set zoom level to 15
                 map.setZoom(15);
-                marker.addEventListener("click", () => {
-                  infoWindow.open(map, marker);
-                });
+
+                // I don't think we need this *******, this is for clicking on markers which we do not have yet. - May need this later
+                // marker.addEventListener("click", () => {
+                //   infoWindow.open(map, marker);
+                // });
             }
             
+            // This exposes the initMap function to the global window project ***** I don't know what this means ******
             window.initMap = initMap;
             
+            // This function handles the autocomplete
             function completeSearch(){
-              //make the input box autocomplete
+              // Defining the options for the autocomplete feature
               const options = {
                 fields: ["place_id", "geometry", "name", "formatted_address"],
                 strictBounds: false,
              }
+              // Creates an instance of Google Maps Places API Autocomplete
               autocomplete = new google.maps.places.Autocomplete(document.getElementById("autocomplete"),options);
+              // This binds the autocomplete to the map's bounds
               autocomplete.bindTo("bounds", map);
               
+              // This creates the Red marker for the destination results after searching a location
               const auto_marker = new google.maps.Marker({
                 map,
                 anchorPoint: new google.maps.Point(0, 50),});
+
+              // Add a listener to respond when a place is selected from the autocomplete options
               autocomplete.addListener("place_changed", () => {
                 auto_marker.setVisible(false);
                 const place = autocomplete.getPlace();
@@ -153,31 +155,29 @@
                   window.alert("No details available for input: '" + place.name + "'");
                   return;
                 }
-            
                 if (place.geometry.viewport) {
                   map.fitBounds(place.geometry.viewport);
                 } else {
                   map.setCenter(place.geometry.location);
                   map.setZoom(17);
                 }
-            
                 auto_marker.setPosition(place.geometry.location);
                 auto_marker.setVisible(true);
                 
+                /* COMMENTED OUT - PRETTY SURE WE DO NOT NEED THIS */
                 // This creates a new info window for the location after we search for a location
-                const info = new google.maps.InfoWindow();
-                const InfoContent = document.getElementById('infoWindow');
-                InfoContent.children['place-name'].textContent = place.name;
-                InfoContent.children['place-address'].textContent = place.formatted_address;
-                info.setContent(InfoContent);
-                info.open(map, auto_marker);
+
+                // const info = new google.maps.InfoWindow();
+                // const InfoContent = document.getElementById('infoWindow');
+                // InfoContent.children['place-name'].textContent = place.name;
+                // InfoContent.children['place-address'].textContent = place.formatted_address;
+                // info.setContent(InfoContent);
+                // info.open(map, auto_marker);
                 
               });  
             }
 
-
-
-            // Commented Out ***** Was previously used for directions *************
+            // COMMENTED OUT ******** PRETTY SURE WE DO NOT NEED THIS *************
             // class GetDirection {
             //   map;
             //   originId;
@@ -240,9 +240,6 @@
             //       )
             //     }
             // }
-            
-          
         </script>
-        </body>
-
+      </body>
 </html>
