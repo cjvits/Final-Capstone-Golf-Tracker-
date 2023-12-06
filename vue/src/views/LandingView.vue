@@ -7,23 +7,21 @@
 
 <template>
 
-  <nav>
+  <!-- <nav>
     <div id="loginDiv">
     <button type="button" id="loginBtn" @click="login">Login</button>
-  
     <button type="button" id="registerBtn" @click="newAccount" >Register</button></div>
-  </nav>
+  </nav> -->
 
-  <p id="appName">Tee Time N'at</p>
-  
-  <div id="div1">
-    
-    <img class="logo2" src="../assets\Tee Time N'At (Ya JAG)_2 (1).png" alt="">
+<div class="landing">
+  <div class="subdiv">
+  <h1 id="appName">Tee Time N'at</h1>
   </div>
-  <div class="api"><textarea name="" id="" cols="0" rows="1" placeholder="Search Courses"></textarea></div>
+  <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p>
+</div>
 
-    <div></div>
 </template>
+
 <script>
 import RegisterView from './RegisterView.vue';
 import LoginView from './LoginView.vue';
@@ -40,6 +38,10 @@ export default {
     },
     newAccount() {
       this.$router.push({name: 'register'})
+      this.$router.push({name: 'login'});
+    },
+    newAccount() {
+      this.$router.push({name: 'register'})
     }
   },
   
@@ -47,35 +49,54 @@ export default {
 </script>
 
 <style scoped>
-nav {
+
+/* nav {
   display: flex;
   justify-content: flex-end;
-}
+} */
 
-#div1 {
+ .api {
   display: flex;
   justify-content: center;
+  align-items: flex-end; 
+  padding-top: 3rem;
+} 
+
+.landing {
+  display: flex;
   align-items: center;
-  padding-top: 2rem;
-}
-
-.api {
-  display: flex;
   justify-content: center;
-  padding-top: 1rem;
-}
-
-body {
-  background-color: rgb(67, 67, 66);
-}
-
-p {
-  display: flex;
-  justify-content: center;
-  
-  color: rgb(244, 224, 7);
+  background-image: url("../assets/goldenGolf.jpeg");
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Hedvig Letters Serif', serif;
+  color: #093708;
+  font-weight: 600;
   font-size: x-large;
-  font-family: cursive;
-  
 }
+.subdiv {
+  /* display: flex-content;
+  justify-content: center;
+  align-items: center; */
+  background-color: white;
+  opacity: .3;
+  position: sticky;
+  flex-grow: 1;
+} 
+
+h1 {
+  text-align: center;
+  justify-self: center;
+  flex-grow: 1;
+  font-size: 2em;
+  font-weight: 700;
+  font-family: 'Hedvig Letters Serif', serif;
+}
+
+
+
+
+
 </style>
