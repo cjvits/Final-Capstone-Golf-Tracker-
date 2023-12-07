@@ -9,6 +9,7 @@ import RegisterView from '../views/RegisterView.vue';
 import LandingView from '../views/LandingView.vue';
 import LeagueOrganizerView from '../views/LeagueOrganizerView.vue';
 import HomePage from '@/components/HomePage';
+import GoodByeView from '../views/GoodByeView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -72,6 +73,11 @@ const routes = [
     path: "/league-organizer",
     name: "league-organizer",
     component: LeagueOrganizerView
+  },
+  {
+    path: "/see-yinz-later",
+    name: "see-yinz",
+    component: GoodByeView
   },
 {
   //component: ForbiddenView
