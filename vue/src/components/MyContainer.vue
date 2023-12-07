@@ -1,6 +1,5 @@
 <template>
     <div>
-      <!-- Other content -->
       <GoogleMap />
     </div>
   </template>
