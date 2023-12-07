@@ -5,7 +5,14 @@ export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      user: currentUser || {}
+      user: {
+        username: (currentUser && currentUser.username) || '',
+        users: [
+          {name: "Player1", score: 70, handicap: 8, course: "course1"},
+          {name: "Player2", score: 67, handicap: 7, course: "course2"},
+          {name: "Player3", score: 65, handicap: 6, course: "course3"},
+        ],
+      }
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
