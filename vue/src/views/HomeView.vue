@@ -14,7 +14,6 @@
 
 <!-- <div class="footer">
   <p>
-    <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
   </p>
 </div> -->
 </div>
