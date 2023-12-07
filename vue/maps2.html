@@ -4,19 +4,18 @@
         <!-- Linking CSS to Map -->
         <link rel="stylesheet" type="text/css" href="./maps2.css" />
     </head>
-
+    
     <body>
         <!-- This is the Map Title / Search Bar -->
         <div id = "nav-bar">
-            <p id = 'intro'>
-            </p>
-            <div id = 'search-area'>
+            <p id = "intro"></p>
+            <div id = "search-area">
                 <input type="text" id="autocomplete" placeholder="Search for a place" />
                 <button id="search-button">Search</button>
             </div>
 
             <!-- This is my "Find My Location" button -->
-            <div id = 'button'> </div>
+            <div id = "button"> </div>
                 <!-- <div id = 'get-distance'> -->
                 <!-- <input id = 'start' type = 'text' placeholder = 'Travel From' />
                 <input id = 'end' type = 'text' placeholder = 'Destination' />
@@ -37,7 +36,6 @@
             let search_pos; // Position on map when search is initiated
             let autocomplete; // Declaring the autocomplete search bar
             let infoWindow; // Declaring infoWindow Variable
-
 
             // This is our function to initialize the Google Map. Important***********
             function initMap() {
@@ -103,7 +101,7 @@
             //   infoWindow.open(map);
             // }
             
-            // If we want to have a description for our map 
+            // If we want to have a description for our map ********** How can we separate the "content" 
             function writeIntro() {
                 const content = "Interactive Map N'At."
                 document.getElementById("intro").innerHTML = content;
@@ -173,7 +171,6 @@
                 // InfoContent.children['place-address'].textContent = place.formatted_address;
                 // info.setContent(InfoContent);
                 // info.open(map, auto_marker);
-                
               });  
             }
 
