@@ -21,6 +21,38 @@
 </template>
 
 
+
+
+
+<!-- TODO: Include links/show:
+  - leader board
+  - tee-times
+  - create a new league
+
+TODO: IF LEAGUE ORGANIZER
+  - link to go to league organization page
+
+TODO: IF ADMIN
+  - include ability/form to add a golf course -->
+
+
+<script>
+// import HomePage from "@/components/HomePage";
+// import LeaderBoard from "../components/LeaderBoard.vue";
+
+export default {
+  methods: {
+    // components: {
+    //   LeaderBoard,
+    // },
+    logOut(){
+      this.$store.commit("LOGOUT");
+      this.$router.push("/");
+    },
+  },
+};
+</script> 
+
 <style scoped>
 * {
   box-sizing: border-box;
@@ -109,37 +141,6 @@
 }
 
 </style>
-
-
-<!-- TODO: Include links/show:
-  - leader board
-  - tee-times
-  - create a new league
-
-TODO: IF LEAGUE ORGANIZER
-  - link to go to league organization page
-
-TODO: IF ADMIN
-  - include ability/form to add a golf course -->
-
-
-<script>
-import HomePage from "@/components/HomePage";
-
-export default {
-  methods: {
-    // components: {
-    //   LeaderBoard,
-    // },
-    logOut(){
-      this.$store.commit("LOGOUT");
-      this.$router.push("/");
-    },
-  },
-};
-</script> 
-
-
 
 <!-- <style scoped>
 .home {

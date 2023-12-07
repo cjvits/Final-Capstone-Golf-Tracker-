@@ -8,7 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import LandingView from '../views/LandingView.vue';
 import LeagueOrganizerView from '../views/LeagueOrganizerView.vue';
-import HomePage from '@/components/HomePage';
+// import HomePage from '@/components/HomePage';
 import GoodByeView from '../views/GoodByeView.vue';
 
 /**
@@ -37,14 +37,14 @@ const routes = [
       //requiresRoles: ['',''] if we have different roles within users
     }
   },
-  {
-    path: '/homepage',
-    name: 'HomePage',
-    component: HomePage,
-    meta: {
-      requiresAuth: true
-    }
-  },
+  // {
+  //   path: '/homepage',
+  //   name: 'HomePage',
+  //   component: HomePage,
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
   {
     path: "/login",
     name: "login",
