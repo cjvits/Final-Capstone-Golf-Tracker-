@@ -10,6 +10,14 @@ TODO: form for setting matches/tee-times -->
     </div>
 </template>
 
+<script>
+export default {
+    components: {
+        
+    }
+}
+</script>
+
 <style scoped>
 
 div {
