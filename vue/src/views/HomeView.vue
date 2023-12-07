@@ -12,11 +12,11 @@
   <div class="right-column">Right Column</div>
 </div>
 
-<div class="footer">
+<!-- <div class="footer">
   <p>
     <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
   </p>
-</div>
+</div> -->
 </div>
 </template>
 
@@ -79,11 +79,11 @@
 }
 
 /* Style the footer */
-.footer {
+/* .footer {
   background-color: #f1f1f1;
   padding: 10px;
   text-align: center;
-}
+} */
 
 .home-container {
   background-image: url("../assets/goldenGolf.jpeg");
