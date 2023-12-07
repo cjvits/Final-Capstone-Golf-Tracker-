@@ -40,14 +40,14 @@ public class GolfTrackerController {
 
     }
 
-    @PostMapping("/league")
+    @PostMapping("/home")
     @ResponseStatus(HttpStatus.CREATED)
     public League addLeague (@RequestBody League newLeague){
         return golfTrackerDao.createLeague(newLeague);
     }
 
 
-    @GetMapping("/league/{id}")
+    @GetMapping("/home/{id}")
     public List<UserInLeague> getLeagueById (int userId) {
 //        User loggedInUser = userDao.getUserByUsername(principal.getName());
 //        int userId = loggedInUser.getId();
@@ -57,11 +57,13 @@ public class GolfTrackerController {
 
     }
 
-    @GetMapping("/league/{id}/match/{id}")
+    @GetMapping("/home/{id}/match/{id}")
     public Match getMatchById (int matchId) {
 
         return golfTrackerDao.getMatch(matchId);
 
-
     }
+
+    @GetMapping("/home/{id}/match")
+    public Match
 }
