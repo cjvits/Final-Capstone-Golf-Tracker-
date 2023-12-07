@@ -1,14 +1,17 @@
-
+<!-- src/views/HomeView.vue -->
 <template>
 <div class="home-container">
 
 <div class="header">
   <h2>Welcome Home Ya Golf'n Yinzer!</h2>
+  <!-- <LeaderBoard :users="$store.state.user.users" /> -->
 </div>
 
 <div class="row">
   <div class="left-column">Left Column</div>
-  <div class="center-column">Center Column</div>
+  <div class="center-column">
+    <LeaderBoard :users="$store.state.user.users" />
+  </div>
   <div class="right-column">Right Column</div>
 </div>
 
@@ -38,13 +41,13 @@ TODO: IF ADMIN
 
 <script>
 // import HomePage from "@/components/HomePage";
-// import LeaderBoard from "../components/LeaderBoard.vue";
+import LeaderBoard from "@/components/LeaderBoard.vue";
 
 export default {
+  components: {
+    LeaderBoard,
+  },
   methods: {
-    // components: {
-    //   LeaderBoard,
-    // },
     logOut(){
       this.$store.commit("LOGOUT");
       this.$router.push("/");
