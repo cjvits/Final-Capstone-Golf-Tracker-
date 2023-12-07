@@ -26,44 +26,40 @@ public class GolfTrackerController {
     private final GolfTrackerDao golfTrackerDao;
     private final UserDao userDao;
 
-    public GolfTrackerController (UserDao userDao, GolfTrackerDao golfTrackerDao) {
+    public GolfTrackerController(UserDao userDao, GolfTrackerDao golfTrackerDao) {
         this.userDao = userDao;
         this.golfTrackerDao = golfTrackerDao;
     }
 
 
-    @GetMapping("/league")
-    public List<League> getLeagues (Principal principal) {
-        User loggedInUser = userDao.getUserByUsername(principal.getName());
-        int userId = loggedInUser.getId();
-        return golfTrackerDao.getLeaguesOfUser(userId);
-
-    }
+   
 
     @PostMapping("/home")
     @ResponseStatus(HttpStatus.CREATED)
-    public League addLeague (@RequestBody League newLeague){
+    public League addLeague(@RequestBody League newLeague) {
         return golfTrackerDao.createLeague(newLeague);
     }
 
 
+//    @GetMapping("/home/{id}")
+//    public List<UserInLeague> getLeagueById (int userId) {
+////        User loggedInUser = userDao.getUserByUsername(principal.getName());
+////        int userId = loggedInUser.getId();
+//
+//        return golfTrackerDao.getLeagueLeaderboardByUserId(userId);
+//
+//
+//    }
+
     @GetMapping("/home/{id}")
-    public List<UserInLeague> getLeagueById (int userId) {
-//        User loggedInUser = userDao.getUserByUsername(principal.getName());
-//        int userId = loggedInUser.getId();
-
+    public League getLeaguebyUserId(int userId) {
         return golfTrackerDao.getLeagueByUserId(userId);
-
-
     }
 
     @GetMapping("/home/{id}/match/{id}")
-    public Match getMatchById (int matchId) {
+    public Match getMatchById(int matchId) {
 
         return golfTrackerDao.getMatch(matchId);
 
     }
-
-    @GetMapping("/home/{id}/match")
-    public Match
 }
