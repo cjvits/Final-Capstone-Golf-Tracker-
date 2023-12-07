@@ -1,9 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Course;
-import com.techelevator.model.League;
-import com.techelevator.model.Match;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -22,13 +19,13 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     }
 
     @Override
-    public List<User> getAllGolfersInLeague(int leagueId) {
-        List<User> result = new ArrayList<>();
-        String sql = "select users.user_id, username, first_name, last_name, league_id from users join league_golfer on users.user_id = league_golfer.user_id WHERE league_golfer.leauge_id = ?;";
+    public List<UserInLeague> getLeagueLeaderboard(int leagueId) {
+        List<UserInLeague> result = new ArrayList<>();
+        String sql = "select users.username, league_golfer.league_score from users join league_golfer on users.user_id = league_golfer.user_id WHERE league_golfer.league_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
         while (rowSet.next()) {
-            User user = mapRowToUser(rowSet);
-            result.add(user);
+            UserInLeague userInLeague = mapRowToUserInLeague(rowSet);
+            result.add(userInLeague);
         }
         return result;
     }
@@ -71,16 +68,17 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     }
 
     @Override
-    public League getLeague(int leagueId) {
-        String sql = "Select league_id, league_name FROM leagues WHERE league_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
-        if (rowSet.next()) {
+    public List<League> getLeaguesOfUser(int userId) {
+        List<League> leaguesOfUser = new ArrayList<>();
+            String sql = "Select leagues.league_id, league_name FROM leagues join league_golfer on leagues.league_id = league_golfer.league_id where league_golfer.user_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while (rowSet.next()) {
             League league = mapRowToLeague(rowSet);
-            return league;
-        } else {
-            return null;
+            leaguesOfUser.add(league);
         }
+        return leaguesOfUser;
     }
+
 
     @Override
     public League createLeague(League league) {
@@ -157,6 +155,15 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setUsername(rowSet.getString("username"));
 //        result.setFirstName(rowSet.getString("first_name"));
 //        result.setLastName(rowSet.getString("last_name"));
+        return result;
+    }
+
+    private UserInLeague mapRowToUserInLeague(SqlRowSet rowSet) {
+        UserInLeague result = new UserInLeague();
+        result.setId(rowSet.getInt("user_id"));
+        result.setUsername(rowSet.getString("username"));
+        result.setLeagueScore(rowSet.getInt("league_score"));
+//
         return result;
     }
 
