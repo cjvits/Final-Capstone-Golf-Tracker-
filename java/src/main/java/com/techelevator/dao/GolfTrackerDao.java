@@ -1,9 +1,7 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.User;
-import com.techelevator.model.Match;
-import com.techelevator.model.Course;
-import com.techelevator.model.League;
+import com.techelevator.model.*;
+
 import java.util.List;
 
 
@@ -11,7 +9,7 @@ import java.util.List;
 
 public interface GolfTrackerDao {
 
-    public List<User> getAllGolfersInLeague(int leagueId);
+    public List<UserInLeague> getLeagueLeaderboard(int leagueId);
 
     public List<User> getAllGolfersInMatch(int matchId);
 
@@ -19,7 +17,7 @@ public interface GolfTrackerDao {
 
     public Match getMatch(int matchId);
 
-    public League getLeague (int leagueId);
+    public List<League> getLeaguesOfUser (int userId);
 
     public League createLeague(League league);
 
@@ -29,7 +27,7 @@ public interface GolfTrackerDao {
 
     public List<User> addUserToMatch (int leagueId, int matchId);
 
-    public List<User> updateMatchScores (Match match);
+    public int updateMatchScore (Match match,int userId, int golferScore);
 
     public Course addCourse (Course course);
 
