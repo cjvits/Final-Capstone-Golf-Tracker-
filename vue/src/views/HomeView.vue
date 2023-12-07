@@ -33,8 +33,6 @@
   font-size: 35px;
 }
 
-<<<<<<< HEAD
-=======
 /* Container for flexboxes */
 .row {
   display: -webkit-flex;
@@ -113,7 +111,6 @@
 </style>
 
 
->>>>>>> 5a429ce065b79f037f4c40cc749e446f9b5095de
 <!-- TODO: Include links/show:
   - leader board
   - tee-times
