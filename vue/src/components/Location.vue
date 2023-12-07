@@ -51,17 +51,24 @@ export default {
       description: "",
       mapCenter: { lat: 38.5948096, lng: -84.8355755 },
       locations: [
-        { coord: { lat: 42.34, lng: -83.0456 }, name: "Ford Field" },
-        { coord: { lat: 42.3411, lng: -83.0553 }, name: "L.C. Arena" },
-        { coord: { lat: 42.339, lng: -83.0485 }, name: "Comerica Park" },
+        { coord: { lat: 42.34, lng: -83.0456 }, name: "" },
+        { coord: { lat: 42.3411, lng: -83.0553 }, name: "" },
+        { coord: { lat: 42.339, lng: -83.0485 }, name: "" },
       ],
     };
   },
   methods: {
     initMap() {
-      // Your initMap code remains mostly the same
-      // ...
-    },
+  // Initialize the map
+  this.map = new window.google.maps.Map(document.getElementById("map"), {
+    center: this.mapCenter,
+    zoom: 10,
+  });
+
+  // Add a click event listener to the map
+  this.map.addListener('click', this.addMarkerOnClick);
+},
+
     // Define your other methods as per your original code
     // ...
   },
@@ -83,7 +90,7 @@ export default {
     "map map report report";
 }
 #intro {
-    grid-area: intro;
+  grid-area: intro;
 }
 #latitude {
   grid-area: latitude;
@@ -121,3 +128,4 @@ export default {
   vertical-align: top;
 }
 </style>
+

@@ -14,6 +14,7 @@
   </nav> -->
 
 <div class="landing">
+  <router-link to="/location">Go to Location Page</router-link>
   <div class="subdiv">
   <transition name="fade">
     <h1 id="appName">Tee Time N'at</h1>
