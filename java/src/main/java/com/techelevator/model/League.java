@@ -12,9 +12,9 @@ public class League {
 
     private Course leagueCourse;
 
-    private List<User> golfersInLeague;
+    private List<UserInLeague> golfersInLeague;
 
-    private Map<User, Integer> leagueGolferScores;
+
 
     public int getLeagueId() {
         return leagueId;
@@ -56,19 +56,11 @@ public class League {
         this.leagueCourse = leagueCourse;
     }
 
-    public List<User> getGolfersInLeague() {
+    public List<UserInLeague> getGolfersInLeague() {
         return golfersInLeague;
     }
 
-    public void setGolfersInLeague(List<User> golfersInLeague) {
+    public void setGolfersInLeague(List<UserInLeague> golfersInLeague) {
         this.golfersInLeague = golfersInLeague;
-    }
-
-    public Map<User, Integer> getLeagueGolferScores() {
-        return leagueGolferScores;
-    }
-
-    public void setLeagueGolferScores(Map<User, Integer> leagueGolferScores) {
-        this.leagueGolferScores = leagueGolferScores;
     }
 }

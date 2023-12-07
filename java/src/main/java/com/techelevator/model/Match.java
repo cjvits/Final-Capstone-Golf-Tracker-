@@ -23,17 +23,14 @@ public class Match {
 
     private LocalTime teeTime;
 
-    private List<User> golfers;
+    private List<UserInLeague> golfers;
 
-    private Map<User, Integer> matchGolferScores;
-
-    public Match(int matchId, League matchLeague, LocalDate teeDate, LocalTime teeTime, List<User> golfers, Map<User, Integer> matchGolferScores) {
+    public Match(int matchId, League matchLeague, LocalDate teeDate, LocalTime teeTime, List<UserInLeague> golfers, Map<User, Integer> matchGolferScores) {
         this.matchId = matchId;
         this.matchLeague = matchLeague;
         this.teeDate = teeDate;
         this.teeTime = teeTime;
         this.golfers = golfers;
-        this.matchGolferScores = matchGolferScores;
     }
 
     public Match(int matchId, LocalDate teeDate, LocalTime teeTime) {
@@ -78,19 +75,13 @@ public class Match {
         this.teeTime = teeTime;
     }
 
-    public List<User> getGolfers() {
+    public List<UserInLeague> getGolfers() {
         return golfers;
     }
 
-    public void setGolfers(List<User> golfers) {
+    public void setGolfers(List<UserInLeague> golfers) {
         this.golfers = golfers;
     }
 
-    public Map<User, Integer> getMatchGolferScores() {
-        return matchGolferScores;
-    }
 
-    public void setMatchGolferScores(Map<User, Integer> matchGolferScores) {
-        this.matchGolferScores = matchGolferScores;
-    }
 }
