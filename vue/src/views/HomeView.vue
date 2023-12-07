@@ -1,14 +1,17 @@
-
+<!-- src/views/HomeView.vue -->
 <template>
 <div class="home-container">
 
 <div class="header">
   <h2>Welcome Home Ya Golf'n Yinzer!</h2>
+  <!-- <LeaderBoard :users="$store.state.user.users" /> -->
 </div>
 
 <div class="row">
   <div class="left-column">Left Column</div>
-  <div class="center-column">Center Column</div>
+  <div class="center-column">
+    <LeaderBoard :users="$store.state.user.users" />
+  </div>
   <div class="right-column">Right Column</div>
 </div>
 
@@ -19,6 +22,38 @@
 </div>
 </template>
 
+
+
+
+
+<!-- TODO: Include links/show:
+  - leader board
+  - tee-times
+  - create a new league
+
+TODO: IF LEAGUE ORGANIZER
+  - link to go to league organization page
+
+TODO: IF ADMIN
+  - include ability/form to add a golf course -->
+
+
+<script>
+// import HomePage from "@/components/HomePage";
+import LeaderBoard from "@/components/LeaderBoard.vue";
+
+export default {
+  components: {
+    LeaderBoard,
+  },
+  methods: {
+    logOut(){
+      this.$store.commit("LOGOUT");
+      this.$router.push("/");
+    },
+  },
+};
+</script> 
 
 <style scoped>
 * {
@@ -108,26 +143,6 @@
 }
 
 </style>
-
-
-<!-- TODO: Include links/show:
-  - leader board
-  - tee-times
-  - create a new league
-
-TODO: IF LEAGUE ORGANIZER
-  - link to go to league organization page
-
-TODO: IF ADMIN
-  - include ability/form to add a golf course -->
-
-
-<script>
-export default {
-};
-</script>
-
-
 
 <!-- <style scoped>
 .home {

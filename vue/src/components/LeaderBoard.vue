@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     props: {
         users: {
@@ -33,6 +35,7 @@ export default {
         },
     },
     computed: {
+        ...mapState(['user']),
         sortedUsers() {
             // Sort users by score in descending order
             return this.users.slice().sort((a, b) => b.score - a.score);
