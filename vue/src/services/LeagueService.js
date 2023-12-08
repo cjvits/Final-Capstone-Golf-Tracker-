@@ -7,5 +7,12 @@ export default {
         return axios.get(`/league/${userId}`)
     },
 
-    
+    getAllCourses() {
+        return axios.get(`/course`)
+    },
+
+    newLeague(league) {
+        return axios.post(`/league`)
+    }, 
+
 }

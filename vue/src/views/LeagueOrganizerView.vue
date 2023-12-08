@@ -28,7 +28,7 @@ TODO: form for setting matches/tee-times -->
 </template>
 
 <script>
-import NewLeagueCreator from '../components/NewLeagueCreator.vue';
+// import NewLeagueCreator from '../components/NewLeagueCreator.vue';
 // import LeagueService from '../services/LeagueService';
 
 export default {
@@ -60,9 +60,7 @@ export default {
 //   },
 
     methods: {
-        showNewLeagueCreator () {
-            NewLeagueCreator;
-        }
+      
     }
 }
 </script>
