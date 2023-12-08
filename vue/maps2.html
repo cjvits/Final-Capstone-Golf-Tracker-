@@ -4,19 +4,18 @@
         <!-- Linking CSS to Map -->
         <link rel="stylesheet" type="text/css" href="./maps2.css" />
     </head>
-
+    
     <body>
         <!-- This is the Map Title / Search Bar -->
         <div id = "nav-bar">
-            <p id = 'intro'>
-            </p>
-            <div id = 'search-area'>
+            <p id = "intro"></p>
+            <div id = "search-area">
                 <input type="text" id="autocomplete" placeholder="Search for a place" />
                 <button id="search-button">Search</button>
             </div>
 
             <!-- This is my "Find My Location" button -->
-            <div id = 'button'> </div>
+            <div id = "button"> </div>
                 <!-- <div id = 'get-distance'> -->
                 <!-- <input id = 'start' type = 'text' placeholder = 'Travel From' />
                 <input id = 'end' type = 'text' placeholder = 'Destination' />
@@ -37,7 +36,6 @@
             let search_pos; // Position on map when search is initiated
             let autocomplete; // Declaring the autocomplete search bar
             let infoWindow; // Declaring infoWindow Variable
-
 
             // This is our function to initialize the Google Map. Important***********
             function initMap() {
@@ -92,18 +90,9 @@
               // new GetDirection(map);
             }
             
-            //******************** Commented out, I believe this is repetitive **************************************
-            // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            //   infoWindow.setPosition(pos);
-            //   infoWindow.setContent(
-            //     browserHasGeolocation
-            //       ? "Error: The Geolocation service failed."
-            //       : "Error: Your browser doesn't support geolocation."
-            //   );
-            //   infoWindow.open(map);
-            // }
+         
             
-            // If we want to have a description for our map 
+            // If we want to have a description for our map ********** How can we separate the "content" 
             function writeIntro() {
                 const content = "Interactive Map N'At."
                 document.getElementById("intro").innerHTML = content;
@@ -119,10 +108,7 @@
                 // Set zoom level to 15
                 map.setZoom(15);
 
-                // I don't think we need this *******, this is for clicking on markers which we do not have yet. - May need this later
-                // marker.addEventListener("click", () => {
-                //   infoWindow.open(map, marker);
-                // });
+               
             }
             
             // This exposes the initMap function to the global window project ***** I don't know what this means ******
@@ -164,82 +150,11 @@
                 auto_marker.setPosition(place.geometry.location);
                 auto_marker.setVisible(true);
                 
-                /* COMMENTED OUT - PRETTY SURE WE DO NOT NEED THIS */
-                // This creates a new info window for the location after we search for a location
-
-                // const info = new google.maps.InfoWindow();
-                // const InfoContent = document.getElementById('infoWindow');
-                // InfoContent.children['place-name'].textContent = place.name;
-                // InfoContent.children['place-address'].textContent = place.formatted_address;
-                // info.setContent(InfoContent);
-                // info.open(map, auto_marker);
-                
+        
               });  
             }
 
-            // COMMENTED OUT ******** PRETTY SURE WE DO NOT NEED THIS *************
-            // class GetDirection {
-            //   map;
-            //   originId;
-            //   destinationId;
-            //   travelMode;
-            //   directionService;
-            //   directionRenderer;
-            //   constructor(map){
-            //     this.map = map;
-            //     this.originId = "";
-            //     this.destinationId = "";
-            //     this.travelMode = google.maps.TravelMode.DRIVING;
-            //     this.directionService = new google.maps.DirectionsService();
-            //     this.directionRenderer = new google.maps.DirectionsRenderer();
-            //     this.directionRenderer.setMap(map);
             
-            //     const originId = document.getElementById("start");
-            //     const destinationId = document.getElementById("end");
-            //     const originAutoComplete = new google.maps.places.Autocomplete(originId,
-            //       {fields:['place_id']});
-            //     const destinationAutoComplete = new google.maps.places.Autocomplete(destinationId,
-            //       {fields:['place_id']});
-            //     this.setupPlaceChangedListener(originAutoComplete, "ORIG");
-            //     this.setupPlaceChangedListener(destinationAutoComplete, "DEST");
-            //     }
-            
-            //     setupPlaceChangedListener(autocomplete, mode){
-            //       autocomplete.bindTo("bounds",this.map);
-            //       autocomplete.addListener("place_changed", () => {
-            //         const place = autocomplete.getPlace();
-            //         if (!place.place_id) {
-            //           window.alert("Please select an option from the dropdown list.");
-            //           return;
-            //         }
-            //         if (mode === "ORIG") {
-            //           this.originId = place.place_id;
-            //         } else {
-            //           this.destinationId = place.place_id;
-            //         }
-            //         this.route();
-            //       });
-            //     }
-            
-            //     route(){
-            //       if (!this.originId || !this.destinationId) {
-            //         return;
-            //       }
-            //       const me = this;
-            //       this.directionService.route(
-            //         {origin: {placeId: this.originId},
-            //       destination: {placeId:this.destinationId},
-            //     travelMode: this.travelMode},
-            //         (res, status) => {
-            //           if (status ==="OK") {
-            //             me.directionRenderer.setDirections(res);
-            //           } else {
-            //             console.log("Directions request failed due to " + status);
-            //           }
-            //         }
-            //       )
-            //     }
-            // }
         </script>
       </body>
 </html>

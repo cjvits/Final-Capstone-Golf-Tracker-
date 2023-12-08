@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import LeaderBoard from "@/components/LeaderBoard";
+import LeaderBoard from "../components/LeaderBoard";
 
 export default {
     

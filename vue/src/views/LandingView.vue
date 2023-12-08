@@ -19,7 +19,9 @@
     <h1 id="appName">Tee Time N'at</h1>
   </transition>
   </div>
-  <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p>
+  <!-- <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p> -->
+  <GoogleMap></GoogleMap>
+  <GeoCode></GeoCode>
 </div>
 
 </template>
@@ -27,6 +29,8 @@
 <script>
 import RegisterView from './RegisterView.vue';
 import LoginView from './LoginView.vue';
+import GoogleMap from '../components/GoogleMap.vue';
+import GeoCode from '../components/GeoCode.vue';
 
 export default {
   name: "App",
@@ -34,6 +38,12 @@ export default {
     return {
     };
   },
+
+  components: {
+    GoogleMap,
+    GeoCode
+  },
+
   methods: {
     login() {
       this.$router.push({name: 'login'});
