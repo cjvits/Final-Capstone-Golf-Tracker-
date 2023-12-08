@@ -13,43 +13,29 @@
   <div class="center-column">
     <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
-  <div class="right-column">Right Column</div>
+  <div class="right-column">
+    <NewLeagueCreator></NewLeagueCreator>
+  </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
 <!-- <div class="footer">
   <p>
-    <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
   </p>
 </div> -->
 </div>
 </template>
 
-
-
-
-
-<!-- TODO: Include links/show:
-  - leader board
-  - tee-times
-  - create a new league
-
-TODO: IF LEAGUE ORGANIZER
-  - link to go to league organization page
-
-TODO: IF ADMIN
-  - include ability/form to add a golf course -->
-
-
 <script>
-// import HomePage from "@/components/HomePage";
 import LeaderBoard from "@/components/LeaderBoard.vue";
+import NewLeagueCreator from "../components/NewLeagueCreator.vue";
 import LeagueService from "../services/LeagueService";
 import TeeTimes from "@/components/TeeTimes.vue";
 
 export default {
   components: {
     LeaderBoard,
+    NewLeagueCreator,
     TeeTimes,
   },
   data() {
@@ -193,23 +179,3 @@ h2 {
 }
 
 </style>
-
-<!-- <style scoped>
-.home {
-  justify-content: center;
-  align-items: center;
-  background-image: url("../assets/goldenGolf.jpeg");
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flexbox;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  text-align: center;
-  font-family: 'Hedvig Letters Serif', serif;
-  color: #093708;
-  font-weight: 600;
-}
-</style> -->
