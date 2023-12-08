@@ -17,20 +17,20 @@ public interface GolfTrackerDao {
 
     public Match getMatch(int matchId);
 
-    public List<League> getLeaguesOfUser (int userId);
+    public List<League> getLeaguesByUserId(int userId);
 
     public League createLeague(League league);
 
-    public Match createMatch (Match match);
+    public Match createMatch(Match match);
 
-    public List<User> addUserToLeague (int leagueId, int userId);
+    public List<User> addUserToLeague(int leagueId, int userId);
 
-    public List<User> addUserToMatch (int leagueId, int matchId);
+    public List<User> addUserToMatch(int leagueId, int matchId);
 
-    public int updateMatchScore (Match match,int userId, int golferScore);
+    public int updateMatchScore(Match match, int userId, int golferScore);
 
-    public Course addCourse (Course course);
+    public Course addCourse(Course course);
 
-
-    League getLeagueByUserId(int userId);
 }
+
+
