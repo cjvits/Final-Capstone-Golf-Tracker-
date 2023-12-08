@@ -42,12 +42,12 @@ TODO: IF ADMIN
 <script>
 // import HomePage from "@/components/HomePage";
 import LeaderBoard from "@/components/LeaderBoard.vue";
-import teeTime from "@/components/TeeTimes.vue";
+// import teeTime from "@/components/TeeTimes.vue";
 
 export default {
   components: {
     LeaderBoard,
-    teeTime,
+    // teeTime,
   },
   methods: {
     logOut(){
