@@ -1,5 +1,6 @@
 <template>
     <div class="tee" v-for="teeTime in teeTimes" v-bind:key="teeTime.id">
+        <h2>Upcoming tee times</h2>
         <div class="time">
             {{ teeTime.time }}
             <!-- This is where the Time goes -->
@@ -14,12 +15,36 @@
             {{ user.username }}
             <!-- This is where the username goes -->
         </div>
+        <div v-if="loading" class="loading-message">Loading tee times...</div>
     </div>
 </template>
 
 <script>
+import LeagueService from '@/services/LeagueService';
+
+
 export default {
-    
+  props: {
+    teeTimes: {
+      type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+        teeTime: [],
+        loading: true, // loading state
+    };
+  },
+  async mounted() {
+    try {
+      // Fetch tee time data from backend
+      const response = await LeagueService.getLeagueMatchesByUserId(this.userId);
+      this.teeTime = response.data;
+    } catch (error) {
+        console.error("Error fetching tee time:", error);
+    }
+  },
 
 };
 </script>

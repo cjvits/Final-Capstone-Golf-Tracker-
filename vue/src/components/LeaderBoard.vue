@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>Leaderboard</h2>
-        <table>
+        <h2 class="leaderboard-title">Leaderboard</h2>
+        <table class="leaderboard-table">
             <thead>
                 <tr>
                     <th>Rank</th>
@@ -79,4 +79,27 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
+/* .leaderboard-title {
+    font-size: 1.5em;
+    color: #607e1b;
+    margin-bottom: 10px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.leaderboard-table th, leaderboard-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.leaderboard-table th {
+    background-color: rgb(251, 210, 157);
+} */
+
 </style>

@@ -7,7 +7,9 @@
 </div>
 
 <div class="row">
-  <div class="left-column">Left Column</div>
+  <div class="left-column">
+    <TeeTimes :teeTimes="teeTimes" :users="users" />
+  </div>
   <div class="center-column">
     <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
@@ -43,18 +45,27 @@ TODO: IF ADMIN
 // import HomePage from "@/components/HomePage";
 import LeaderBoard from "@/components/LeaderBoard.vue";
 import LeagueService from "../services/LeagueService";
+import TeeTimes from "@/components/TeeTimes.vue";
 
 export default {
-  data(){
+  components: {
+    LeaderBoard,
+    TeeTimes,
+  },
+  data() {
     return {
+      teeTimes: [
+        // Your tee time data goes here
+        { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
+      ],
+      users: [
+        // Your user data goes here
+      ],
       leagues: [],
       newLeague: {
         name: '',
       }
-    }
-  },
-  components: {
-    LeaderBoard,
+    };
   },
   methods: {
     logOut(){
@@ -89,6 +100,15 @@ export default {
   padding: 30px;
   text-align: center;
   font-size: 35px;
+}
+.loading-message {
+  margin-top: 20px;
+  font-style: italic;
+  color: #777;
+}
+
+h2 {
+ color: #093708;
 }
 
 /* Container for flexboxes */
@@ -134,6 +154,12 @@ export default {
   background-color: #093708;
   opacity: .8;
   color: darkkhaki;
+}
+
+.leaderboard-title {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 /* Style the footer */
