@@ -23,8 +23,16 @@ TODO: form for setting matches/tee-times -->
 
     <!-- IF YOU ARE A LEAGUE ORGANIZER -->
     <div class="organizer-page-container">
-
+        <div class="left-column">
+        <!-- ADD AN UPDATE SCORES COMPONENT-->    
+        </div>
+    
+        <div class="right-column">
+            <!-- ADD ADD PLAYERS TO THE LEAGUE COMPONENT -->
+        </div>
     </div>
+
+
 </template>
 
 <script>
@@ -39,11 +47,11 @@ export default {
     },
 
     // components: {
-        // NewLeagueCreator,
+    // NewLeagueCreator,
     // },
 
     // computed: {
-    
+
     // getShowHideFormText() {
     //   if (this.isFormShowing) {
     //     return 'Hide Form';
@@ -51,16 +59,16 @@ export default {
     //   return 'Become a League Organizer';
     // },
 
-//     togglePage() {
-//       if (this.user.id === leagueCoordinator.id) {
-//         return isLeagueOrganizer = true;
-//       }
-//       return 'Become a League Organizer';
-//     },
-//   },
+    //     togglePage() {
+    //       if (this.user.id === leagueCoordinator.id) {
+    //         return isLeagueOrganizer = true;
+    //       }
+    //       return 'Become a League Organizer';
+    //     },
+    //   },
 
     methods: {
-      
+
     }
 }
 </script>
@@ -73,7 +81,7 @@ export default {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    
+
 
     font-family: 'Hedvig Letters Serif', serif;
     color: #06612f;
