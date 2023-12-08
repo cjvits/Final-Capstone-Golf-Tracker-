@@ -2,17 +2,13 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
 import com.techelevator.dao.GolfTrackerDao;
 
-import com.techelevator.model.Course;
 import com.techelevator.model.League;
 import com.techelevator.model.Match;
 import com.techelevator.model.User;
@@ -41,19 +37,14 @@ public class GolfTrackerController {
     }
 
 
-//    @GetMapping("/home/{id}")
-//    public List<UserInLeague> getLeagueById (int userId) {
-////        User loggedInUser = userDao.getUserByUsername(principal.getName());
-////        int userId = loggedInUser.getId();
-//
-//        return golfTrackerDao.getLeagueLeaderboardByUserId(userId);
-//
-//
-//    }
+    @GetMapping("/league/{userId}")
+    public List<UserInLeague> getLeagueById (@PathVariable int userId) {
+//        User loggedInUser = userDao.getUserByUsername(principal.getName());
+//        int userId = loggedInUser.getId();
 
-    @GetMapping("/home/{id}")
-    public League getLeaguebyUserId(int userId) {
-        return golfTrackerDao.getLeagueByUserId(userId);
+        return golfTrackerDao.getLeaderBoardByUserId(userId);
+
+
     }
 
     @GetMapping("/home/{id}/match/{id}")

@@ -47,7 +47,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         }
     }
     @Override
-    public List<UserInLeague> getLeagueLeaderboardByUserId(int userId) {
+    public List<UserInLeague> getLeaderBoardByUserId(int userId) {
         List<UserInLeague> result = new ArrayList<>();
         String sql = "select users.username, league_golfer.league_score from league_golfer join users on users.user_id = league_golfer.user_id WHERE league_id = (SELECT league_id from league_golfer where user_id = ?);";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);

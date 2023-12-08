@@ -8,7 +8,6 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import LandingView from '../views/LandingView.vue';
 import LeagueOrganizerView from '../views/LeagueOrganizerView.vue';
-// import HomePage from '@/components/HomePage';
 import GoodByeView from '../views/GoodByeView.vue';
 
 /**
@@ -29,7 +28,7 @@ const routes = [
     }
   },
   {
-    path: '/home',
+    path: `/home`,
     name: 'home',
     component: HomeView,
     meta: {
