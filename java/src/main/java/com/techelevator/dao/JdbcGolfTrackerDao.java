@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.*;
 
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     public List<League> getLeaguesByUserId(int userId){
         List<League> leaguesByUser = new ArrayList<>();
-        String sqlLeagueInfo = "Select leagues.league_id, league_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ?;";
+        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, userId);
         while (rowSet.next()){
             League league = mapRowToLeagueIdAndName(rowSet);
@@ -62,7 +63,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 //        return result;
 //    }
 
-    @Override
+       @Override
     public List<Match> getAllMatchesInLeague(int leagueId) {
         List<Match> result = new ArrayList<>();
         String sql = "select match_id, tee_date, tee_time FROM matches WHERE league_id = ?;";
@@ -128,9 +129,14 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public int updateMatchScore (int matchId,int userId, int golferScore) {
-        String sql = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
-        int scoresUpdated = jdbcTemplate.update(sql, golferScore, userId, matchId);
-        return scoresUpdated;
+        String sqlUpdateMatchScore = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
+        jdbcTemplate.update(sqlUpdateMatchScore, golferScore, userId, matchId);
+        String sqlGetSumOfMatcheScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
+        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatcheScores, Integer.class, userId);
+        String sqlUpdateLeaderScore = "UPDATE league_golfer SET league_score = ? where user_id = ? AND league_id = (select league_id from matches where match_id = ?) returning league_score;";
+        int leagueScoreInDatabase = jdbcTemplate.update(sqlUpdateLeaderScore, Integer.class, newLeagueScore, userId, matchId);
+
+        return leagueScoreInDatabase;
 
     }
 
@@ -218,6 +224,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     private League mapRowToLeagueIdAndName(SqlRowSet rowSet) {
         League result = new League();
         result.setLeagueId(rowSet.getInt("league_id"));
+        result.setLeagueCourseName(rowSet.getString("course_name"));
         result.setLeagueName(rowSet.getString("league_name"));
 
         return result;
