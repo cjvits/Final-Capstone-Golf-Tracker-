@@ -4,7 +4,6 @@
 
 <div class="header">
   <h2>Welcome Home Ya Golf'n Yinzer!</h2>
-  <!-- <LeaderBoard :users="$store.state.user.users" /> -->
 </div>
 
 <div class="row">
@@ -12,7 +11,7 @@
     <TeeTimes/>
   </div>
   <div class="center-column">
-    <LeaderBoard/>
+    <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
   <div class="right-column">Right Column</div>
 </div>
@@ -45,6 +44,7 @@ TODO: IF ADMIN
 <script>
 // import HomePage from "@/components/HomePage";
 import LeaderBoard from "@/components/LeaderBoard.vue";
+import LeagueService from "../services/LeagueService";
 import TeeTimes from "@/components/TeeTimes.vue";
 
 export default {
@@ -58,6 +58,10 @@ export default {
       users: [
         // Your user data goes here
       ],
+      leagues: [],
+      newLeague: {
+        name: '',
+      }
     };
   },
   methods: {
@@ -65,7 +69,21 @@ export default {
       this.$store.commit("LOGOUT");
       this.$router.push("/");
     },
+    retrieveLeagues(){
+      LeagueService
+        .getLeaguesByUserId(this.$store.state.user.id)
+        .then(response => {
+          this.leagues = response.data;
+        })
+        .catch(error => {
+          this.handleErrorResponse(error, 'getting');
+        });
+    }
   },
+  created(){
+    this.retrieveLeagues();
+  }
+
 };
 </script> 
 

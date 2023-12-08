@@ -12,12 +12,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(user, index) in leaderBoard" :key="index" >
+                <tr v-for="(user, index) in league.golfersInLeague" :key="index" >
                     <td>{{ index + 1 }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.score }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.leagueScore }}</td>
                     <td>{{ user.handicap }}</td>
-                    <td>{{ user.course }}</td>
+                    <td>{{ league.course?.courseName }}</td>
                 </tr>
             </tbody>
         </table>
@@ -26,12 +26,11 @@
 
 <script>
 import { mapState } from 'vuex';
-import LeagueService from '../services/LeagueService';
 
 export default {
     data(){
         return {
-            leaderBoard: {},
+            // leaderBoard: [],
 
         }
     },
@@ -41,6 +40,10 @@ export default {
             type: Array,
             required: true,
         },
+        league: {
+            type: Object,
+            required: true,
+        }
     },
     computed: {
         ...mapState(['user']),
@@ -55,13 +58,7 @@ export default {
         //     //issue with the route with needing the league ID with HOME
         // },
     },
-    created(){
-        LeagueService
-            .getLeaderBoard(this.$store.state.user.id)
-            .then(response => {
-                this.leaderBoard = response.data
-            })
-    }
+    
 };
 </script>
 

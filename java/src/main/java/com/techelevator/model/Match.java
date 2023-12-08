@@ -52,6 +52,10 @@ public class Match {
     }
 
     public int getLeagueId() {
+        if (matchLeague == null) {
+            return 0;
+        }
+
         return matchLeague.getLeagueId();
     }
 
