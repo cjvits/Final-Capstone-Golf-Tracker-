@@ -1,28 +1,29 @@
 <!-- src/views/HomeView.vue -->
 <template>
-<div class="home-container">
+  <div class="home-container">
 
-<div class="header">
-  <h2>Welcome Home Ya Golf'n Yinzer!</h2>
-</div>
+    <div class="header">
+      <h2>Welcome Home Ya Golf'n Yinzer!</h2>
+    </div>
 
-<div class="row">
-  <div class="left-column">
-    <TeeTimes/>
-  </div>
-  <div class="center-column">
-    <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
-  </div>
-  <div class="right-column">Right Column</div>
-</div>
-<!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
+    <div class="row">
+      <div class="left-column">
+        <TeeTimes />
+      </div>
+      <div class="center-column">
+        <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league"
+          :users="$store.state.user.users" />
+      </div>
+      <div class="right-column">Right Column</div>
+    </div>
+    <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
-<!-- <div class="footer">
+    <!-- <div class="footer">
   <p>
     <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
   </p>
 </div> -->
-</div>
+  </div>
 </template>
 
 
@@ -54,7 +55,7 @@ export default {
   },
   data() {
     return {
-      
+
       users: [
         // Your user data goes here
       ],
@@ -65,11 +66,12 @@ export default {
     };
   },
   methods: {
-    logOut(){
-      this.$store.commit("LOGOUT");
-      this.$router.push("/");
-    },
-    retrieveLeagues(){
+    // logOut(){
+    //   this.$store.commit("LOGOUT");
+    //   this.$router.push("/");
+    // },
+    //send to logout view in order to logout. Code written for us already in LogoutView
+    retrieveLeagues() {
       LeagueService
         .getLeaguesByUserId(this.$store.state.user.id)
         .then(response => {
@@ -80,7 +82,7 @@ export default {
         });
     }
   },
-  created(){
+  created() {
     this.retrieveLeagues();
   }
 
@@ -98,6 +100,7 @@ export default {
   text-align: center;
   font-size: 35px;
 }
+
 .loading-message {
   margin-top: 20px;
   font-style: italic;
@@ -105,7 +108,7 @@ export default {
 }
 
 h2 {
- color: #093708;
+  color: #093708;
 }
 
 /* Container for flexboxes */
@@ -117,28 +120,29 @@ h2 {
 /* Create three unequal columns that sits next to each other */
 .row {
   padding: 10px;
-  height: 50%; /* adjust to auto after things are in them! */
+  height: 50%;
+  /* adjust to auto after things are in them! */
 }
 
 /* Left and right column */
 .right-column {
-   -webkit-flex: 1;
-   -ms-flex: 1;
-   flex: 1.25;
-   border-radius: 15px;
-   margin: .5rem;
-   background-color: darkkhaki;
-   opacity: .8;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1.25;
+  border-radius: 15px;
+  margin: .5rem;
+  background-color: darkkhaki;
+  opacity: .8;
 }
 
 .left-column {
-   -webkit-flex: 1;
-   -ms-flex: 1;
-   flex: .75;
-   border-radius: 15px;
-   margin: .5rem;
-   background-color: darkkhaki;
-   opacity: .8;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: .75;
+  border-radius: 15px;
+  margin: .5rem;
+  background-color: darkkhaki;
+  opacity: .8;
 }
 
 /* Middle column */
@@ -188,7 +192,6 @@ h2 {
     flex-direction: column;
   }
 }
-
 </style>
 
 <!-- <style scoped>
