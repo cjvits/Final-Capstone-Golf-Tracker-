@@ -26,7 +26,7 @@ public class GolfTrackerController {
 
    
 
-    @PostMapping("/home")
+    @PostMapping("/league")
     @ResponseStatus(HttpStatus.CREATED)
     public League addLeague(@RequestBody League newLeague) {
         return golfTrackerDao.createLeague(newLeague);
