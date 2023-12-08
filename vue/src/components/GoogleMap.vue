@@ -31,8 +31,8 @@ export default {
   },
 
   mounted() {
-    console.log("Google Maps loaded successfully");
-    this.initMap(); // Initialize the map when the component is mounted
+    console.log("Google Maps loaded successfully"); // This should show up in the console if the maps are loading correctly.
+    this.initMap(); // Initialize the map when the component is mounted.
   },
 
   methods: {
@@ -48,6 +48,7 @@ export default {
       this.addMarker();
     },
 
+    // Method for finding our current location (geolocation)
     findMyLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -68,6 +69,7 @@ export default {
       }
     },
 
+    // This adds a marker to our current location.
     addMarker(coords) {
       const marker = new window.google.maps.Marker({
         position: coords,
@@ -77,6 +79,7 @@ export default {
       this.map.setZoom(15);
     },
 
+    // If the user does not have location services enabled.
     handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(new window.google.maps.LatLng(pos.lat, pos.lng));
       infoWindow.setContent(
@@ -87,6 +90,7 @@ export default {
       infoWindow.open(this.map);
     },
 
+    // This method adds an autocomplete when the user begins typing in the search bar.
     completeSearch() {
       const options = {
         fields: ["place_id", "geometry", "name", "formatted_address"],
@@ -134,10 +138,8 @@ export default {
       position: relative;
     }
 
-    /* set the button style */
     #findLocationButton {
       background-color: #f0f7f0;
-      /* White */
       border: solid 5px;
       color: rgb(28, 25, 25);
       padding: 10px 32px;
@@ -155,7 +157,6 @@ export default {
       transform: translate(-50, -50);
     }
 
-    /* Set the input box style */
     #search-area {
       background-color: white;
       border: none;
@@ -169,13 +170,11 @@ export default {
       font-size: 16px;
       margin: 4px 2px;
       image-rendering: auto;
-
     }
 
     .search-bar {
       text-align: left;
       padding-left: 10px;
-
     }
 
     .search-bar input[type="text"] {
