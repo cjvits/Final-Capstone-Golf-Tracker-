@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,11 +9,6 @@ import java.security.Principal;
 import java.util.List;
 
 import com.techelevator.dao.GolfTrackerDao;
-
-import com.techelevator.model.League;
-import com.techelevator.model.Match;
-import com.techelevator.model.User;
-import com.techelevator.model.UserInLeague;
 
 @RestController
 @CrossOrigin
@@ -52,5 +48,16 @@ public class GolfTrackerController {
 
         return golfTrackerDao.getMatch(matchId);
 
+    }
+
+    @GetMapping("/course")
+    public List<Course> getCourses() {
+        return golfTrackerDao.getCourses();
+    }
+
+    @PostMapping("/course")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Course addCourse (@RequestBody Course course){
+        return golfTrackerDao.addCourse(course);
     }
 }
