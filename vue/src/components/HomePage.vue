@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <h1>Welcome to Tee Time N'at, {{ username }}!</h1>
         <LeaderBoard :users="users" />
@@ -14,4 +14,4 @@ export default {
         LeaderBoard,
     },
 };
-</script>
+</script> -->
