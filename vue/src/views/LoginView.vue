@@ -51,9 +51,11 @@ export default {
         .login(this.user)
         .then(response => {
           if (response.status == 200) {
+            // let userId = response.data;
+            // userId = 3; //this is hardcoded, use line above to get real number
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/home");
+            this.$router.push(`/home`);
           }
         })
         .catch(error => {

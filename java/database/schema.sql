@@ -12,12 +12,10 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	first_name varchar(50),
 	last_name varchar(50),
-	handicap integer,
 	email varchar(100),
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	CONSTRAINT PK_user PRIMARY KEY (user_id),
-	CONSTRAINT handicap_positive CHECK (handicap >= 0)
+	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
 CREATE TABLE courses(
@@ -58,9 +56,11 @@ CREATE TABLE league_golfer (
 	league_id int NOT NULL,
 	user_id int NOT NULL,
 	league_score int NOT NULL,
+	handicap int,
 	CONSTRAINT PK_league_user PRIMARY KEY (league_id, user_id),
 	CONSTRAINT FK_league_golfer_league FOREIGN KEY (league_id) REFERENCES leagues(league_id),
-	CONSTRAINT FK_league_golfer_golfer FOREIGN KEY (user_id) REFERENCES users(user_id)
+	CONSTRAINT FK_league_golfer_golfer FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT handicap_positive CHECK (handicap >= 0)
 );
 
 CREATE TABLE match_golfer (

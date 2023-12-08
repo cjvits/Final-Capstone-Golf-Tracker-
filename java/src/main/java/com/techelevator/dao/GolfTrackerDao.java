@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface GolfTrackerDao {
 
-    public List<UserInLeague> getLeagueLeaderboard(int leagueId);
+    public List<UserInLeague> getLeaderBoardByUserId(int userId);
 
     public List<User> getAllGolfersInMatch(int matchId);
 
@@ -32,4 +32,5 @@ public interface GolfTrackerDao {
     public Course addCourse (Course course);
 
 
+    League getLeagueByUserId(int userId);
 }

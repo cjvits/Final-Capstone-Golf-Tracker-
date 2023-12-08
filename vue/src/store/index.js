@@ -6,6 +6,7 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: {
+        ...currentUser,
         username: (currentUser && currentUser.username) || '',
         users: [
           {name: "Player1", score: 56, handicap: 8, course: "course1"},

@@ -14,6 +14,7 @@
   </div>
   <div class="right-column">Right Column</div>
 </div>
+<!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
 <!-- <div class="footer">
   <p>

@@ -4,6 +4,25 @@ import java.util.List;
 
 public class UserInLeague {
 
+    public UserInLeague() {
+    }
+
+    public UserInLeague(int id, String username, int matchScore) {
+        this.id = id;
+        this.username = username;
+        this.matchScore = matchScore;
+    }
+
+    public UserInLeague(int id, String username, String firstName, String lastName, String email, int handicap, int leagueScore, int matchScore) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+               this.handicap = handicap;
+        this.leagueScore = leagueScore;
+        this.matchScore = matchScore;
+    }
+
     private int id;
     private String username;
 
@@ -11,13 +30,13 @@ public class UserInLeague {
 
     private String lastName;
 
-    private String email;
+
 
     private int handicap;
 
     private int leagueScore;
 
-    private List<Integer> matchScores;
+    private int matchScore;
 
     public int getId() {
         return id;
@@ -51,14 +70,6 @@ public class UserInLeague {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getHandicap() {
         return handicap;
     }
@@ -75,11 +86,11 @@ public class UserInLeague {
         this.leagueScore = leagueScore;
     }
 
-    public List<Integer> getMatchScores() {
-        return matchScores;
+    public int getMatchScore() {
+        return matchScore;
     }
 
-    public void setMatchScores(List<Integer> matchScores) {
-        this.matchScores = matchScores;
+    public void setMatchScore(int matchScore) {
+        this.matchScore = matchScore;
     }
 }
