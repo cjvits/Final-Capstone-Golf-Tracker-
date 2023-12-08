@@ -21,21 +21,26 @@
     opacity: 80%;
 }
 
-/* set the input box style */
+/* Set the input box style */
 #search-area {
-
-    background-color: #f0f7f0; /* White */
+    background-color: white;
     border: none;
-    width: 50%;
-    height: 80px;
+    width: 40%;
+    height: 30px;
     color: rgb(28, 25, 25);
-    padding: 1px 3px;
+    padding: 1px;
     text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     image-rendering: auto;
+    
+}
+
+#search-button {
+    height: 46px;
+    width: 65px;
 }
 
 #autocomplete {
@@ -58,7 +63,11 @@
 }
 
 #intro {
-    padding-left: 0.7%;
+    padding-left: 0.3%;
+}
+
+#nav-bar {
+    padding-left: 1%;
 }
 
 
