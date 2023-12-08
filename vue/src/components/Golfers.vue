@@ -20,16 +20,13 @@
     </section>
 
     <section class="golfers-in-league" v-else>
-        <ul>
-            <li>
-                list of users in league
-            </li>
-        </ul>
+       <GolfersInLeague></GolfersInLeague>
     </section>
 </template>
 
 <script>
 import LeagueService from '../services/LeagueService.js';
+import GolfersInLeague from './GolfersInLeague.vue';
 
 export default {
     data() {
@@ -40,6 +37,7 @@ export default {
     },
 
     components: {
+        GolfersInLeague,
 
     },
 
