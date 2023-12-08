@@ -185,8 +185,8 @@ export default {
       content: `
         <div>
           <h4>${course.name}</h4>
-          <p>Address: ${course.address}</p>
-          <a href=${course.Website}>Website: ${course.Website}</a>
+          <p>Address: <a href="https://www.google.com/maps/search/?q=${encodeURIComponent(course.address)}" target="_blank">${course.address}</a></p>
+          <p>Website: <a href=${course.Website}>Website: ${course.Website}</a></p>
         </div>
       `,
     });
@@ -282,6 +282,7 @@ export default {
       margin: 15px;
       padding: 0px;
       position: relative;
+      color: black;
     }
 
     #findLocationButton {
@@ -369,7 +370,7 @@ export default {
 
       .info-window h4 {
         margin: 0;
-        font-weight: bold;
+        font-weight: 700;
       }
 
       .info-window p {
