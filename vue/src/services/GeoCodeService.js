@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-// This is the API Key for our google map
-
-const apiKey = "AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY"; // Replace with your API key
+const apiKey = "AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY"; // This is our Google Maps API Key
 
 const GeoService = {
   async getLatLng(address) {
