@@ -19,6 +19,10 @@ export default {
         return axios.get(`/home/${leagueId}/match/${matchId}`)
     },
 
+    getAllCourses(){
+        return axios.get(`/course`)
+    },
+
     newMatch(leagueId, match){
         return axios.get(`/home/${leagueId}/match`, match)
     },

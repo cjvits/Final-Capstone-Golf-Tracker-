@@ -12,7 +12,9 @@
   <div class="center-column">
     <LeaderBoard :users="$store.state.user.users" />
   </div>
-  <div class="right-column">Right Column</div>
+  <div class="right-column">
+    <NewLeagueCreator></NewLeagueCreator>
+  </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
@@ -23,29 +25,14 @@
 </div>
 </template>
 
-
-
-
-
-<!-- TODO: Include links/show:
-  - leader board
-  - tee-times
-  - create a new league
-
-TODO: IF LEAGUE ORGANIZER
-  - link to go to league organization page
-
-TODO: IF ADMIN
-  - include ability/form to add a golf course -->
-
-
 <script>
-// import HomePage from "@/components/HomePage";
 import LeaderBoard from "@/components/LeaderBoard.vue";
+import NewLeagueCreator from "../components/NewLeagueCreator.vue";
 
 export default {
   components: {
     LeaderBoard,
+    NewLeagueCreator,
   },
   methods: {
     logOut(){
@@ -144,23 +131,3 @@ export default {
 }
 
 </style>
-
-<!-- <style scoped>
-.home {
-  justify-content: center;
-  align-items: center;
-  background-image: url("../assets/goldenGolf.jpeg");
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flexbox;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  text-align: center;
-  font-family: 'Hedvig Letters Serif', serif;
-  color: #093708;
-  font-weight: 600;
-}
-</style> -->
