@@ -51,6 +51,17 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
 
     //Matches
+//    @Override
+//   public List<User> getAllGolfersInMatch(int matchId) {
+//        List<User> result = new ArrayList<>();
+//        String sql = "select users.user_id, username, first_name, last_name, match_id from users join match_golfer on users.user_id = match_golfer.user_id WHERE match_golfer.match_id = ?;";
+//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, matchId);
+//        while (rowSet.next()) {
+//            User user = mapRowToUserInLeague(rowSet);
+//            result.add(user);
+//        }
+//        return result;
+//    }
 
        @Override
     public List<Match> getAllMatchesInLeague(int leagueId) {
@@ -232,8 +243,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
         private UserInLeague mapRowToUsersInLeague2(SqlRowSet rowSet) {
             UserInLeague result = new UserInLeague();
-            result.setId(rowSet.getInt("users.user_id"));
-            result.setUsername(rowSet.getString("users.username"));
+            result.setId(rowSet.getInt("user_id"));
+            result.setUsername(rowSet.getString("username"));
             result.setLeagueScore(rowSet.getInt("league_score"));
             result.setHandicap(rowSet.getInt("handicap"));
             return result;
@@ -241,7 +252,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     public List<Match> getMatchesByLeagueId(int leagueId) {
         List<Match> matchesInLeague = new ArrayList<>();
-        String sql = "SELECT match_id, tee_time, tee_date, FROM matches where league_id = ?;";
+        String sql = "SELECT match_id, tee_time, tee_date FROM matches where league_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
         while (rowSet.next()) {
             Match match = mapRowToMatch(rowSet);
@@ -267,8 +278,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     private UserInLeague mapRowToUsersInMatch(SqlRowSet rowSet) {
         UserInLeague result = new UserInLeague();
-        result.setId(rowSet.getInt("users.user_id"));
-        result.setUsername(rowSet.getString("users.username"));
+        result.setId(rowSet.getInt("user_id"));
+        result.setUsername(rowSet.getString("username"));
         result.setMatchScore(rowSet.getInt("match_score"));
         return result;
     }
