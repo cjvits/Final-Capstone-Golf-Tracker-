@@ -14,7 +14,15 @@ public class League {
 
     private List<UserInLeague> golfersInLeague;
 
+    private List<Match> matchesInLeague;
 
+    public List<Match> getMatchesInLeague() {
+        return matchesInLeague;
+    }
+
+    public void setMatchesInLeague(List<Match> matchesInLeague) {
+        this.matchesInLeague = matchesInLeague;
+    }
 
     public int getLeagueId() {
         return leagueId;
