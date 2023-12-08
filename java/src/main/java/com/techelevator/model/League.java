@@ -76,20 +76,7 @@ public class League {
         this.leagueCoordinator = leagueCoordinator;
     }
 
-    public Course getLeagueCourse() {
-        return leagueCourse;
-    }
 
-    public Integer getLeagueCourseId() {
-        if (leagueCourse == null) {
-            return null;
-        }
-        return leagueCourse.getCourseId();
-    }
-
-    public void setLeagueCourse(Course leagueCourse) {
-        this.leagueCourse = leagueCourse;
-    }
 
     public List<UserInLeague> getGolfersInLeague() {
         return golfersInLeague;
