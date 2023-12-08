@@ -6,13 +6,13 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: {
-        ...currentUser,
-        username: (currentUser && currentUser.username) || '',
-        users: [
-          {name: "Player1", score: 56, handicap: 8, course: "course1"},
-          {name: "Ben Hoffman", score: 19, handicap: 7, course: "course2"},
-          {name: "Meg Lemon", score: 42, handicap: 6, course: "course3"},
-        ],
+        // ...currentUser,
+        // username: (currentUser && currentUser.username) || '',
+        // users: [
+        //   {name: "Player1", score: 56, handicap: 8, course: "course1"},
+        //   {name: "Ben Hoffman", score: 19, handicap: 7, course: "course2"},
+        //   {name: "Meg Lemon", score: 42, handicap: 6, course: "course3"},
+        // ],
       }
     },
     mutations: {
