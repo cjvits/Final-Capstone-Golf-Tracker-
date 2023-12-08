@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .form-input-group {
   margin-bottom: 1rem;
 }
