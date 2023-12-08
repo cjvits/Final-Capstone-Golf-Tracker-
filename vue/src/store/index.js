@@ -8,7 +8,7 @@ export function createStore(currentToken, currentUser) {
       user: {
         username: (currentUser && currentUser.username) || '',
         users: [
-          {name: "Player1", score: 70, handicap: 8, course: "course1"},
+          {name: "Player1", score: 56, handicap: 8, course: "course1"},
           {name: "Player2", score: 67, handicap: 7, course: "course2"},
           {name: "Player3", score: 65, handicap: 6, course: "course3"},
         ],

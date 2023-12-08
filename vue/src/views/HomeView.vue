@@ -42,10 +42,12 @@ TODO: IF ADMIN
 <script>
 // import HomePage from "@/components/HomePage";
 import LeaderBoard from "@/components/LeaderBoard.vue";
+import teeTime from "@/components/TeeTimes.vue";
 
 export default {
   components: {
     LeaderBoard,
+    teeTime,
   },
   methods: {
     logOut(){
@@ -111,6 +113,12 @@ export default {
   background-color: #093708;
   opacity: .8;
   color: darkkhaki;
+}
+
+.leaderboard-title {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 /* Style the footer */
