@@ -3,6 +3,7 @@ import CapstoneApp from './App.vue'
 import { createStore } from './store'
 import router from './router'
 import axios from 'axios'
+import GoogleMap from './components/GoogleMap.vue';
 
 /* sets the base url for server API communication with axios */
 axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
@@ -15,8 +16,6 @@ axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
  */
 let currentToken = localStorage.getItem('token');
 let currentUser = {};
-
-
 
 try {
   currentUser = JSON.parse(localStorage.getItem('user'));
@@ -35,6 +34,15 @@ if (currentToken) {
 const store = createStore(currentToken, currentUser);
 
 const app = createApp(CapstoneApp);
+
+app.use(GoogleMap, {
+  load: {
+    key: "AIzaSyChXcD4Ca6q3TZGs0A7NasDBKCLwM9q3lY",
+    libraries: "places"
+  }
+});
+app.component('GoogleMaps', GoogleMap);
 app.use(store);
 app.use(router);
 app.mount('#app');
+
