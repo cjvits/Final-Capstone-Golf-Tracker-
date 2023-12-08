@@ -32,4 +32,5 @@ public interface GolfTrackerDao {
     public Course addCourse (Course course);
 
 
+    League getLeagueByUserId(int userId);
 }
