@@ -3,10 +3,7 @@ import CapstoneApp from './App.vue'
 import { createStore } from './store'
 import router from './router'
 import axios from 'axios'
-// import * as VueGoogleMaps from 'vue3-google-maps';
 import GoogleMap from './components/GoogleMap.vue';
-import MyContainer from './components/MyContainer.vue'
-import GeoCode from './components/GeoCode.vue'
 
 /* sets the base url for server API communication with axios */
 axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
