@@ -10,7 +10,25 @@ public class League {
 
     private User leagueCoordinator;
 
-    private Course leagueCourse;
+    private String leagueCourseName;
+
+    private int leagueCourseId;
+
+    public int getLeagueCourseId() {
+        return leagueCourseId;
+    }
+
+    public void setLeagueCourseId(int leagueCourseId) {
+        this.leagueCourseId = leagueCourseId;
+    }
+
+    public String getLeagueCourseName() {
+        return leagueCourseName;
+    }
+
+    public void setLeagueCourseName(String leagueCourseName) {
+        this.leagueCourseName = leagueCourseName;
+    }
 
     private List<UserInLeague> golfersInLeague;
 
@@ -52,17 +70,6 @@ public class League {
         this.leagueCoordinator = leagueCoordinator;
     }
 
-    public Course getLeagueCourse() {
-        return leagueCourse;
-    }
-
-    public int getLeagueCourseId() {
-        return leagueCourse.getCourseId();
-    }
-
-    public void setLeagueCourse(Course leagueCourse) {
-        this.leagueCourse = leagueCourse;
-    }
 
     public List<UserInLeague> getGolfersInLeague() {
         return golfersInLeague;

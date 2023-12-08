@@ -60,4 +60,6 @@ public class GolfTrackerController {
     public Course addCourse (@RequestBody Course course){
         return golfTrackerDao.addCourse(course);
     }
+
+    
 }

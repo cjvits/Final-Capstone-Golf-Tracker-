@@ -11,8 +11,6 @@ public interface GolfTrackerDao {
 
     public List<UserInLeague> getLeaderBoardByUserId(int userId);
 
-    public List<User> getAllGolfersInMatch(int matchId);
-
     public List<Match> getAllMatchesInLeague(int leagueId);
 
     public Match getMatch(int matchId);
