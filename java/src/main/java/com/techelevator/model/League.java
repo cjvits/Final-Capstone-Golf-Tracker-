@@ -1,4 +1,6 @@
 package com.techelevator.model;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +14,9 @@ public class League {
 
     private Course leagueCourse;
 
-    private List<UserInLeague> golfersInLeague;
+    private List<UserInLeague> golfersInLeague = new ArrayList<>();
 
-    private List<Match> matchesInLeague;
+    private List<Match> matchesInLeague = new ArrayList<>();
 
     public List<Match> getMatchesInLeague() {
         return matchesInLeague;
@@ -44,7 +46,11 @@ public class League {
         return leagueCoordinator;
     }
 
-    public int getLeagueCoordinatorId() {
+    public Integer getLeagueCoordinatorId() {
+        if (leagueCoordinator == null) {
+            return null;
+        }
+
         return leagueCoordinator.getId();
     }
 
@@ -56,7 +62,10 @@ public class League {
         return leagueCourse;
     }
 
-    public int getLeagueCourseId() {
+    public Integer getLeagueCourseId() {
+        if (leagueCourse == null) {
+            return null;
+        }
         return leagueCourse.getCourseId();
     }
 
