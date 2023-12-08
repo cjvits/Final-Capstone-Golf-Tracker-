@@ -34,11 +34,11 @@ public class GolfTrackerController {
 
 
     @GetMapping("/league/{userId}")
-    public List<UserInLeague> getLeagueById (@PathVariable int userId) {
+    public List<League> getLeagueById (@PathVariable int userId) {
 //        User loggedInUser = userDao.getUserByUsername(principal.getName());
 //        int userId = loggedInUser.getId();
 
-        return golfTrackerDao.getLeaderBoardByUserId(userId);
+        return golfTrackerDao.getLeaguesByUserId(userId);
 
 
     }
