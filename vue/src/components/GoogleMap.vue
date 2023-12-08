@@ -152,7 +152,7 @@ export default {
       opacity: 75%;
       /*This is the position of the button*/
       position: absolute;
-      top: 45%;
+      top: 35%;
       left: 45%;
       transform: translate(-50, -50);
     }
