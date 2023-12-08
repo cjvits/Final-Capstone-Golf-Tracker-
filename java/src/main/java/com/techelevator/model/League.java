@@ -1,4 +1,6 @@
 package com.techelevator.model;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +14,17 @@ public class League {
 
     private Course leagueCourse;
 
-    private List<User> golfersInLeague;
+    private List<UserInLeague> golfersInLeague = new ArrayList<>();
 
-    private Map<User, Integer> leagueGolferScores;
+    private List<Match> matchesInLeague = new ArrayList<>();
+
+    public List<Match> getMatchesInLeague() {
+        return matchesInLeague;
+    }
+
+    public void setMatchesInLeague(List<Match> matchesInLeague) {
+        this.matchesInLeague = matchesInLeague;
+    }
 
     public int getLeagueId() {
         return leagueId;
@@ -36,6 +46,14 @@ public class League {
         return leagueCoordinator;
     }
 
+    public Integer getLeagueCoordinatorId() {
+        if (leagueCoordinator == null) {
+            return null;
+        }
+
+        return leagueCoordinator.getId();
+    }
+
     public void setLeagueCoordinator(User leagueCoordinator) {
         this.leagueCoordinator = leagueCoordinator;
     }
@@ -44,23 +62,22 @@ public class League {
         return leagueCourse;
     }
 
+    public Integer getLeagueCourseId() {
+        if (leagueCourse == null) {
+            return null;
+        }
+        return leagueCourse.getCourseId();
+    }
+
     public void setLeagueCourse(Course leagueCourse) {
         this.leagueCourse = leagueCourse;
     }
 
-    public List<User> getGolfersInLeague() {
+    public List<UserInLeague> getGolfersInLeague() {
         return golfersInLeague;
     }
 
-    public void setGolfersInLeague(List<User> golfersInLeague) {
+    public void setGolfersInLeague(List<UserInLeague> golfersInLeague) {
         this.golfersInLeague = golfersInLeague;
-    }
-
-    public Map<User, Integer> getLeagueGolferScores() {
-        return leagueGolferScores;
-    }
-
-    public void setLeagueGolferScores(Map<User, Integer> leagueGolferScores) {
-        this.leagueGolferScores = leagueGolferScores;
     }
 }

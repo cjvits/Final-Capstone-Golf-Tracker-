@@ -1,26 +1,35 @@
+<!-- src/views/HomeView.vue -->
 <template>
-  <div class="home">
-    <h1>Home</h1>
+<div class="home-container">
+
+<div class="header">
+  <h2>Welcome Home Ya Golf'n Yinzer!</h2>
+</div>
+
+<div class="row">
+  <div class="left-column">
+    <TeeTimes :teeTimes="teeTimes" :users="users" />
   </div>
-
-  <nav>
-    <!-- leaderboard stuff -->
-
-    <!-- tee times stuff -->
-
-    <!-- creating a new league -->
-
-    <!-- admin stuff IF ADMIN -->
-
-    <!-- logout -->
-    <button v-on:click="logOut">Log Out</button>
-  </nav>
-
-  <div>
-    <!-- my upcoming -->
+  <div class="center-column">
+    <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
+  <div class="right-column">Right Column</div>
+</div>
+<!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
-  <!-- TODO: Include links/show:
+<!-- <div class="footer">
+  <p>
+    <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
+  </p>
+</div> -->
+</div>
+</template>
+
+
+
+
+
+<!-- TODO: Include links/show:
   - leader board
   - tee-times
   - create a new league
@@ -30,21 +39,162 @@ TODO: IF LEAGUE ORGANIZER
 
 TODO: IF ADMIN
   - include ability/form to add a golf course -->
-</template>
+
 
 <script>
+// import HomePage from "@/components/HomePage";
+import LeaderBoard from "@/components/LeaderBoard.vue";
+import LeagueService from "../services/LeagueService";
+import TeeTimes from "@/components/TeeTimes.vue";
+
 export default {
+  components: {
+    LeaderBoard,
+    TeeTimes,
+  },
+  data() {
+    return {
+      teeTimes: [
+        // Your tee time data goes here
+        { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
+      ],
+      users: [
+        // Your user data goes here
+      ],
+      leagues: [],
+      newLeague: {
+        name: '',
+      }
+    };
+  },
   methods: {
     logOut(){
       this.$store.commit("LOGOUT");
       this.$router.push("/");
+    },
+    retrieveLeagues(){
+      LeagueService
+        .getLeaguesByUserId(this.$store.state.user.id)
+        .then(response => {
+          this.leagues = response.data;
+        })
+        .catch(error => {
+          this.handleErrorResponse(error, 'getting');
+        });
     }
+  },
+  created(){
+    this.retrieveLeagues();
   }
+
 };
 </script> 
 
-
 <style scoped>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the header */
+.header {
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+.loading-message {
+  margin-top: 20px;
+  font-style: italic;
+  color: #777;
+}
+
+h2 {
+ color: #093708;
+}
+
+/* Container for flexboxes */
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Create three unequal columns that sits next to each other */
+.row {
+  padding: 10px;
+  height: 50%; /* adjust to auto after things are in them! */
+}
+
+/* Left and right column */
+.right-column {
+   -webkit-flex: 1;
+   -ms-flex: 1;
+   flex: 1.25;
+   border-radius: 15px;
+   margin: .5rem;
+   background-color: darkkhaki;
+   opacity: .8;
+}
+
+.left-column {
+   -webkit-flex: 1;
+   -ms-flex: 1;
+   flex: .75;
+   border-radius: 15px;
+   margin: .5rem;
+   background-color: darkkhaki;
+   opacity: .8;
+}
+
+/* Middle column */
+.center-column {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  border-radius: 15px;
+  margin: .5rem;
+  background-color: #093708;
+  opacity: .8;
+  color: darkkhaki;
+}
+
+.leaderboard-title {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Style the footer */
+/* .footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+} */
+
+.home-container {
+  background-image: url("../assets/goldenGolf.jpeg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Hedvig Letters Serif', serif;
+  color: #093708;
+  font-weight: 600;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+</style>
+
+<!-- <style scoped>
 .home {
   justify-content: center;
   align-items: center;
@@ -62,4 +212,4 @@ export default {
   color: #093708;
   font-weight: 600;
 }
-</style>
+</style> -->

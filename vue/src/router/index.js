@@ -8,7 +8,6 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import LandingView from '../views/LandingView.vue';
 
-
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -27,7 +26,7 @@ const routes = [
     }
   },
   {
-    path: '/home',
+    path: `/home`,
     name: 'home',
     component: HomeView,
     meta: {
@@ -35,6 +34,14 @@ const routes = [
       //requiresRoles: ['',''] if we have different roles within users
     }
   },
+  // {
+  //   path: '/homepage',
+  //   name: 'HomePage',
+  //   component: HomePage,
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
   {
     path: "/login",
     name: "login",
@@ -59,11 +66,20 @@ const routes = [
       requiresAuth: false
     }
   },
-  
-
   {
-    //component: ForbiddenView
-  }
+    path: "/league-organizer",
+    name: "league-organizer",
+    component: LeagueOrganizerView
+  },
+  {
+    path: "/see-yinz-later",
+    name: "see-yinz",
+    component: GoodByeView
+  },  
+
+{
+  //component: ForbiddenView
+}
 
 // forbidden components
 ];
@@ -71,10 +87,10 @@ const routes = [
 // Create the router
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes
+  routes
 });
 
-router.beforeEach((to) => {
+router.beforeEach((to, from, next) => {
 
   // Get the Vuex store
   const store = useStore();
@@ -83,11 +99,12 @@ router.beforeEach((to) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
   // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+  if (requiresAuth && !store.state.token) {
+    next({ name: 'login' });
+  } else {
+    next();
+  }
 
-   }
-    
   // Otherwise, do nothing and they'll go to their next destination
 });
 
