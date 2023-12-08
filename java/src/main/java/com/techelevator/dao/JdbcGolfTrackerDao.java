@@ -295,4 +295,27 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setRating(rowSet.getInt("course_rating"));
         return result;
     }
+
+    //Meg updates for getting all users to add golfers to a league >> Next 2 methods
+    public List<User> getUsers() {
+        List<User> allUsers = new ArrayList<>();
+        String sql = "SELECT * FROM users;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            User user = mapRowToUser(rowSet);
+            allUsers.add(user);
+        }
+        return allUsers;
+    }
+
+    private User mapRowToUser(SqlRowSet rowSet) {
+        User result = new User();
+        result.setId(rowSet.getInt("user_id"));
+        result.setUsername(rowSet.getString("username"));
+        result.setFirstName(rowSet.getString("first_name"));
+        result.setLastName(rowSet.getString("last_name"));
+        result.setEmail(rowSet.getString("email"));
+        result.setHandicap(rowSet.getInt("handicap"));
+        return result;
+    }
 }

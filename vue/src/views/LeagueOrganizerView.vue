@@ -23,21 +23,39 @@ TODO: form for setting matches/tee-times -->
 
     <!-- IF YOU ARE A LEAGUE ORGANIZER -->
     <div class="organizer-page-container">
-        <div class="left-column">
-        <!-- ADD AN UPDATE SCORES COMPONENT-->    
+        <div class="header">
+            <h2>Yinzer League Organizer</h2>
         </div>
-    
-        <div class="right-column">
-            <!-- ADD ADD PLAYERS TO THE LEAGUE COMPONENT -->
+
+        <div class="row">
+            <div class="left-column">
+                <h3>Update Yinzer Scores</h3>
+         
+            </div>
+
+            <div class="center-column">
+                INSERT LEAGUE LEADER BOARD:
+                Since we are currently getting the boards by user, this won't work. 
+                We could get the board by league for this one. It's also not necessary.
+                <!-- <LeaderBoard></LeaderBoard> -->
+
+            </div>
+
+            <div class="right-column">
+                <h3>Add Yinzers to League</h3>
+                OR
+                <h3>League Yinzers</h3>
+                <Golfers />
+            </div>
         </div>
     </div>
-
-
 </template>
 
 <script>
 // import NewLeagueCreator from '../components/NewLeagueCreator.vue';
-// import LeagueService from '../services/LeagueService';
+// import LeagueService from '../services/LeagueService.js';
+// import LeaderBoard from '../components/LeaderBoard.vue';
+import Golfers from '../components/Golfers.vue';
 
 export default {
     data() {
@@ -46,9 +64,11 @@ export default {
         }
     },
 
-    // components: {
+    components: {
+        Golfers,
+        // LeaderBoard,
     // NewLeagueCreator,
-    // },
+    },
 
     // computed: {
 
@@ -74,6 +94,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+    box-sizing: border-box;
+}
 .page-container {
     padding-top: 15%;
     background-image: url("../assets/goldenGolf.jpeg");
@@ -81,8 +104,6 @@ export default {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-
-
     font-family: 'Hedvig Letters Serif', serif;
     color: #06612f;
     font-weight: 600;
@@ -92,5 +113,71 @@ export default {
 .info {
     background-color: darkkhaki;
     opacity: .85;
+}
+
+h2 {
+    background-color: darkkhaki;
+}
+
+.organizer-page-container {
+    padding-top: 15%;
+    background-image: url("../assets/goldenGolf.jpeg");
+    height: 100vh;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Hedvig Letters Serif', serif;
+    color: #06612f;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Style the header */
+.header {
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+}
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Create three unequal columns that sits next to each other */
+.row {
+  padding: 10px;
+  height: 50%; /* adjust to auto after things are in them! */
+}
+
+/* Left and right column */
+.right-column {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border-radius: 15px;
+    margin: .5rem;
+    background-color: darkkhaki;
+    opacity: .8;
+}
+
+.left-column {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border-radius: 15px;
+    margin: .5rem;
+    background-color: darkkhaki;
+    opacity: .8;
+}
+
+.center-column {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 1.25;
+  border-radius: 15px;
+  margin: .5rem;
+  background-color: #093708;
+  opacity: .8;
+  color: darkkhaki;
 }
 </style>
