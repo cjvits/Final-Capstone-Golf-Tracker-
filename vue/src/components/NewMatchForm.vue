@@ -4,23 +4,23 @@
             <h1>Create a New Match</h1>
 
             <div class="form-input-group">
-                <label for="select-league">Select a League</label>
-                <input type="text" id="select-league" v-model="course.streetAddress" required autofocus />
+                <label for="match-players">New Match Player1</label>
+                <input type="text" id="match-player-names" v-model="match.player1" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="match-players">New Match Players</label>
-                <input type="text" id="match-player-names" v-model="course.courseName" required autofocus />
+                <label for="match-players">New Match Player2</label>
+                <input type="text" id="match-player-names" v-model="match.player2" required autofocus />
             </div>
 
             <div class="form-input-group">
                 <label for="match-date">New Match Date</label>
-                <input type="text" id="match-date" v-model="course.streetAddress" required autofocus />
+                <input type="text" id="match-date" v-model="match.date" required autofocus />
             </div>
 
             <div class="form-input-group">
                 <label for="match-time">New Match Time</label>
-                <input type="text" id="match-time" v-model="course.streetAddress" required autofocus />
+                <input type="text" id="match-time" v-model="match.time" required autofocus />
             </div>
 
             
@@ -45,8 +45,9 @@ export default {
     data () {
         return {
             match: {
-                league: '',
-                players: '',
+                leagueId: this.$store.state.league.id,
+                player1: '',
+                player2: '',
                 date: '',
                 time: '',
             }
