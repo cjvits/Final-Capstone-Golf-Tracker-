@@ -186,7 +186,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     @Override
     public List<Course> getCourses() {
         List<Course> allCourses = new ArrayList<>();
-        String sql = "SELECT * FROM courses;";
+        String sql = "SELECT course_id, course_name, street_address, city, state_abb, zip_code FROM courses;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()){
             Course course = mapRowToCourse(rowSet);
@@ -291,7 +291,6 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setCity(rowSet.getString("city"));
         result.setState(rowSet.getString("state_abb"));
         result.setZipCode(rowSet.getInt("zip_code"));
-        result.setRating(rowSet.getInt("course_rating"));
         return result;
     }
 
