@@ -35,7 +35,7 @@ TODO: form for setting matches/tee-times -->
                     <li>LO will be able to click a button per match to add scores</li>
                     <li>Will update </li>
                 </ul>
-                <NewMatchForm></NewMatchForm>
+                
          
             </div>
 
@@ -44,6 +44,7 @@ TODO: form for setting matches/tee-times -->
                 Since we are currently getting the boards by user, this won't work. 
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
+                <NewMatchForm></NewMatchForm>
 
             </div>
 

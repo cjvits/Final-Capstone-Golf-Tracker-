@@ -1,6 +1,11 @@
 <template>
     <div>
-        <form class="new-match-maker" v-on:submit.prevent="createNewMatch">
+
+        <button v-on:click.prevent="isFormShowing = !isFormShowing">
+            {{ isFormShowing ? "Hide Form" : "Create a new match" }}
+        </button>
+
+        <form class="new-match-maker" v-show="isFormShowing" v-on:submit.prevent="createNewMatch">
             <h1>Create a New Match</h1>
 
             <div class="form-input-group">
@@ -44,8 +49,9 @@ export default {
     },
     data () {
         return {
+            isFormShowing: false,
             match: {
-                leagueId: this.$store.state.league.id,
+                league: this.$store.state.league, // will need to change to leagueID on the front
                 player1: '',
                 player2: '',
                 date: '',
@@ -53,6 +59,33 @@ export default {
             }
         }
     },
+    methods: {
+        createNewMatch() {
+            LeagueService
+            .createMatch(this.match)
+            .then((response) => {
+                    if (response.status == 201) {
+                        this.$router.push({
+                            path: '/league-organizer',
+                            query: { registration: 'success' },
+                        });
+                    }
+                })
+                .catch((error) => {
+                    const response = error.response;
+                    this.registrationErrors = true;
+                    if (response.status === 400) {
+                        this.registrationErrorMsg = 'Bad Request: Validation Errors';
+                    }
+                });
+            }
+        },
+        created() {
+
+        LeagueService
+            .getAllGolfers()
+            .then((response) => this.matches = response.data)
+        }
 
 }
 </script>

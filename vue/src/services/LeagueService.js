@@ -17,7 +17,7 @@ export default {
 
     // for selecting golfers for a league .... but just realized there is a method in the USER backend code that was given to us... probably better
     getAllGolfers() {
-        return axios.get(`users`)
+        return axios.get(`/users`)
     }
 
     // addGolferToLeague() {
