@@ -27,10 +27,10 @@ INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (2, 8, 0);
 INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (2, 9, 0);
 INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (2, 10, 0);
 
-INSERT INTO matches (league_id, tee_date, tee_time) VALUES (1, CURRENT_DATE, CURRENT_TIME);
-INSERT INTO matches (league_id, tee_date, tee_time) VALUES (1, CURRENT_DATE + 10, CURRENT_TIME);
-INSERT INTO matches (league_id, tee_date, tee_time) VALUES (2, CURRENT_DATE, CURRENT_TIME);
-INSERT INTO matches (league_id, tee_date, tee_time) VALUES (2, CURRENT_DATE + 10, CURRENT_TIME);
+INSERT INTO matches (league_id, tee_date, tee_time) VALUES (1, '2023-12-26', '10:00');
+INSERT INTO matches (league_id, tee_date, tee_time) VALUES (1, '2023-12-26', '10:15');
+INSERT INTO matches (league_id, tee_date, tee_time) VALUES (2, '2023-12-26', '11:15');
+INSERT INTO matches (league_id, tee_date, tee_time) VALUES (2, '2023-12-26', '11:30');
 
 INSERT INTO match_golfer (match_id, user_id, match_score) VALUES (1,3,0);
 INSERT INTO match_golfer (match_id, user_id, match_score) VALUES (1,4,0);
