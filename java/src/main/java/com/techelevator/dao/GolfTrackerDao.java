@@ -19,6 +19,9 @@ public interface GolfTrackerDao {
 
     public League createLeague(League league);
 
+    public League getLeagueByLeagueId(int leagueId);
+
+
     public Match createMatch(Match match);
 
     public List<UserInLeague> addUserToLeague(int leagueId, int userId);
