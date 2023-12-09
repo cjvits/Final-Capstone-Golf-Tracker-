@@ -43,13 +43,6 @@ public class GolfTrackerController {
 
     }
 
-    @GetMapping("/home/{id}/match/{id}")
-    public Match getMatchById(int matchId) {
-
-        return golfTrackerDao.getMatch(matchId);
-
-    }
-
     @GetMapping("/course")
     public List<Course> getCourses() {
         return golfTrackerDao.getCourses();
@@ -60,6 +53,14 @@ public class GolfTrackerController {
     public Course addCourse (@RequestBody Course course){
         return golfTrackerDao.addCourse(course);
     }
+
+    @PostMapping("/match")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Match addMatch(@RequestBody Match newMatch) {
+        return golfTrackerDao.createMatch(newMatch);
+    }
+
+
 
 
 
