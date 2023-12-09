@@ -29,8 +29,7 @@ CREATE TABLE courses(
     longitude decimal (11,8),
     website varchar (100),
     CONSTRAINT PK_course PRIMARY KEY (course_id),
-    CONSTRAINT legit_zip CHECK (zip_code < 100000),
-    CONSTRAINT course_rating CHECK (course_rating > 0)
+    CONSTRAINT legit_zip CHECK (zip_code < 100000)
     );
 
 CREATE TABLE leagues(
