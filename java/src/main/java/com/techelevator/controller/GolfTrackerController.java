@@ -62,10 +62,7 @@ public class GolfTrackerController {
     }
 
     // meg added this method for getting users to add users to a league
-//    @GetMapping("/user")
-//    public List<User> getUsers() {
-//        return golfTrackerDao.getUsers();
-//    }
+    
 
 
     
