@@ -8,8 +8,8 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import LandingView from '../views/LandingView.vue';
 import LeagueOrganizerView from '../views/LeagueOrganizerView.vue'
-import GoodByeView from '../views/GoodByeView.vue'
-
+import GoodByeView from '../views/GoodByeView.vue';
+import AdminView from '../views/AdminView.vue';
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -75,7 +75,7 @@ const routes = [
   {
     path: "/admin",
     name: "admin",
-    component: OfflineAudioCompletionEvent,
+    component: AdminView,
     meta: {
       requiresAuth: true,
       requiresRole: 'admin'
