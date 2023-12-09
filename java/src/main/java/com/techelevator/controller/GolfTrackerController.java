@@ -61,6 +61,7 @@ public class GolfTrackerController {
         return golfTrackerDao.addCourse(course);
     }
 
+    // meg added this method for getting users to add users to a league
 
 
 

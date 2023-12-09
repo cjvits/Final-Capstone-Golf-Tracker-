@@ -26,21 +26,18 @@ import LeagueService from '../services/LeagueService';
 
 export default {
   props: {
-    teeTimes: {
-      type: Array,
-      required: true,
-    },
+    // teeTimes: {
+    //   type: Array,
+    //   required: true,
+    // },
     league: {
       type: Object,
-      required: true,
+      required: false,
     }
   },
   data() {
     return {
-        teeTime: [
-        // Your tee time data goes here
-        // { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
-      ],
+        teeTime: [],
         loading: false, // loading state
     };
   },
