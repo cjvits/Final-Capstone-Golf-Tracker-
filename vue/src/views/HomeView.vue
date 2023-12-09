@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import LeaderBoard from "@/components/LeaderBoard.vue";
+import LeaderBoard from "../components/LeaderBoard.vue";
 import NewLeagueCreator from "../components/NewLeagueCreator.vue";
 import LeagueService from "../services/LeagueService";
-import TeeTimes from "@/components/TeeTimes.vue";
+import TeeTimes from "../components/TeeTimes.vue";
 
 export default {
   components: {
