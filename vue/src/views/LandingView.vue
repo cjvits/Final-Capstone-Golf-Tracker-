@@ -65,6 +65,7 @@ export default {
   color: #093708;
   font-weight: 600;
   display: flex;
+  position: static;
 }
 .title {
   background-color: white;
