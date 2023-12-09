@@ -40,8 +40,8 @@ export default {
     try {
       // Fetch tee time data from backend
       //INSTEAD OF CALLING THE METHOD we have all the league data in HOME VIEW we need to prop it over to TeeTimes
-      const response = await LeagueService.getLeagueMatchesByUserId(this.userId);
-      this.teeTime = response.data;
+      //const response = await LeagueService.getLeagueMatchesByUserId(this.userId);
+      //this.teeTime = response.data;
     } catch (error) {
         console.error("Error fetching tee time:", error);
     }

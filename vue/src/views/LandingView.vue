@@ -1,27 +1,14 @@
-  <!-- TODO: Insert Logo
-  TODO: Register <button></button>
-  TODO: Search for courses by location search bar
-    - should pop out a map when used 
-  TODO: Login button in nav
--->
-
 <template>
 
-  <!-- <nav>
-    <div id="loginDiv">
-    <button type="button" id="loginBtn" @click="login">Login</button>
-    <button type="button" id="registerBtn" @click="newAccount" >Register</button></div>
-  </nav> -->
-
 <div class="landing">
-  <div class="subdiv">
-  <transition name="fade">
-    <h1 id="appName">Tee Time N'at</h1>
-  </transition>
-  </div>
-  <!-- <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p> -->
+  <section class="content-container">
+    <div class="title">
+       <h1 id="appName">Tee Time N'at</h1>
+    </div>
+    <!-- <p class="api"><textarea name="" id="" cols="0" rows="1" placeholder=" Search Courses"></textarea></p> -->
   <GoogleMap></GoogleMap>
   <GeoCode></GeoCode>
+  </section>
 </div>
 
 </template>
@@ -66,42 +53,42 @@ export default {
 } 
 
 .landing {
-  flex-direction: column;
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  padding-top: 15%;
   background-image: url("../assets/goldenGolf.jpeg");
   height: 100vh;
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
-  font-family: 'Hedvig Letters Serif', serif;
-  color: #06612f;
-  font-weight: 600;
-  font-size: x-large;
-}
-.subdiv {
-  /* display: flex-content;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Hedvig Letters Serif', serif;
+  color: #093708;
+  font-weight: 600;
   display: flex;
+  position: static;
+}
+.title {
   background-color: white;
-  opacity: .3;
-  position: sticky;
+  opacity: .5;
   width: 100%;
-  flex-grow: .1;
-  flex-basis: auto;
 } 
 
 h1 {
+  color:#093708;
   text-align: center;
-  justify-self: center;
   flex-grow: 1;
   font-size: 2em;
   font-weight: 700;
   font-family: 'Hedvig Letters Serif', serif;
   padding-top: 1rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-bottom: 1rem;
+}
+
+.content-container {
+  justify-content: center;
+  align-items: center;
 }
 
 </style>
