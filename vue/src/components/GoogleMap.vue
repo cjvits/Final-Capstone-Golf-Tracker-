@@ -63,8 +63,7 @@ export default {
       }
     },
 
-
-    // I somehow need to add my Array of golf courses in "GolfCourseList.vue" into markers on my map by Lat/Lng. ********
+    // Adding Golf Course markers
     addGolfCourseMarker() {
       const golfCourses = [
           {
@@ -173,12 +172,12 @@ export default {
               Website: 'https://www.southpointegolfclub.com/',
           },
       ];
-
+      // Golf Course pin location
       golfCourses.forEach((course) => {
         const marker = new window.google.maps.Marker({
           position: { lat: course.latitude, lng: course.longitude },
           map: this.map,
-          icon: "http://maps.google.com/mapfiles/kml/pal2/icon5.png", // Replace with your custom marker image URL
+          icon: "http://maps.google.com/mapfiles/kml/pal2/icon5.png", // This is the custom golf map marker
         });
 
         // Create an info window for each marker
@@ -213,8 +212,6 @@ export default {
       });
       this.map.setZoom(12);
     },
-
-
 
     // If the user does not have location services enabled, an error message will appear.
     handleLocationError(browserHasGeolocation, infoWindow, pos) {
