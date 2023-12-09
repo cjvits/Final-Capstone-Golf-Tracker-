@@ -8,13 +8,14 @@
 
 <div class="row">
   <div class="left-column">
-    <TeeTimes :teeTimes="teeTimes" :users="users" />
+    <h3 class="teeTimeTitle">Upcoming Tee Times:</h3>
+    <TeeTimes v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users"/>
   </div>
   <div class="center-column">
     <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
   <div class="right-column">
-    <NewLeagueCreator></NewLeagueCreator>
+    <NewLeagueCreator ></NewLeagueCreator>
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
@@ -42,7 +43,7 @@ export default {
     return {
       teeTimes: [
         // Your tee time data goes here
-        { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
+        // { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
       ],
       users: [
         // Your user data goes here

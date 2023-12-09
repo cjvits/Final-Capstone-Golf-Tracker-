@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="leaderboard-title">Leaderboard</h2>
+        <h2 class="leaderboard-title">Leaderboard for {{ league.leagueName }}</h2>
         <table class="leaderboard-table">
             <thead>
                 <tr>
@@ -14,7 +14,7 @@
             <tbody>
                 <tr v-for="(user, index) in league.golfersInLeague" :key="index" >
                     <td>{{ index + 1 }}</td>
-                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.username }}</td>
                     <td>{{ user.leagueScore }}</td>
                     <td>{{ user.handicap }}</td>
                     <td>{{ league.course?.courseName }}</td>
