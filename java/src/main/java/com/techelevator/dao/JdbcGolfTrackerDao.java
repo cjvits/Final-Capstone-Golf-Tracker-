@@ -178,8 +178,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
                 course.getStreetAddress(),
                 course.getCity(),
                 course.getState(),
-                course.getZipCode(),
-                course.getRating());
+                course.getZipCode());
         course.setCourseId(newId);
         return course;
     }
