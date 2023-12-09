@@ -8,12 +8,14 @@
 
 <div class="row">
   <div class="left-column">
-    <TeeTimes :teeTimes="teeTimes" :users="users" />
+    <TeeTimes v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users"/>
   </div>
   <div class="center-column">
     <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
-  <div class="right-column">Right Column</div>
+  <div class="right-column">
+    <NewLeagueCreator></NewLeagueCreator>
+  </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 

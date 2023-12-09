@@ -1,26 +1,27 @@
 <template>
-    <div class="tee" v-for="teeTime in teeTimes" v-bind:key="teeTime.id">
-        <h2>Upcoming tee times</h2>
+  <div v-if="loading" class="loading-message">Loading tee times...</div>
+    <div v-else class="tee" v-for="match in league.matchesInLeague" v-bind:key="match.id">
+        <h2>This is it</h2>
         <div class="time">
-            {{ teeTime.time }}
+            {{ match.teeTime }}
             <!-- This is where the Time goes -->
         </div>
 
         <div class="date">
             <!-- This is where the date goes -->
-            {{ teeTime.date }}
+            {{ match.teeDate }}
         </div>
 
         <div class="user" v-for="user in users" v-bind:key="user.id">
             {{ user.username }}
             <!-- This is where the username goes -->
         </div>
-        <div v-if="loading" class="loading-message">Loading tee times...</div>
+        
     </div>
 </template>
 
 <script>
-import LeagueService from '@/services/LeagueService';
+import LeagueService from '../services/LeagueService';
 
 
 export default {
@@ -29,14 +30,18 @@ export default {
       type: Array,
       required: true,
     },
+    league: {
+      type: Object,
+      required: true,
+    }
   },
   data() {
     return {
         teeTime: [
         // Your tee time data goes here
-        { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
+        // { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
       ],
-        loading: true, // loading state
+        loading: false, // loading state
     };
   },
   async mounted() {
