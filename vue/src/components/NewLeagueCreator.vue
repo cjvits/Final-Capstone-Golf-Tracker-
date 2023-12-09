@@ -33,8 +33,9 @@ export default {
             isFormShowing: false,
             league: {
                 leagueName: '',
-                leagueCourseId: 0,
-                leagueCoordinator: this.$store.state.user 
+                leagueCoordinatorId: this.$store.state.user.id,
+                leagueCourseName: '',
+                leagueCourseId: 0, 
             },
 
             courses: [],

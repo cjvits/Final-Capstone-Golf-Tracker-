@@ -12,7 +12,7 @@ export default {
     },
 
     newLeague(league) {
-        return axios.post(`/league`)
+        return axios.post(`/league`, league)
     }, 
 
     // for selecting golfers for a league .... but just realized there is a method in the USER backend code that was given to us... probably better

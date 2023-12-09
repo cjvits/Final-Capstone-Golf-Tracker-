@@ -2,7 +2,6 @@ package com.techelevator.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class League {
 
@@ -10,7 +9,7 @@ public class League {
 
     private String leagueName;
 
-    private User leagueCoordinator;
+    private int leagueCoordinatorId;
 
     private String leagueCourseName;
 
@@ -60,20 +59,20 @@ public class League {
         this.leagueName = leagueName;
     }
 
-    public User getLeagueCoordinator() {
-        return leagueCoordinator;
+    public int getLeagueCoordinatorId() {
+        return leagueCoordinatorId;
     }
 
-    public Integer getLeagueCoordinatorId() {
-        if (leagueCoordinator == null) {
-            return null;
-        }
+//    public Integer getLeagueCoordinatorId() {
+//        if (leagueCoordinatorId == null) {
+//            return null;
+//        }
+//
+//        return leagueCoordinatorId.getId();
+//    }
 
-        return leagueCoordinator.getId();
-    }
-
-    public void setLeagueCoordinator(User leagueCoordinator) {
-        this.leagueCoordinator = leagueCoordinator;
+    public void setLeagueCoordinatorId(int leagueCoordinatorId) {
+        this.leagueCoordinatorId = leagueCoordinatorId;
     }
 
 
