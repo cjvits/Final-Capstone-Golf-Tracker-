@@ -14,7 +14,7 @@
 
             <div class="form-input-group">
                 <label for="course">Select League Golf Course:</label>
-                <select id="course" v-model="league.leagueCourse">
+                <select id="course" v-model="league.leagueCourseId">
                     <option :value="course.courseId" v-for="course in courses" :key="course.courseId">{{ course.courseName }}</option>
                 </select>
             </div>
@@ -33,8 +33,8 @@ export default {
             isFormShowing: false,
             league: {
                 leagueName: '',
-                leagueCourse: 0,
-                leagueOrganizer: this.$store.state.user.id // HOW DO YOU MAKE THIS THE PERSON SUBMITTING THE FORM?
+                leagueCourseId: 0,
+                leagueCoordinator: this.$store.state.user 
             },
 
             courses: [],

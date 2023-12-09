@@ -144,7 +144,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     //Leagues
     @Override
     public League createLeague(League league) {
-        String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING id;";
+        String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING league_id;";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class, league.getLeagueName(), league.getLeagueCoordinatorId(), league.getLeagueCourseId());
         league.setLeagueId(newId);
 
