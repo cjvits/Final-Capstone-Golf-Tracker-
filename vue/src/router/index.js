@@ -33,17 +33,8 @@ const routes = [
     component: HomeView,
     meta: {
       requiresAuth: true
-      //requiresRoles: ['',''] if we have different roles within users
     }
   },
-  // {
-  //   path: '/homepage',
-  //   name: 'HomePage',
-  //   component: HomePage,
-  //   meta: {
-  //     requiresAuth: true
-  //   }
-  // },
   {
     path: "/login",
     name: "login",
@@ -71,13 +62,25 @@ const routes = [
   {
     path: "/league-organizer",
     name: "league-organizer",
-    component: LeagueOrganizerView
+    component: LeagueOrganizerView,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/see-yinz-later",
     name: "see-yinz",
     component: GoodByeView
   },  
+  {
+    path: "/admin",
+    name: "admin",
+    component: OfflineAudioCompletionEvent,
+    meta: {
+      requiresAuth: true,
+      requiresRole: 'admin'
+    }
+  },
 
 {
   //component: ForbiddenView
