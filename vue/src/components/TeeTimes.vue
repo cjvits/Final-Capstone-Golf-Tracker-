@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading" class="loading-message">Loading tee times...</div>
     <div v-else class="tee" v-for="match in league.matchesInLeague" v-bind:key="match.id">
-        <h2>This is it</h2>
+        <h2>{{ league.leagueName }}</h2>
         <div class="time">
             {{ match.teeTime }}
             <!-- This is where the Time goes -->
