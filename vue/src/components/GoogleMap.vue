@@ -30,6 +30,7 @@ export default {
       this.map = new window.google.maps.Map(document.getElementById("map"), {
         center: { lat: 40.4406, lng: -79.9959 }, // Coordinates for Pittsburgh, PA
         zoom: 10,
+        gestureHandling: 'greedy', // This is what allows us to scroll to zoom in and out on the map. This can be set to 'cooperative' to disable the scroll
       });
 
       // Initialize
@@ -186,7 +187,7 @@ export default {
         <div>
           <h4>${course.name}</h4>
           <p>Address: <a href="https://www.google.com/maps/search/?q=${encodeURIComponent(course.address)}" target="_blank">${course.address}</a></p>
-          <p>Website: <a href=${course.Website}>Website: ${course.Website}</a></p>
+          <p>Website: <a href=${course.Website}>${course.Website}</a></p>
         </div>
       `,
     });
@@ -274,11 +275,12 @@ export default {
 };
 </script>
 
+<!-- MAP STYLING -->
 <style>
     #map {
       height: 600px;
       width: auto;
-      border: 10px solid green;
+      border: 10px solid rgb(10, 81, 10);
       margin: 15px;
       padding: 0px;
       position: relative;
@@ -299,7 +301,7 @@ export default {
       opacity: 75%;
       /*This is the position of the button*/
       position: absolute;
-      top: 35%;
+      top: 40%;
       left: 45%;
       transform: translate(-50, -50);
     }
@@ -354,27 +356,19 @@ export default {
       width: 200px;
     }
 
-    #intro {
-      padding-left: 0.3%;
-    }
-
-    #nav-bar {
-      padding-left: 1%;
-    }
-
     /* Info window styles */
-      .info-window {
-        font-size: 16px;
-        max-width: 200px;
-      }
+    .info-window {
+      font-size: 16px;
+      max-width: 200px;
+    }
 
-      .info-window h4 {
-        margin: 0;
-        font-weight: 700;
-      }
+    .info-window h4 {
+      margin: 0;
+      font-weight: 700px;
+    }
 
-      .info-window p {
-        margin: 1px 0;
-      }
+    .info-window p {
+      margin: 1px 0;
+    }
 
 </style>

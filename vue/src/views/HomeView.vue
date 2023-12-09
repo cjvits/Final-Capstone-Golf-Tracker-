@@ -43,9 +43,9 @@ TODO: IF ADMIN
 
 <script>
 // import HomePage from "@/components/HomePage";
-import LeaderBoard from "@/components/LeaderBoard.vue";
+import LeaderBoard from "../components/LeaderBoard.vue";
 import LeagueService from "../services/LeagueService";
-import TeeTimes from "@/components/TeeTimes.vue";
+import TeeTimes from "../components/TeeTimes.vue";
 
 export default {
   components: {
