@@ -30,6 +30,11 @@ TODO: form for setting matches/tee-times -->
         <div class="row">
             <div class="left-column">
                 <h3>Update Yinzer Scores</h3>
+                <ul>
+                    <li>Will list Matches from league</li>
+                    <li>LO will be able to click a button per match to add scores</li>
+                    <li>Will update </li>
+                </ul>
          
             </div>
 
