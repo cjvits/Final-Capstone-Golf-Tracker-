@@ -1,0 +1,10 @@
+<template>
+    <div>
+        <ul>
+            <li>list</li>
+            <li>of</li>
+            <li>league</li>
+            <li>yinzers</li>
+        </ul>
+    </div>
+</template>
