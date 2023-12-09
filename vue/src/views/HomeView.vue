@@ -98,10 +98,6 @@ h2 {
 .row {
   display: -webkit-flex;
   display: flex;
-}
-
-/* Create three unequal columns that sits next to each other */
-.row {
   padding: 10px;
   height: 50%;
   /* adjust to auto after things are in them! */
