@@ -43,13 +43,6 @@ public class GolfTrackerController {
 
     }
 
-    @GetMapping("/home/{id}/match/{id}")
-    public Match getMatchById(int matchId) {
-
-        return golfTrackerDao.getMatch(matchId);
-
-    }
-
     @GetMapping("/course")
     public List<Course> getCourses() {
         return golfTrackerDao.getCourses();
@@ -61,7 +54,14 @@ public class GolfTrackerController {
         return golfTrackerDao.addCourse(course);
     }
 
-    // meg added this method for getting users to add users to a league
+    @PostMapping("/match")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Match addMatch(@RequestBody Match newMatch) {
+        return golfTrackerDao.createMatch(newMatch);
+    }
+
+
+
 
 
 
