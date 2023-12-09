@@ -17,8 +17,6 @@ public class User {
 
    private String email;
 
-   private int handicap;
-
    @JsonIgnore
    private String password;
    @JsonIgnore
@@ -108,15 +106,7 @@ public class User {
       this.email = email;
    }
 
-   public int getHandicap() {
-      return handicap;
-   }
-
-   public void setHandicap(int handicap) {
-      this.handicap = handicap;
-   }
-
-   public String getFirstName() {
+      public String getFirstName() {
       return firstName;
    }
 

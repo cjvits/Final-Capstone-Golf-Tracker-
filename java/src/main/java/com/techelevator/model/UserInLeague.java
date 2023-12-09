@@ -18,7 +18,7 @@ public class UserInLeague {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-               this.handicap = handicap;
+        this.handicap = handicap;
         this.leagueScore = leagueScore;
         this.matchScore = matchScore;
     }

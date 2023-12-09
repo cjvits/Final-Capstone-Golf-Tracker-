@@ -307,14 +307,5 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 //        return allUsers;
 //    }
 
-//    private User mapRowToUser(SqlRowSet rowSet) {
-//        User result = new User();
-//        result.setId(rowSet.getInt("user_id"));
-//        result.setUsername(rowSet.getString("username"));
-//        result.setFirstName(rowSet.getString("first_name"));
-//        result.setLastName(rowSet.getString("last_name"));
-//        result.setEmail(rowSet.getString("email"));
-//        result.setHandicap(rowSet.getInt("handicap"));
-//        return result;
-//    }
+
 }
