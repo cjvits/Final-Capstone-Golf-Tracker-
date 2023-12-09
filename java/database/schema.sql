@@ -20,15 +20,16 @@ CREATE TABLE users (
 
 CREATE TABLE courses(
     course_id SERIAL,
-    course_name varchar(100) NOT NULL UNIQUE,
+    course_name varchar(100) NOT NULL,
     street_address varchar(100),
     city varchar (50) NOT NULL,
     state_abb varchar (2) NOT NULL,
     zip_code integer NOT NULL,
-    course_rating integer NOT NULL,
+    latitude decimal(10,8),
+    longitude decimal (11,8),
+    website varchar (100),
     CONSTRAINT PK_course PRIMARY KEY (course_id),
-    CONSTRAINT legit_zip CHECK (zip_code < 100000),
-    CONSTRAINT course_rating CHECK (course_rating > 0)
+    CONSTRAINT legit_zip CHECK (zip_code < 100000)
     );
 
 CREATE TABLE leagues(

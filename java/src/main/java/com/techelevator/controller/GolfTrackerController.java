@@ -26,7 +26,7 @@ public class GolfTrackerController {
 
    
 
-    @PostMapping("/home") // TODO: Do we need to change this to "/league-organizer"? -question from meg
+    @PostMapping("/league")
     @ResponseStatus(HttpStatus.CREATED)
     public League addLeague(@RequestBody League newLeague) {
         return golfTrackerDao.createLeague(newLeague);
@@ -61,11 +61,7 @@ public class GolfTrackerController {
         return golfTrackerDao.addCourse(course);
     }
 
-    // meg added this method for getting users to add users to a league
-    @GetMapping("/user")
-    public List<User> getUsers() {
-        return golfTrackerDao.getUsers();
-    }
+
 
 
     
