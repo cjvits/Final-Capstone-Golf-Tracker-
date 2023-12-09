@@ -19,17 +19,6 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<User> getAllUsers(){
-        List<User> allUsers = new ArrayList<>();
-        String sqlAllUsers = "Select user_id, username, first_name, last_name, email FROM users;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlAllUsers);
-        while (rowSet.next()){
-            User user = mapRowToUser(rowSet);
-            allUsers.add(user);
-        }
-        return allUsers;
-    }
-
     public List<League> getLeaguesByUserId(int userId){
         List<League> leaguesByUser = new ArrayList<>();
         String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ?;";
@@ -319,13 +308,5 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 //        return allUsers;
 //    }
 
-    private User mapRowToUser(SqlRowSet rowSet) {
-        User result = new User();
-        result.setId(rowSet.getInt("user_id"));
-        result.setUsername(rowSet.getString("username"));
-        result.setFirstName(rowSet.getString("first_name"));
-        result.setLastName(rowSet.getString("last_name"));
-        result.setEmail(rowSet.getString("email"));
-        return result;
-    }
+
 }

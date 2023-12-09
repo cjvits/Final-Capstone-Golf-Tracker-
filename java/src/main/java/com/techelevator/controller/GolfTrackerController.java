@@ -61,10 +61,7 @@ public class GolfTrackerController {
         return golfTrackerDao.addCourse(course);
     }
 
-    @GetMapping("/user")
-    public List<User> getUsers() {
-        return golfTrackerDao.getAllUsers();
-    }
+
 
 
     
