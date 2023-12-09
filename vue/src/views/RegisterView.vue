@@ -48,7 +48,7 @@ export default {
         firstName: '',
         lastName: '',
         email: '',
-        role: 'golfer',
+        role: 'user',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
