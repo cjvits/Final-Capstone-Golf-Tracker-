@@ -1,5 +1,4 @@
 <!-- The code in this file represents our Geolocation on the map -->
-
 <template>
     <div></div>
   </template>
