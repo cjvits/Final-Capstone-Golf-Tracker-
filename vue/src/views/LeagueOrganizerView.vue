@@ -35,6 +35,7 @@ TODO: form for setting matches/tee-times -->
                     <li>LO will be able to click a button per match to add scores</li>
                     <li>Will update </li>
                 </ul>
+                <NewMatchForm></NewMatchForm>
          
             </div>
 
@@ -58,9 +59,10 @@ TODO: form for setting matches/tee-times -->
 
 <script>
 // import NewLeagueCreator from '../components/NewLeagueCreator.vue';
-// import LeagueService from '../services/LeagueService.js';
+import LeagueService from '../services/LeagueService.js';
 // import LeaderBoard from '../components/LeaderBoard.vue';
 import Golfers from '../components/Golfers.vue';
+import NewMatchForm from '../components/NewMatchForm.vue'
 
 export default {
     data() {
@@ -71,6 +73,7 @@ export default {
 
     components: {
         Golfers,
+        NewMatchForm,
         // LeaderBoard,
     // NewLeagueCreator,
     },
@@ -93,8 +96,33 @@ export default {
     //   },
 
     methods: {
+        createNewMatch() {
+            LeagueService
+            .createMatch(this.match)
+            .then((response) => {
+                    if (response.status == 201) {
+                        this.$router.push({
+                            path: '/league-organizer',
+                            query: { registration: 'success' },
+                        });
+                    }
+                })
+                .catch((error) => {
+                    const response = error.response;
+                    this.registrationErrors = true;
+                    if (response.status === 400) {
+                        this.registrationErrorMsg = 'Bad Request: Validation Errors';
+                    }
+                });
+            }
+        },
+        created() {
 
-    }
+        LeagueService
+            .getAllGolfers()
+            .then((response) => this.matches = response.data)
+        }
+
 }
 </script>
 
