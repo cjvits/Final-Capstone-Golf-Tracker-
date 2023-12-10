@@ -70,8 +70,8 @@ export default {
                 });
         }
 
-        }
-    },
+     },
+    
 
     created() {
         LeagueService
