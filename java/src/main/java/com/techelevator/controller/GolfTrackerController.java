@@ -74,7 +74,9 @@ public class GolfTrackerController {
     public List<UserInLeague> addGolferToLeague(@PathVariable int leagueId, @PathVariable int userId) {
         return golfTrackerDao.addUserToLeague(leagueId, userId);
     }
-
-
     
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userDao.getUsers();
+    }
 }
