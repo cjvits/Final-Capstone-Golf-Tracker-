@@ -33,7 +33,9 @@ public interface GolfTrackerDao {
 
     public List<Course> getCourses();
 
-//    public List<User> getUsers();
+    public List<UserInLeague> getLeagueUsersByLeagueId(int leagueId);
+
+
 
 }
 
