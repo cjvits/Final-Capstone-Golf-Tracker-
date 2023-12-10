@@ -24,7 +24,7 @@ public class GolfTrackerController {
     }
 
 
-   
+
 
     @PostMapping("/league")
     @ResponseStatus(HttpStatus.CREATED)
@@ -69,10 +69,11 @@ public class GolfTrackerController {
         return golfTrackerDao.createMatch(newMatch);
     }
 
-
-
-
-
+    @PostMapping("/{leagueId}/{userId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<UserInLeague> addGolferToLeague(@PathVariable int leagueId, @PathVariable int userId) {
+        return golfTrackerDao.addUserToLeague(leagueId, userId);
+    }
 
 
     
