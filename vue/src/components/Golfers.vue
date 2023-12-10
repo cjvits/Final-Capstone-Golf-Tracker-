@@ -2,9 +2,9 @@
 <!-- THE GOLFER COMPONENT WILL BE USED FOR A LEAGUE ORGANIZER TO SELECT GOLFERS FOR THEIR LEAGUE -->
 
 <template>
-        <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
-            {{ isLeagueInProgress ?  "start league now!" : "add more yinzers" }}
-        </button>
+    <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
+        {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
+    </button>
     <section class="golfers-to-add" v-if=isLeagueInProgress>
         Add some yinzers to your new league:
         <ul>
@@ -20,7 +20,7 @@
     </section>
 
     <section class="golfers-in-league" v-else>
-       <GolfersInLeague></GolfersInLeague>
+        <GolfersInLeague></GolfersInLeague>
     </section>
 </template>
 
@@ -38,11 +38,9 @@ export default {
 
     components: {
         GolfersInLeague,
-
     },
 
     computed: {
-
     },
 
     methods: {
@@ -70,8 +68,8 @@ export default {
                 });
         }
 
-        }
     },
+
 
     created() {
         LeagueService
