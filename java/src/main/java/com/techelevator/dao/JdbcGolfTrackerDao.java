@@ -261,8 +261,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             UserInLeague result = new UserInLeague();
             result.setId(rowSet.getInt("user_id"));
             result.setUsername(rowSet.getString("username"));
-            result.setUsername(rowSet.getString("first_name"));
-            result.setUsername(rowSet.getString("last_name"));
+            result.setFirstName(rowSet.getString("first_name"));
+            result.setLastName(rowSet.getString("last_name"));
             result.setLeagueScore(rowSet.getInt("league_score"));
             result.setHandicap(rowSet.getInt("handicap"));
             return result;

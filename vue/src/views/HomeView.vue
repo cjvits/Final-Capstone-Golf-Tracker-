@@ -16,6 +16,7 @@
   </div>
   <div class="right-column">
     <NewLeagueCreator ></NewLeagueCreator>
+    <router-link v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
