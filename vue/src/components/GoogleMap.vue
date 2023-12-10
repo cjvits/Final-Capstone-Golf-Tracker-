@@ -6,9 +6,11 @@
       <input type="text" id="autocomplete" placeholder="Search for a place" />
       <button id="search-button">Search</button>
     </div>
-    <!-- Find my location button -->
+    <!-- Map-->
     <div id="map"></div>
+    <!-- Find my location button -->
     <button id="findLocationButton" @click="findMyLocation">Find My Location</button>
+    
   </div>
 </template>
   
@@ -276,9 +278,9 @@ export default {
 </script>
 
 <!-- MAP STYLING -->
-<style>
+<style scoped>
     #map {
-      height: 600px;
+      height: 27rem;
       width: auto;
       border: 10px solid rgb(10, 81, 10);
       margin: 15px;
@@ -298,7 +300,7 @@ export default {
       font-size: 16px;
       margin: px 2px;
       cursor: pointer;
-      opacity: 75%;
+      opacity: .9;
       /*This is the position of the button*/
       position: absolute;
       top: 40%;
@@ -309,7 +311,7 @@ export default {
     #search-area {
       background-color: white;
       border: none;
-      width: 40%;
+      width: auto;
       height: 30px;
       color: rgb(28, 25, 25);
       padding: 1px;
@@ -322,12 +324,13 @@ export default {
     }
 
     .search-bar {
+      position: relative;
       text-align: left;
-      padding-left: 10px;
+      padding-left: 2rem;
     }
 
     .search-bar input[type="text"] {
-      width: 80%;
+      width: auto;
       padding: 10px;
       border: none;
     }
