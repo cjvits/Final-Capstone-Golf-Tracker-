@@ -10,6 +10,7 @@
 
             <div class="form-input-group">
                 <label for="match-players">New Match Player1</label>
+                <!-- <option v-for="user in users" :key="user.id">{{ user.username }}></option> -->
                 <input type="text" id="match-player-names" v-model="match.player1" required autofocus />
             </div>
 
@@ -20,12 +21,12 @@
 
             <div class="form-input-group">
                 <label for="match-date">New Match Date</label>
-                <input type="text" id="match-date" v-model="match.date" required autofocus />
+                <input type="date" id="match-date" v-model="match.date" required autofocus />
             </div>
 
             <div class="form-input-group">
                 <label for="match-time">New Match Time</label>
-                <input type="text" id="match-time" v-model="match.time" required autofocus />
+                <input type="time" id="match-time" v-model="match.time" required autofocus />
             </div>
 
             

@@ -7,11 +7,13 @@
         <div class="row">
             <div class="left-column">
                 <h3>Update Yinzer Scores</h3>
+                <UpdateScore></UpdateScore>
                 <ul>
                     <li>Will list Matches from league</li>
                     <li>LO will be able to click a button per match to add scores</li>
                     <li>Will update </li>
                 </ul>
+                
                 
          
             </div>
@@ -22,6 +24,7 @@
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
                 <NewMatchForm></NewMatchForm>
+                <LeaderBoard></LeaderBoard>
 
             </div>
 
@@ -40,6 +43,7 @@ import LeagueService from '../services/LeagueService.js';
 // import LeaderBoard from '../components/LeaderBoard.vue';
 import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
+import UpdateScore from '../components/UpdateScore.vue';
 
 export default {
     data() {
@@ -49,10 +53,11 @@ export default {
     },
 
     components: {
-        Golfers,
-        NewMatchForm,
-        // LeaderBoard,
-    },
+    Golfers,
+    NewMatchForm,
+    UpdateScore,
+    // LeaderBoard,
+},
 
     // computed: {
 
