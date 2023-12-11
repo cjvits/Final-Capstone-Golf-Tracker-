@@ -95,6 +95,7 @@ form {
   align-items: center;
   display: flex;
   background-image: url("../assets/goldenGolf.jpeg");
+  background-color: #312917;
   height: 100vh;
   background-size: cover;
   background-position: center;

@@ -4,7 +4,7 @@
             {{ isFormShowing ? "Not a League Organizer" : "View Leagues that I Coordinate" }}
         </a>
 
-        <form class="league-selector" v-show="isFormShowing" v-on:submit.prevent=this.$router.push(this.leagueId)> <!-- link might not work -->
+        <form class="league-selector" v-show="isFormShowing" v-on:submit.prevent=this.$router.push(this.league.leagueId)> <!-- link might not work -->
             <div class="form-input-group">
                 <label for="myLeague">Select League:</label>
                 <select id="myLeague" v-model="league.leagueId">
@@ -26,8 +26,8 @@ export default {
             isFormShowing: false,
             
             league: {
-            leagueId: 0,
-            leagueName: ''
+                leagueId: 0,
+                leagueName: ''
         },
 
         leagues: []

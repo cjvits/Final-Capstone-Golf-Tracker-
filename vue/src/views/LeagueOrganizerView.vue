@@ -134,6 +134,7 @@ export default {
 .page-container {
     padding-top: 15%;
     background-image: url("../assets/goldenGolf.jpeg");
+    background-color: #312917;
     height: 100vh;
     background-size: 100%;
     background-repeat: no-repeat;
