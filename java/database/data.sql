@@ -3,14 +3,14 @@ BEGIN TRANSACTION;
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO users (username,password_hash,role) VALUES ('MikeG', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('BenH', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('MegL', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('BryceY', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('TomA', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('WaltI', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('JimM', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('CalebV', '$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('MikeG', 'Mike', 'Gaudino','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('BenH', 'Ben','Hoffman','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('MegL', 'Meg','Lemon','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('BryceY', 'Bryce', 'Yoder','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('TomA', 'Tom','Anderson','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('WaltI', 'Walt','Impellicceiri','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('JimM', 'Jim', 'Marghella','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
+INSERT INTO users (username,first_name, last_name, password_hash,role) VALUES ('CalebV', 'Caleb','Vits','$2a$10$jAB3Q9eNuYV1651tTNwCFOR.WycntGgYwhY/FvBSbwKUiFRjAl2ea', 'ROLE_USER');
 
 INSERT INTO courses (course_name, street_address, city, state_abb, zip_code, latitude, longitude, website) VALUES ('Chartiers Country Club', '601 Baldwin Rd.', 'Pittsburgh', 'PA', 15205, 40.4347404, -80.0929396, 'https://chartierscc.com/');
 INSERT INTO courses (course_name, street_address, city, state_abb, zip_code, latitude, longitude, website) VALUES ('Totteridge Golf Club', '2029 Totteridge Dr.', 'Greensburg', 'PA', 15601, 40.3578107, -79.5065938, 'https://www.totteridge.com/');
