@@ -154,7 +154,7 @@ p {
 }
 
 .sign-up-link:hover {
-  color: wheat;
+  color: #116110;
   text-decoration-line: underline;
 }
 

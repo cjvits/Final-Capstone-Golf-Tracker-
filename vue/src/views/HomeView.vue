@@ -16,7 +16,8 @@
   </div>
   <div class="right-column">
     <NewLeagueCreator ></NewLeagueCreator>
-    <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
+    <LeagueOrganizerSelector></LeagueOrganizerSelector>
+    <!-- <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link> -->
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
@@ -33,12 +34,14 @@ import LeaderBoard from "../components/LeaderBoard.vue";
 import NewLeagueCreator from "../components/NewLeagueCreator.vue";
 import LeagueService from "../services/LeagueService";
 import TeeTimes from "../components/TeeTimes.vue";
+import LeagueOrganizerSelector from "../components/LeagueOrganizerSelector.vue";
 
 export default {
   components: {
     LeaderBoard,
     NewLeagueCreator,
     TeeTimes,
+    LeagueOrganizerSelector,
   },
   data() {
     return {
