@@ -12,17 +12,17 @@
 
             <div class="form-input-group">
                 <label for="match-date">New Match Date</label>
-                <input type="date" id="match-date" v-model="match.date" required autofocus />
+                <input type="date" id="match-date" v-model="match.teeDate" required autofocus />
             </div>
 
             <div class="form-input-group">
                 <label for="match-time">New Match Time</label>
-                <input type="time" id="match-time" v-model="match.time" required autofocus />
+                <input type="time" id="match-time" v-model="match.teeTime" required autofocus />
             </div>
 
             
 
-            <button class="submitBtn" type="submit">Update Match</button>
+            <button class="submitBtn" type="submit">Create Match</button>
         </form>
 
         <form class="new-match-maker" v-show="isFormShowing" v-on:submit.prevent="updateUsersInMatch">
@@ -58,24 +58,29 @@ export default {
         return {
             isFormShowing: false,
             match: {
-                league: this.$store.state.league, // will need to change to leagueID on the front
+                leagueName: '', // will need to change to leagueID on the front
                 player1: '',
                 player2: '',
-                date: '',
-                time: '',
-            }
+                teeDate: '',
+                teeTime: '',
+            },
         }
     },
     methods: {
         createNewMatch() {
+            // this.match.leagueName = this.currentLeague.leagueName;
+            // this.match.leagueId = this.currentLeague.leagueId;
+            this.match.matchLeague = this.currentLeague;
             LeagueService
                 .createMatch(this.match)
                 .then((response) => {
                     if (response.status == 201) {
-                        this.$router.push({
-                            path: '/league-organizer',
-                            query: { registration: 'success' },
-                        });
+                        this.match = response.data;
+                        // this.$router.push({
+                        //     path: '/league-organizer',
+                        //     params: {leagueId: this.currentLeague.leagueId},
+                        //     query: { registration: 'success' },
+                        // });
                     }
                 })
                 .catch((error) => {
@@ -105,6 +110,11 @@ export default {
                     }
                 });
             }
+    },
+    computed: {
+        currentLeague(){
+            return this.$store.state.leagues.find((item) => {return item.leagueId == this.$route.params.leagueId})
+        }
     },
     created() {
         LeagueService

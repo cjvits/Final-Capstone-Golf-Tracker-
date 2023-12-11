@@ -113,8 +113,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public Match createMatch(Match match) {
-        String sql = "INSERT INTO matches (league_id, tee_date, tee_time) VALUES (?, ?, ?) RETURNING id;";
-        int newId = jdbcTemplate.queryForObject(sql, Integer.class, match.getTeeDate(), match.getTeeTime());
+            String sql = "INSERT INTO matches (league_id, tee_date, tee_time) VALUES (?, ?, ?) RETURNING match_id;";
+        int newId = jdbcTemplate.queryForObject(sql, Integer.class, match.getLeagueId(), match.getTeeDate(), match.getTeeTime());
         match.setMatchId(newId);
         return match;
     }
