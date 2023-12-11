@@ -22,6 +22,10 @@ export default {
 
     addGolferToLeague(leagueId, userId) {
         return axios.post(`/${leagueId}/${userId}`)
+    },
+
+    getLeagueGolfers(leagueId) {
+        return axios.get(`/users/${leagueId}`)
     }
 
 }

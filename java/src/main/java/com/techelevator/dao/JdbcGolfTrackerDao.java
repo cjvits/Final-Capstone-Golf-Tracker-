@@ -248,7 +248,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     public List<UserInLeague> getLeagueUsersByLeagueId(int leagueId) {
         List<UserInLeague> usersInLeague = new ArrayList<>();
-        String sql = "SELECT users.user_id, users.username, users.first_name, users.last_name, league_score, handicap FROM league_golfer JOIN users on users.user_id = league_golfer.user_id WHERE league_golfer.league_id = ?;";
+        String sql = "SELECT users.user_id, users.username, users.first_name, users.last_name, league_score, handicap FROM league_golfer JOIN users on users.user_id = league_golfer.user_id WHERE league_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
         while (rowSet.next()) {
             UserInLeague user = mapRowToUsersInLeague2(rowSet);
@@ -261,8 +261,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             UserInLeague result = new UserInLeague();
             result.setId(rowSet.getInt("user_id"));
             result.setUsername(rowSet.getString("username"));
-            result.setUsername(rowSet.getString("first_name"));
-            result.setUsername(rowSet.getString("last_name"));
+            result.setFirstName(rowSet.getString("first_name"));
+            result.setLastName(rowSet.getString("last_name"));
             result.setLeagueScore(rowSet.getInt("league_score"));
             result.setHandicap(rowSet.getInt("handicap"));
             return result;
