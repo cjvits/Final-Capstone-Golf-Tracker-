@@ -37,20 +37,24 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     }
 
     @Override
-    public League getLeagueByLeagueId(int leagueId){
-        League leagueByLeagueId = new League();
-        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN courses on courses.course_id = leagues.course_id WHERE league_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, leagueId);
-        if (rowSet.next()){
-            leagueByLeagueId = mapRowToLeagueIdAndName(rowSet);
-
+    public List<League> getLeaguesByCoordinatorId(int userId){
+        List<League> leaguesByCoordinatorId = new ArrayList<>();
+        String sqlLeagueInfo = "Select league_id, league_name, course_name " +
+                "FROM leagues " +
+                "JOIN courses on courses.course_id = leagues.course_id " +
+                "WHERE leagues.coordinator_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, userId);
+        while (rowSet.next()){
+            League league = mapRowToLeagueIdAndName(rowSet);
+            leaguesByCoordinatorId.add(league);
         }
 
-        leagueByLeagueId.setGolfersInLeague(getLeagueUsersByLeagueId(leagueByLeagueId.getLeagueId()));
-        leagueByLeagueId.setMatchesInLeague(getMatchesByLeagueId(leagueByLeagueId.getLeagueId()));
+        for (League league : leaguesByCoordinatorId) {
+            league.setGolfersInLeague(getLeagueUsersByLeagueId(league.getLeagueId()));
+            league.setMatchesInLeague(getMatchesByLeagueId(league.getLeagueId()));
+        }
 
-
-        return leagueByLeagueId;
+        return leaguesByCoordinatorId;
     }
 
 
@@ -164,6 +168,10 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING league_id;";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class, league.getLeagueName(), league.getLeagueCoordinatorId(), league.getLeagueCourseId());
         league.setLeagueId(newId);
+        int initialCoordinatorScore = 0;
+        String sqlAddCoordinatorToLeague = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?);";
+        jdbcTemplate.update(sqlAddCoordinatorToLeague, league.getLeagueId(), league.getLeagueCoordinatorId(), initialCoordinatorScore);
+
 
         return league;
     }

@@ -1,10 +1,10 @@
 <!-- src/views/HomeView.vue -->
 <template>
-<div class="home-container">
+  <div class="home-container">
 
-<div class="header">
-  <h2>Welcome Home Ya Golf'n Yinzer!</h2>
-</div>
+    <div class="header">
+      <h2>Welcome Home Ya Golf'n Yinzer!</h2>
+    </div>
 
 <div class="row">
   <div class="left-column">
@@ -16,16 +16,17 @@
   </div>
   <div class="right-column">
     <NewLeagueCreator ></NewLeagueCreator>
-    <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
+    <LeagueOrganizerSelector></LeagueOrganizerSelector>
+    <!-- <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link> -->
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
-<!-- <div class="footer">
+    <!-- <div class="footer">
   <p>
   </p>
 </div> -->
-</div>
+  </div>
 </template>
 
 <script>
@@ -33,12 +34,14 @@ import LeaderBoard from "../components/LeaderBoard.vue";
 import NewLeagueCreator from "../components/NewLeagueCreator.vue";
 import LeagueService from "../services/LeagueService";
 import TeeTimes from "../components/TeeTimes.vue";
+import LeagueOrganizerSelector from "../components/LeagueOrganizerSelector.vue";
 
 export default {
   components: {
     LeaderBoard,
     NewLeagueCreator,
     TeeTimes,
+    LeagueOrganizerSelector,
   },
   data() {
     return {
@@ -56,11 +59,12 @@ export default {
     };
   },
   methods: {
-    logOut(){
-      this.$store.commit("LOGOUT");
-      this.$router.push("/");
-    },
-    retrieveLeagues(){
+    // logOut(){
+    //   this.$store.commit("LOGOUT");
+    //   this.$router.push("/");
+    // },
+    //send to logout view in order to logout. Code written for us already in LogoutView
+    retrieveLeagues() {
       LeagueService
         .getLeaguesByUserId(this.$store.state.user.id)
         .then(response => {
@@ -71,7 +75,7 @@ export default {
         });
     }
   },
-  created(){
+  created() {
     this.retrieveLeagues();
   }
 
@@ -89,6 +93,7 @@ export default {
   text-align: center;
   font-size: 35px;
 }
+
 .loading-message {
   margin-top: 20px;
   font-style: italic;
@@ -101,10 +106,10 @@ h3 {
 }
 
 h2 {
- color: #093708;
+  color: #093708;
 }
 
-.league-organizer-link {
+/* .league-organizer-link {
   color: #093708;
   justify-self: center;
   padding: 2rem;
@@ -113,14 +118,15 @@ h2 {
 .league-organizer-link:hover {
   color: #116110;
   text-decoration-line: underline;
-}
+} */
 
 /* Container for flexboxes */
 .row {
   display: -webkit-flex;
   display: flex;
   padding: 10px;
-  height: 50%; /* adjust to auto after things are in them! */
+  height: 50%;
+  /* adjust to auto after things are in them! */
 }
 
 /* Left and right column */
@@ -201,6 +207,7 @@ h2 {
 
 .home-container {
   background-image: url("../assets/goldenGolf.jpeg");
+  background-color: #312917;
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -221,5 +228,4 @@ h2 {
     flex-direction: column;
   }
 }
-
 </style>

@@ -95,6 +95,7 @@ form {
   align-items: center;
   display: flex;
   background-image: url("../assets/goldenGolf.jpeg");
+  background-color: #312917;
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -154,7 +155,7 @@ p {
 }
 
 .sign-up-link:hover {
-  color: wheat;
+  color: #116110;
   text-decoration-line: underline;
 }
 
