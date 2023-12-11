@@ -1,15 +1,19 @@
 <template>
+
   <!-- Rending our map -->
   <div class="map">
-    <!-- User search bar -->>
+
+    <!-- User search bar -->
     <div class="search-bar">
       <input type="text" id="autocomplete" placeholder="Search for a place" />
       <button id="search-button">Search</button>
-    </div>
+
     <!-- Find my location button -->
-    <div id="map"></div>
+       <div id="map"></div>
     <button id="findLocationButton" @click="findMyLocation">Find My Location</button>
+    </div>
   </div>
+
 </template>
   
 <script>
@@ -278,7 +282,7 @@ export default {
       height: 600px;
       width: auto;
       border: 10px solid rgb(10, 81, 10);
-      margin: 15px;
+      margin: 60px;
       padding: 0px;
       position: relative;
       color: black;
@@ -298,7 +302,7 @@ export default {
       opacity: 75%;
       /*This is the position of the button*/
       position: absolute;
-      top: 40%;
+      top: 24.8%;
       left: 45%;
       transform: translate(-50, -50);
     }
