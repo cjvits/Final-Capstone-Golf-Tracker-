@@ -57,4 +57,9 @@ export default {
 
 <style scoped>
 
+h2{
+  font-weight: bold;
+  padding-top: .8em;
+}
+
 </style>

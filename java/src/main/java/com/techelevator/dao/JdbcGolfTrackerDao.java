@@ -36,6 +36,24 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         return leaguesByUser;
     }
 
+    @Override
+    public List<League> getLeaguesByCoordinatorId(int userId){
+        List<League> leaguesByCoordinatorId = new ArrayList<>();
+        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE leagues.coordinator_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, userId);
+        while (rowSet.next()){
+            League league = mapRowToLeagueIdAndName(rowSet);
+            leaguesByCoordinatorId.add(league);
+        }
+
+        for (League league : leaguesByCoordinatorId) {
+            league.setGolfersInLeague(getLeagueUsersByLeagueId(league.getLeagueId()));
+            league.setMatchesInLeague(getMatchesByLeagueId(league.getLeagueId()));
+        }
+
+        return leaguesByCoordinatorId;
+    }
+
 
     @Override
     public List<UserInLeague> getLeaderBoardByUserId(int userId) {
@@ -144,7 +162,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     //Leagues
     @Override
     public League createLeague(League league) {
-        String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING id;";
+        String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING league_id;";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class, league.getLeagueName(), league.getLeagueCoordinatorId(), league.getLeagueCourseId());
         league.setLeagueId(newId);
 
@@ -186,7 +204,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     @Override
     public List<Course> getCourses() {
         List<Course> allCourses = new ArrayList<>();
-        String sql = "SELECT * FROM courses;";
+        String sql = "SELECT course_id, course_name, street_address, city, state_abb, zip_code FROM courses;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()){
             Course course = mapRowToCourse(rowSet);
@@ -223,15 +241,15 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     private League mapRowToLeagueIdAndName(SqlRowSet rowSet) {
         League result = new League();
         result.setLeagueId(rowSet.getInt("league_id"));
-        result.setLeagueCourseName(rowSet.getString("course_name"));
         result.setLeagueName(rowSet.getString("league_name"));
+        result.setLeagueCourseName(rowSet.getString("course_name"));
 
         return result;
     }
 
     public List<UserInLeague> getLeagueUsersByLeagueId(int leagueId) {
         List<UserInLeague> usersInLeague = new ArrayList<>();
-        String sql = "SELECT users.user_id, users.username, league_score, handicap FROM league_golfer JOIN users on users.user_id = league_golfer.user_id WHERE league_golfer.league_id = ?;";
+        String sql = "SELECT users.user_id, users.username, users.first_name, users.last_name, league_score, handicap FROM league_golfer JOIN users on users.user_id = league_golfer.user_id WHERE league_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
         while (rowSet.next()) {
             UserInLeague user = mapRowToUsersInLeague2(rowSet);
@@ -244,6 +262,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             UserInLeague result = new UserInLeague();
             result.setId(rowSet.getInt("user_id"));
             result.setUsername(rowSet.getString("username"));
+            result.setFirstName(rowSet.getString("first_name"));
+            result.setLastName(rowSet.getString("last_name"));
             result.setLeagueScore(rowSet.getInt("league_score"));
             result.setHandicap(rowSet.getInt("handicap"));
             return result;
@@ -291,7 +311,6 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setCity(rowSet.getString("city"));
         result.setState(rowSet.getString("state_abb"));
         result.setZipCode(rowSet.getInt("zip_code"));
-        result.setRating(rowSet.getInt("course_rating"));
         return result;
     }
 

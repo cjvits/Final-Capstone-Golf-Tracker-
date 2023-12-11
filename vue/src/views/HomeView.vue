@@ -16,6 +16,7 @@
   </div>
   <div class="right-column">
     <NewLeagueCreator ></NewLeagueCreator>
+    <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
@@ -93,11 +94,27 @@ export default {
 .loading-message {
   margin-top: 20px;
   font-style: italic;
-  color: #777;
+  color: darkkhaki;
+}
+
+h3 {
+  font-weight: bold;
+  text-decoration-line: underline;
 }
 
 h2 {
   color: #093708;
+}
+
+.league-organizer-link {
+  color: #093708;
+  justify-self: center;
+  padding: 2rem;
+}
+
+.league-organizer-link:hover {
+  color: #116110;
+  text-decoration-line: underline;
 }
 
 /* Container for flexboxes */
@@ -111,23 +128,32 @@ h2 {
 
 /* Left and right column */
 .right-column {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1.25;
-  border-radius: 15px;
-  margin: .5rem;
-  background-color: darkkhaki;
-  opacity: .8;
+   -webkit-flex: 1;
+   -ms-flex: 1;
+   flex: 1.25;
+   border-radius: 15px;
+   margin: .5rem;
+   background-color: darkkhaki;
+   opacity: .9;
+   padding: 1rem;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-grow: 1;
 }
 
 .left-column {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: .75;
-  border-radius: 15px;
-  margin: .5rem;
-  background-color: darkkhaki;
-  opacity: .8;
+   -webkit-flex: 1;
+   -ms-flex: 1;
+   flex: .75;
+   border-radius: 15px;
+   margin: .5rem;
+   background-color: darkkhaki;
+   opacity: .9;
+   padding: 1rem;
+   height: auto;
 }
 
 /* Middle column */
@@ -138,8 +164,10 @@ h2 {
   border-radius: 15px;
   margin: .5rem;
   background-color: #093708;
-  opacity: .8;
+  opacity: .9;
   color: darkkhaki;
+  padding: 1rem;
+  height: auto;
 }
 
 .leaderboard-title {

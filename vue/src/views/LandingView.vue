@@ -67,17 +67,18 @@ export default {
   display: flex;
   position: static;
 }
-.title {
+/* .title {
   background-color: white;
-  opacity: .5;
+  opacity: .8;
   width: 100%;
-} 
+}  */
 
 h1 {
   color:#093708;
   text-align: center;
   flex-grow: 1;
-  font-size: 2em;
+  /* font-size: 2em; */
+  font-size: 2.3em;
   font-weight: 700;
   font-family: 'Hedvig Letters Serif', serif;
   padding-top: 1rem;

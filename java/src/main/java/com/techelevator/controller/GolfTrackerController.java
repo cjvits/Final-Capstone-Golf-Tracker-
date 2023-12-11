@@ -24,7 +24,7 @@ public class GolfTrackerController {
     }
 
 
-   
+
 
     @PostMapping("/league")
     @ResponseStatus(HttpStatus.CREATED)
@@ -33,12 +33,22 @@ public class GolfTrackerController {
     }
 
 
+
+
     @GetMapping("/league/{userId}")
     public List<League> getLeagueById (@PathVariable int userId) {
 //        User loggedInUser = userDao.getUserByUsername(principal.getName());
 //        int userId = loggedInUser.getId();
 
         return golfTrackerDao.getLeaguesByUserId(userId);
+
+
+    }
+
+    @GetMapping("/league-organizer/{userId}")
+    public List <League> getLeaguesByCoordinatorId (@PathVariable int userId) {
+
+        return golfTrackerDao.getLeaguesByCoordinatorId(userId);
 
 
     }
@@ -60,10 +70,19 @@ public class GolfTrackerController {
         return golfTrackerDao.createMatch(newMatch);
     }
 
+    @PostMapping("/{leagueId}/{userId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<UserInLeague> addGolferToLeague(@PathVariable int leagueId, @PathVariable int userId) {
+        return golfTrackerDao.addUserToLeague(leagueId, userId);
+    }
 
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userDao.getUsers();
+    }
 
-
-
-
-    
+    @GetMapping("/users/{leagueId}")
+    public List<UserInLeague> getUsersInLeague(@PathVariable int leagueId) {
+        return golfTrackerDao.getLeagueUsersByLeagueId(leagueId);
+    }
 }

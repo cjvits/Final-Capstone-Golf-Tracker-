@@ -31,10 +31,6 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       },
-      ADD_TO_LEAGUE(state, user) {
-        //ADD THE USER TO THE LEAGUE OF THE LEAGUE ORGANIZER
-      }
-
     },
   });
   return store;

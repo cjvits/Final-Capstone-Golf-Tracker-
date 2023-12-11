@@ -8,7 +8,7 @@
                     <th>Name</th>
                     <th>Score</th>
                     <th>Handicap</th>
-                    <th>Course</th>
+                    <!-- <th>Course</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -17,7 +17,7 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.leagueScore }}</td>
                     <td>{{ user.handicap }}</td>
-                    <td>{{ league.course?.courseName }}</td>
+                    <!-- <td>{{ league.course?.courseName }}</td> -->
                 </tr>
             </tbody>
         </table>
@@ -71,13 +71,13 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid wheat;
     padding: 8px;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: wheat;
 }
 
 /* .leaderboard-title {
