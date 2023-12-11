@@ -24,7 +24,6 @@
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
                 <NewMatchForm></NewMatchForm>
-                <LeaderBoard></LeaderBoard>
 
             </div>
 
