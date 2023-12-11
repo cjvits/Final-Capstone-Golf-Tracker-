@@ -61,25 +61,26 @@ export default {
   align-items: center;
   padding: 0 20px;
   text-align: center;
-  font-family: 'Hedvig Letters Serif', serif;
+  font-family: 'Caveat', cursive;
   color: #093708;
   font-weight: 600;
   display: flex;
   position: static;
 }
-.title {
+/* .title {
   background-color: white;
-  opacity: .5;
+  opacity: .8;
   width: 100%;
-} 
+}  */
 
 h1 {
   color:#093708;
   text-align: center;
   flex-grow: 1;
-  font-size: 2em;
+  /* font-size: 2em; */
+  font-size: 3em;
   font-weight: 700;
-  font-family: 'Hedvig Letters Serif', serif;
+  font-family: 'Caveat', cursive;
   padding-top: 1rem;
   padding-left: 10rem;
   padding-right: 10rem;

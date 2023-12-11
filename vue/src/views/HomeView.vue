@@ -92,7 +92,7 @@ export default {
 .loading-message {
   margin-top: 20px;
   font-style: italic;
-  color: #777;
+  color: darkkhaki;
 }
 
 h2 {
@@ -115,7 +115,8 @@ h2 {
    border-radius: 15px;
    margin: .5rem;
    background-color: darkkhaki;
-   opacity: .8;
+   opacity: .9;
+   padding: 1rem;
 }
 
 .left-column {
@@ -125,7 +126,8 @@ h2 {
    border-radius: 15px;
    margin: .5rem;
    background-color: darkkhaki;
-   opacity: .8;
+   opacity: .9;
+   padding: 1rem;
 }
 
 /* Middle column */
@@ -136,8 +138,9 @@ h2 {
   border-radius: 15px;
   margin: .5rem;
   background-color: #093708;
-  opacity: .8;
+  opacity: .9;
   color: darkkhaki;
+  padding: 1rem;
 }
 
 .leaderboard-title {
