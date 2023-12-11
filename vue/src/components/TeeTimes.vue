@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import LeagueService from '@/services/LeagueService';
+import LeagueService from '../services/LeagueService';
 
 
 export default {
