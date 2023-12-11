@@ -1,9 +1,10 @@
 <template>
     <div class="admin-page-container">
-        hello from admin page!
+        Administrator Page
+        <NewCourseForm></NewCourseForm>
     </div>
     <div>
-        <NewCourseForm></NewCourseForm>
+        
     </div>
 </template>
 
@@ -11,6 +12,10 @@
     import NewCourseForm from '../components/NewCourseForm.vue';
 
     export default {
+
+        computed: {
+            
+        },
 
         components: {
             NewCourseForm,
