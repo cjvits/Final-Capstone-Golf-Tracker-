@@ -95,6 +95,11 @@ export default {
   color: darkkhaki;
 }
 
+h3 {
+  font-weight: bold;
+  text-decoration-line: underline;
+}
+
 h2 {
  color: #093708;
 }
@@ -107,6 +112,7 @@ h2 {
 
 .league-organizer-link:hover {
   color: #116110;
+  text-decoration-line: underline;
 }
 
 /* Container for flexboxes */

@@ -61,7 +61,7 @@ export default {
   align-items: center;
   padding: 0 20px;
   text-align: center;
-  font-family: 'Caveat', cursive;
+  font-family: 'Hedvig Letters Serif', serif;
   color: #093708;
   font-weight: 600;
   display: flex;
@@ -78,9 +78,9 @@ h1 {
   text-align: center;
   flex-grow: 1;
   /* font-size: 2em; */
-  font-size: 3em;
+  font-size: 2.3em;
   font-weight: 700;
-  font-family: 'Caveat', cursive;
+  font-family: 'Hedvig Letters Serif', serif;
   padding-top: 1rem;
   padding-left: 10rem;
   padding-right: 10rem;

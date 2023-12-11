@@ -17,12 +17,16 @@
 
 .constant-nav {
   background-color: #093708;
-  opacity: .85;
   padding: 7px;
-  color: wheat;
+  color: darkkhaki;
 }
 
 .link {
   color: darkkhaki;
+}
+
+.link:hover {
+  color: wheat;
+  text-decoration-line: underline;
 }
 </style>

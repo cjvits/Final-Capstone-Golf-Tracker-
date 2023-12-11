@@ -297,10 +297,10 @@ export default {
       text-align: center;
       text-decoration: none;
       display: inline-block;
+      justify-content: center;
       font-size: 16px;
-      margin: px 2px;
+      margin: 2em;
       cursor: pointer;
-      opacity: .9;
       /*This is the position of the button*/
       position: absolute;
       top: 40%;
