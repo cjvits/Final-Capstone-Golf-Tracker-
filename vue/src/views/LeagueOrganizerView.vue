@@ -29,9 +29,7 @@
             </div>
 
             <div class="right-column">
-                <h3>Add Yinzers to League</h3>
-                OR
-                <h3>League Yinzers</h3>
+            
                 <Golfers />
             </div>
         </div>
@@ -139,6 +137,7 @@ h2 {
     color: #06612f;
     font-weight: 600;
     text-align: center;
+    align-items: stretch;
 }
 
 /* Style the header */
@@ -155,7 +154,7 @@ h2 {
 /* Create three unequal columns that sits next to each other */
 .row {
   padding: 10px;
-  height: 50%; /* adjust to auto after things are in them! */
+  height: 75%;
 }
 
 /* Left and right column */
@@ -166,7 +165,8 @@ h2 {
     border-radius: 15px;
     margin: .5rem;
     background-color: darkkhaki;
-    opacity: .8;
+    opacity: .9;
+    overflow: scroll;
 }
 
 .left-column {
@@ -176,7 +176,8 @@ h2 {
     border-radius: 15px;
     margin: .5rem;
     background-color: darkkhaki;
-    opacity: .8;
+    opacity: .9;
+    overflow: scroll;
 }
 
 .center-column {
@@ -186,7 +187,27 @@ h2 {
   border-radius: 15px;
   margin: .5rem;
   background-color: #093708;
-  opacity: .8;
+  opacity: .9;
   color: darkkhaki;
+  overflow: scroll;
+}
+.left-column::-webkit-scrollbar,
+.right-column::-webkit-scrollbar,
+.center-column::-webkit-scrollbar {
+  width: 15px;
+}
+.left-column::-webkit-scrollbar-thumb,
+.right-column::-webkit-scrollbar-thumb{
+    background-color: darkkhaki;
+    border-radius: 15px;
+}
+.center-column::-webkit-scrollbar-thumb {
+  background-color: #093708;
+  border-radius: 15px;
+}
+.left-column::-webkit-scrollbar-corner,
+.right-column::-webkit-scrollbar-corner,
+.center-column::-webkit-scrollbar-corner {
+  display: none;
 }
 </style>
