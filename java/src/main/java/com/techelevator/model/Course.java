@@ -12,19 +12,9 @@ public class Course {
 
     private String state;
 
-    private int zipCode;
+    private String zipCode;
 
-    private int rating;
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public int getCourseId() {
+        public int getCourseId() {
         return courseId;
     }
 
@@ -56,7 +46,7 @@ public class Course {
         this.state = state;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
@@ -68,7 +58,7 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 }

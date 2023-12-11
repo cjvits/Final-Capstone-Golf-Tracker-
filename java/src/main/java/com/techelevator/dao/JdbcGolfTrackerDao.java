@@ -317,7 +317,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setStreetAddress(rowSet.getString("street_address"));
         result.setCity(rowSet.getString("city"));
         result.setState(rowSet.getString("state_abb"));
-        result.setZipCode(rowSet.getInt("zip_code"));
+        result.setZipCode(rowSet.getString("zip_code"));
         return result;
     }
 
