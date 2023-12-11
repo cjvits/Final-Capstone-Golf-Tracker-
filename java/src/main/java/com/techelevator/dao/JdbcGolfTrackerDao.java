@@ -168,6 +168,10 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         String sql = "INSERT INTO leagues (league_name, coordinator_id, course_id) VALUES (?, ?, ?) RETURNING league_id;";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class, league.getLeagueName(), league.getLeagueCoordinatorId(), league.getLeagueCourseId());
         league.setLeagueId(newId);
+        int initialCoordinatorScore = 0;
+        String sqlAddCoordinatorToLeague = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?);";
+        jdbcTemplate.update(sqlAddCoordinatorToLeague, league.getLeagueId(), league.getLeagueCoordinatorId(), initialCoordinatorScore);
+
 
         return league;
     }
