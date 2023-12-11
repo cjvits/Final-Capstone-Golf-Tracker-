@@ -59,7 +59,7 @@ export default {
 
         addGolfer() {
             LeagueService
-                .addGolferToLeague(this.league.id, this.user.id)
+                .addGolferToLeague(this.$route.params.leagueId, this.user.id)
                 .then((response) => {
                     if (response.status == 201) {
                         this.$router.push({
@@ -91,5 +91,17 @@ export default {
 </script>
 
 <style>
-/* style to display a golfer */
+button {
+    background-color: #093708;
+    color: darkkhaki;
+    border-radius: .5em;
+    padding: .5em;
+    margin: .5em;
+    font-family: 'Hedvig Letters Serif', serif;
+}
+
+button:hover {
+    background-color: #116110;
+    color: wheat;
+}
 </style>

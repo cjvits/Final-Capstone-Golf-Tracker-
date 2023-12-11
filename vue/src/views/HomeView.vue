@@ -11,13 +11,14 @@
     <h3 class="teeTimeTitle">Upcoming Tee Times:</h3>
     <TeeTimes v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users"/>
   </div>
+
   <div class="center-column">
     <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
+  
   <div class="right-column">
-    <NewLeagueCreator ></NewLeagueCreator>
     <LeagueOrganizerSelector></LeagueOrganizerSelector>
-    <!-- <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link> -->
+    <NewLeagueCreator ></NewLeagueCreator>
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
@@ -125,8 +126,7 @@ h2 {
   display: -webkit-flex;
   display: flex;
   padding: 10px;
-  height: 50%;
-  /* adjust to auto after things are in them! */
+  height: 75%;
 }
 
 /* Left and right column */
@@ -179,9 +179,11 @@ h2 {
 .center-column::-webkit-scrollbar {
   width: 15px;
 }
-.left-column::-webkit-scrollbar-thumb,
+.left-column::-webkit-scrollbar-thumb {
+  background-color: darkkhaki;
+}
 .center-column::-webkit-scrollbar-thumb {
-  background-color: darkgreen;
+  background-color: #093708;
   border-radius: 4px;
 }
 .left-column::-webkit-scrollbar-corner,
