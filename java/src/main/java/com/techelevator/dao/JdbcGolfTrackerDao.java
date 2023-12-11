@@ -72,31 +72,17 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
 
     //Matches
-//    @Override
-//   public List<User> getAllGolfersInMatch(int matchId) {
-//        List<User> result = new ArrayList<>();
-//        String sql = "select users.user_id, username, first_name, last_name, match_id from users join match_golfer on users.user_id = match_golfer.user_id WHERE match_golfer.match_id = ?;";
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, matchId);
-//        while (rowSet.next()) {
-//            User user = mapRowToUserInLeague(rowSet);
-//            result.add(user);
-//        }
-//        return result;
-//    }
-
-       @Override
-    public List<Match> getAllMatchesInLeague(int leagueId) {
-        List<Match> result = new ArrayList<>();
-        String sql = "select match_id, tee_date, tee_time FROM matches WHERE league_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
+    @Override
+    public List<Match> getMatchesByUserId (int userId) {
+        List<Match> matchesByUser = new ArrayList<>();
+        String sqlGetMatchByUserId = "Select tee_date, tee_time, league_name FROM matches JOIN match_golfer on match_golfer.match_id = matches.match_id JOIN users on match_golfer.user_id = users.user_id JOIN leagues on matches.league_id = leagues.league_id WHERE match_golfer.user_id = ? order by league_name ASC;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlGetMatchByUserId, userId);
         while (rowSet.next()) {
-            Match match = mapRowToMatch(rowSet);
-            result.add(match);
+            Match match = mapRowToMatchByUserId(rowSet);
+            matchesByUser.add(match);
         }
-        return result;
-
+        return matchesByUser;
     }
-
     @Override
     public Match getMatch(int matchId) {
         Match match = new Match();
@@ -197,7 +183,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public Course addCourse(Course course) {
-        String sql = "INSERT INTO courses (course_name, street_address, city, state_abb, zip_code, course_rating) VALUES (?, ?, ?, ?, ?, ?) RETURNING course_id;";
+        String sql = "INSERT INTO courses (course_name, street_address, city, state_abb, zip_code) VALUES (?, ?, ?, ?, ?) RETURNING course_id;";
         int newId = jdbcTemplate.queryForObject(sql, Integer.class,
                 course.getCourseName(),
                 course.getStreetAddress(),
@@ -236,6 +222,15 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         return result;
     }
 
+    private Match mapRowToMatchByUserId(SqlRowSet rowSet) {
+        Match result = new Match();
+        result.setTeeDate(rowSet.getDate("tee_date").toLocalDate());
+        result.setTeeTime(rowSet.getTime("tee_time").toLocalTime());
+        result.setLeagueName(rowSet.getString("league_name"));
+        return result;
+    }
+
+
     private Match mapRowToMatch(SqlRowSet rowSet) {
         Match result = new Match();
         result.setMatchId(rowSet.getInt("match_id"));
@@ -244,7 +239,6 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
         return result;
     }
-
     private League mapRowToLeagueIdAndName(SqlRowSet rowSet) {
         League result = new League();
         result.setLeagueId(rowSet.getInt("league_id"));
