@@ -103,7 +103,7 @@ export default {
     box-sizing: border-box;
 }
 .page-container {
-    padding-top: 15%;
+    padding-top: 5%;
     background-image: url("../assets/goldenGolf.jpeg");
     background-color: #312917;
     height: 100vh;
@@ -111,7 +111,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Hedvig Letters Serif', serif;
-    color: #06612f;
+    color: #093708;
     font-weight: 600;
     text-align: center;
 }
@@ -133,7 +133,7 @@ h2 {
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Hedvig Letters Serif', serif;
-    color: #06612f;
+    color: #093708;
     font-weight: 600;
     text-align: center;
     align-items: stretch;
@@ -208,5 +208,13 @@ h2 {
 .right-column::-webkit-scrollbar-corner,
 .center-column::-webkit-scrollbar-corner {
   display: none;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
 }
 </style>
