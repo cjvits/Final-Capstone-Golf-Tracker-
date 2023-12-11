@@ -24,12 +24,11 @@ CREATE TABLE courses(
     street_address varchar(100),
     city varchar (50) NOT NULL,
     state_abb varchar (2) NOT NULL,
-    zip_code integer NOT NULL,
+    zip_code varchar(10) NOT NULL,
     latitude decimal(10,8),
     longitude decimal (11,8),
     website varchar (100),
-    CONSTRAINT PK_course PRIMARY KEY (course_id),
-    CONSTRAINT legit_zip CHECK (zip_code < 100000)
+    CONSTRAINT PK_course PRIMARY KEY (course_id)
     );
 
 CREATE TABLE leagues(

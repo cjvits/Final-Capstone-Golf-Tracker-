@@ -39,7 +39,10 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     @Override
     public List<League> getLeaguesByCoordinatorId(int userId){
         List<League> leaguesByCoordinatorId = new ArrayList<>();
-        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE leagues.coordinator_id = ?;";
+        String sqlLeagueInfo = "Select league_id, league_name, course_name " +
+                "FROM leagues " +
+                "JOIN courses on courses.course_id = leagues.course_id " +
+                "WHERE leagues.coordinator_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, userId);
         while (rowSet.next()){
             League league = mapRowToLeagueIdAndName(rowSet);
@@ -314,7 +317,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         result.setStreetAddress(rowSet.getString("street_address"));
         result.setCity(rowSet.getString("city"));
         result.setState(rowSet.getString("state_abb"));
-        result.setZipCode(rowSet.getInt("zip_code"));
+        result.setZipCode(rowSet.getString("zip_code"));
         return result;
     }
 
