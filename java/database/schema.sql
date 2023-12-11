@@ -24,7 +24,7 @@ CREATE TABLE courses(
     street_address varchar(100),
     city varchar (50) NOT NULL,
     state_abb varchar (2) NOT NULL,
-    zip_code integer NOT NULL,
+    zip_code varchar(10) NOT NULL,
     latitude decimal(10,8),
     longitude decimal (11,8),
     website varchar (100),
