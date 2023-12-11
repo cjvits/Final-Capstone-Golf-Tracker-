@@ -1,27 +1,4 @@
-<!-- TODO: form for updating scores
-
-TODO: form for inviting golfers to league
-
-TODO: form for setting matches/tee-times -->
-
 <template>
-    <!--  IF YOU ARE NOT A LEAGUE ORGANIZER AND YOU GET TO THIS PAGE -->
-    <!-- <div class="page-container" v-if="!isLeagueOrganizer">
-        <div class="info">
-            <h1>Become a League Organizer</h1>
-            <h2>A League Organizer takes on the responsibility to coordinate & update a specific league.</h2>
-            <h3>As a league organizer, you will:</h3>
-            <ul>
-                <li>Choose the course the course for the league</li>
-                <li>Invite golfers into your league</li>
-                <li>Set up tee-times & matches for golfers in your league</li>
-                <li>Update individual scores after each day of league play</li>
-            </ul>
-        </div>
-        <NewLeagueCreator></NewLeagueCreator>
-    </div> -->
-
-    <!-- IF YOU ARE A LEAGUE ORGANIZER -->
     <div class="organizer-page-container">
         <div class="header">
             <h2>Yinzer League Organizer</h2>
@@ -52,9 +29,7 @@ TODO: form for setting matches/tee-times -->
             </div>
 
             <div class="right-column">
-                <h3>Add Yinzers to League</h3>
-                OR
-                <h3>League Yinzers</h3>
+            
                 <Golfers />
             </div>
         </div>
@@ -62,7 +37,6 @@ TODO: form for setting matches/tee-times -->
 </template>
 
 <script>
-// import NewLeagueCreator from '../components/NewLeagueCreator.vue';
 import LeagueService from '../services/LeagueService.js';
 // import LeaderBoard from '../components/LeaderBoard.vue';
 import Golfers from '../components/Golfers.vue';
@@ -85,12 +59,6 @@ export default {
 
     // computed: {
 
-    // getShowHideFormText() {
-    //   if (this.isFormShowing) {
-    //     return 'Hide Form';
-    //   }
-    //   return 'Become a League Organizer';
-    // },
 
     //     togglePage() {
     //       if (this.user.id === leagueCoordinator.id) {
@@ -169,6 +137,7 @@ h2 {
     color: #06612f;
     font-weight: 600;
     text-align: center;
+    align-items: stretch;
 }
 
 /* Style the header */
@@ -185,7 +154,7 @@ h2 {
 /* Create three unequal columns that sits next to each other */
 .row {
   padding: 10px;
-  height: 50%; /* adjust to auto after things are in them! */
+  height: 75%;
 }
 
 /* Left and right column */
@@ -196,7 +165,8 @@ h2 {
     border-radius: 15px;
     margin: .5rem;
     background-color: darkkhaki;
-    opacity: .8;
+    opacity: .9;
+    overflow: scroll;
 }
 
 .left-column {
@@ -206,7 +176,8 @@ h2 {
     border-radius: 15px;
     margin: .5rem;
     background-color: darkkhaki;
-    opacity: .8;
+    opacity: .9;
+    overflow: scroll;
 }
 
 .center-column {
@@ -216,7 +187,27 @@ h2 {
   border-radius: 15px;
   margin: .5rem;
   background-color: #093708;
-  opacity: .8;
+  opacity: .9;
   color: darkkhaki;
+  overflow: scroll;
+}
+.left-column::-webkit-scrollbar,
+.right-column::-webkit-scrollbar,
+.center-column::-webkit-scrollbar {
+  width: 15px;
+}
+.left-column::-webkit-scrollbar-thumb,
+.right-column::-webkit-scrollbar-thumb{
+    background-color: darkkhaki;
+    border-radius: 15px;
+}
+.center-column::-webkit-scrollbar-thumb {
+  background-color: #093708;
+  border-radius: 15px;
+}
+.left-column::-webkit-scrollbar-corner,
+.right-column::-webkit-scrollbar-corner,
+.center-column::-webkit-scrollbar-corner {
+  display: none;
 }
 </style>

@@ -1,18 +1,9 @@
 <template>
-    <div>
-        <a href class="league-organizer-link" v-on:click.prevent="isFormShowing = !isFormShowing">
-            {{ isFormShowing ? "Not a League Organizer" : "View Leagues that I Coordinate" }}
-        </a>
-
-        <form class="league-selector" v-show="isFormShowing" v-on:submit.prevent=this.$router.push(this.league.leagueId)> <!-- link might not work -->
-            <div class="form-input-group">
-                <label for="myLeague">Select League:</label>
-                <select id="myLeague" v-model="league.leagueId">
-                    <option :value="league.leagueId" v-for="league in leagues" :key="league.leagueId">{{ league.leagueName }}</option>
-                </select>
-            </div>
-            <button class="submitBtn" type="submit">go to league</button>
-        </form>
+    <h1>Leagues I Coordinate:</h1>
+    <div v-for="league in leagues" :key="league.leagueId">  
+        <router-link class="league-organizer-link" v-bind:to="{ name:'league-organizer', params: { leagueId: league.leagueId}}">
+        {{ league.leagueName }}
+        </router-link>
     </div>
 </template>
 
@@ -47,6 +38,12 @@ export default {
 </script>
 
 <style scoped>
+h1{
+    text-decoration-line: underline;
+    font-weight: bold;
+    font-size: large;
+}
+
 .league-organizer-link {
   color: #093708;
   justify-self: center;
