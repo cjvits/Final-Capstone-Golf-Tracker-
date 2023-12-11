@@ -5,13 +5,18 @@
 
     <!-- User search bar -->
     <div class="search-bar">
-      <input type="text" id="autocomplete" placeholder="Search for a place" />
+      <input type="text" id="autocomplete" placeholder="  Search for a place" />
       <button id="search-button">Search</button>
 
-    <!-- Find my location button -->
-       <div id="map"></div>
-    <button id="findLocationButton" @click="findMyLocation">Find My Location</button>
+    <div>
+      <div id="map-container">
+      <!-- Find my location button -->
+      
+      <button id="findLocationButton" @click="findMyLocation">Find My Location</button>
+        <div id="map"></div>
     </div>
+    </div></div>
+
   </div>
 
 </template>
@@ -280,7 +285,7 @@ export default {
 <style scoped>
     #map {
       height: 27rem;
-      width: auto;
+      width: 700px;
       border: 10px solid rgb(10, 81, 10);
       margin: 60px;
       padding: 0px;
@@ -302,8 +307,8 @@ export default {
       cursor: pointer;
       /*This is the position of the button*/
       position: absolute;
-      top: 24.8%;
-      left: 45%;
+      top: 2.5%;
+      left: 35%;
       transform: translate(-50, -50);
     }
 
@@ -330,7 +335,7 @@ export default {
 
     .search-bar input[type="text"] {
       width: auto;
-      padding: 10px;
+      padding: 0px;
       border: none;
     }
 

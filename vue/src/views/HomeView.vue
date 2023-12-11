@@ -142,6 +142,7 @@ h2 {
 }
 
 .left-column {
+  overflow: scroll;
    -webkit-flex: 1;
    -ms-flex: 1;
    flex: .75;
@@ -155,6 +156,7 @@ h2 {
 
 /* Middle column */
 .center-column {
+  overflow: scroll;
   -webkit-flex: 2;
   -ms-flex: 2;
   flex: 2;
@@ -165,6 +167,23 @@ h2 {
   color: darkkhaki;
   padding: 1rem;
   height: auto;
+}
+
+
+.left-column::-webkit-scrollbar,
+.center-column::-webkit-scrollbar {
+  width: 15px;
+}
+
+.left-column::-webkit-scrollbar-thumb,
+.center-column::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+}
+
+.left-column::-webkit-scrollbar-corner,
+.center-column::-webkit-scrollbar-corner {
+  display: none;
 }
 
 .leaderboard-title {
