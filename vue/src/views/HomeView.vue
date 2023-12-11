@@ -157,6 +157,7 @@ h2 {
    opacity: .9;
    padding: 1rem;
    height: auto;
+   overflow: scroll;
 }
 
 /* Middle column */
@@ -171,7 +172,23 @@ h2 {
   color: darkkhaki;
   padding: 1rem;
   height: auto;
+  overflow: scroll;
 }
+
+.left-column::-webkit-scrollbar,
+.center-column::-webkit-scrollbar {
+  width: 15px;
+}
+.left-column::-webkit-scrollbar-thumb,
+.center-column::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+}
+.left-column::-webkit-scrollbar-corner,
+.center-column::-webkit-scrollbar-corner {
+  display: none;
+}
+
 
 .leaderboard-title {
   width: 100%;
