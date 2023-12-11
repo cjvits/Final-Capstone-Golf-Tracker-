@@ -1,7 +1,7 @@
 <template>
     <div>
         <button v-on:click.prevent="isFormShowing = !isFormShowing">
-            {{ isFormShowing ? "Hide Form" : "Become a League Organizer!" }}
+            {{ isFormShowing ? "Hide Form" : "Create New League" }}
         </button>
 
         <form class="new-league-maker" v-show="isFormShowing" v-on:submit.prevent="createNewLeague">
