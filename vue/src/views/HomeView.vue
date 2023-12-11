@@ -16,7 +16,8 @@
   </div>
   <div class="right-column">
     <NewLeagueCreator ></NewLeagueCreator>
-    <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
+    <LeagueOrganizerSelector></LeagueOrganizerSelector>
+    <!-- <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link> -->
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
@@ -33,12 +34,14 @@ import LeaderBoard from "../components/LeaderBoard.vue";
 import NewLeagueCreator from "../components/NewLeagueCreator.vue";
 import LeagueService from "../services/LeagueService";
 import TeeTimes from "../components/TeeTimes.vue";
+import LeagueOrganizerSelector from "../components/LeagueOrganizerSelector.vue";
 
 export default {
   components: {
     LeaderBoard,
     NewLeagueCreator,
     TeeTimes,
+    LeagueOrganizerSelector,
   },
   data() {
     return {
@@ -106,7 +109,7 @@ h2 {
   color: #093708;
 }
 
-.league-organizer-link {
+/* .league-organizer-link {
   color: #093708;
   justify-self: center;
   padding: 2rem;
@@ -115,7 +118,7 @@ h2 {
 .league-organizer-link:hover {
   color: #116110;
   text-decoration-line: underline;
-}
+} */
 
 /* Container for flexboxes */
 .row {
@@ -154,6 +157,7 @@ h2 {
    opacity: .9;
    padding: 1rem;
    height: auto;
+   overflow: scroll;
 }
 
 /* Middle column */
@@ -168,7 +172,23 @@ h2 {
   color: darkkhaki;
   padding: 1rem;
   height: auto;
+  overflow: scroll;
 }
+
+.left-column::-webkit-scrollbar,
+.center-column::-webkit-scrollbar {
+  width: 15px;
+}
+.left-column::-webkit-scrollbar-thumb,
+.center-column::-webkit-scrollbar-thumb {
+  background-color: darkgreen;
+  border-radius: 4px;
+}
+.left-column::-webkit-scrollbar-corner,
+.center-column::-webkit-scrollbar-corner {
+  display: none;
+}
+
 
 .leaderboard-title {
   width: 100%;
@@ -185,6 +205,7 @@ h2 {
 
 .home-container {
   background-image: url("../assets/goldenGolf.jpeg");
+  background-color: #312917;
   height: 100vh;
   background-size: cover;
   background-position: center;

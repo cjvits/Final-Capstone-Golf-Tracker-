@@ -60,7 +60,7 @@ const routes = [
     }
   },
   {
-    path: "/league-organizer",
+    path: "/league-organizer/:leagueId",
     name: "league-organizer",
     component: LeagueOrganizerView,
     meta: {

@@ -49,7 +49,7 @@ export default {
                 .then((response) => {
                     if (response.status == 201) {
                         this.$router.push({
-                            path: '/league-organizer',
+                            path: '/league-organizer/' + this.$store.leagueId,
                             query: { registration: 'success' },
                         });
                     }

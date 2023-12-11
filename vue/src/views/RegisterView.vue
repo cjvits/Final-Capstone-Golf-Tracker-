@@ -113,6 +113,7 @@ form {
   align-items: center;
   display: flex;
   background-image: url("../assets/goldenGolf.jpeg");
+  background-color: #312917;
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -152,10 +153,10 @@ label {
   text-align: center;
   margin: auto;
   font-size: 1em;
-  background-color: #071e06;
+  background-color: #093708;
   font-weight: 600;
   font-family: 'Hedvig Letters Serif', serif;
-  color: wheat;
+  color: darkkhaki;
 }
 
 p {
