@@ -71,14 +71,17 @@ export default {
         }
 
         }
-    },
+    }
+    
 
-    created() {
+    created(){
         LeagueService
             .getAllGolfers()
-            .then((response) => this.users = response.data)
+            .then((response) => this.users = response.data);
     }
 }
+
+
 </script>
 
 <style>
