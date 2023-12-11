@@ -12,7 +12,7 @@
             <div class="all-possible-golfers">
                 <label for="golfers">add a yinzer:</label>
                 <select id="league-golfer" v-model="user.id">
-                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.username }}</option>
+                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + user.lastname }}</option>
                 </select>
             </div>
 
