@@ -59,7 +59,7 @@ export default {
 
         addGolfer() {
             LeagueService
-                .addGolferToLeague(this.league.id, this.user.id)
+                .addGolferToLeague(this.$route.params.leagueId, this.user.id)
                 .then((response) => {
                     if (response.status == 201) {
                         this.$router.push({
