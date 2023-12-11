@@ -2,25 +2,29 @@
 <!-- THE GOLFER COMPONENT WILL BE USED FOR A LEAGUE ORGANIZER TO SELECT GOLFERS FOR THEIR LEAGUE -->
 
 <template>
-        <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
-            {{ isLeagueInProgress ?  "start league now!" : "add more yinzers" }}
-        </button>
+    <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
+        {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
+    </button>
     <section class="golfers-to-add" v-if=isLeagueInProgress>
-        Add some yinzers to your new league:
-        <ul>
-            <li v-for="user in users" :key="user.id">
-                {{ user.firstName }}
-                {{ user.lastName }} :
-                {{ user.email }}
-                <label for="chk-to-add">add golfer?</label><input type="checkbox" id="chk-to-add"
-                    v-bind:checked="addGolfer">
-            </li>
-        </ul>
+        <form class="new-member-form" v-on:submit.prevent="addGolfer">
+            <h1>Add some yinzers to your new league:</h1>
+
+            <div class="all-possible-golfers">
+                <label for="golfers">add a yinzer:</label>
+                <select id="league-golfer" v-model="user.id">
+                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.username }}</option>
+                </select>
+            </div>
+
+            <button class="submitBtn" type="submit">add yinzer to league</button>
+        
+        </form>
+     
 
     </section>
 
     <section class="golfers-in-league" v-else>
-       <GolfersInLeague></GolfersInLeague>
+        <GolfersInLeague></GolfersInLeague>
     </section>
 </template>
 
@@ -32,17 +36,20 @@ export default {
     data() {
         return {
             isLeagueInProgress: false,
-            users: []
+            users: [],
+
+            user: {
+                id: 0,
+                firstName: '',
+                lastName: '',
+                email:'',
+                username: ''
+            }
         }
     },
 
     components: {
         GolfersInLeague,
-
-    },
-
-    computed: {
-
     },
 
     methods: {
@@ -70,8 +77,8 @@ export default {
                 });
         }
 
-        }
     },
+
 
     created() {
         LeagueService

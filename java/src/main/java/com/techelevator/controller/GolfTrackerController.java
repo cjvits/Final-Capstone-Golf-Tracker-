@@ -75,6 +75,13 @@ public class GolfTrackerController {
         return golfTrackerDao.addUserToLeague(leagueId, userId);
     }
 
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userDao.getUsers();
+    }
 
-    
+    @GetMapping("/users/{leagueId}")
+    public List<UserInLeague> getUsersInLeague(@PathVariable int leagueId) {
+        return golfTrackerDao.getLeagueUsersByLeagueId(leagueId);
+    }
 }

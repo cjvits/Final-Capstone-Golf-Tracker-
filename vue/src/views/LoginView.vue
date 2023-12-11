@@ -133,9 +133,14 @@ label {
   text-align: center;
   margin: auto;
   font-size: 1em;
-  background-color: #071e06;
+  background-color: #093708;
   font-weight: 600;
   font-family: 'Hedvig Letters Serif', serif;
+  color: darkkhaki;
+}
+
+.submitBtn:hover {
+  background-color: #116110;
   color: wheat;
 }
 
@@ -145,7 +150,12 @@ p {
 }
 
 .sign-up-link {
-  color: rgb(128, 124, 66);
+  color: darkkhaki;
+}
+
+.sign-up-link:hover {
+  color: wheat;
+  text-decoration-line: underline;
 }
 
 .alert {
