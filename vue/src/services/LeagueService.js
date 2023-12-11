@@ -4,32 +4,40 @@ export default {
     //you cannot know the league id on the front end, you only know who is logged in
     
     getLeaguesByUserId(userId){
-        return axios.get(`/league/${userId}`)
+        return axios.get(`/league/${userId}`);
     },
 
     getAllCourses() {
-        return axios.get(`/course`)
+        return axios.get(`/course`);
     },
 
     newLeague(league) {
-        return axios.post(`/league`, league)
+        return axios.post(`/league`, league);
     }, 
 
     // for selecting golfers for a league .... but just realized there is a method in the USER backend code that was given to us... probably better
     getAllGolfers() {
-        return axios.get(`/users`)
+        return axios.get(`/users`);
     },
 
     addGolferToLeague(leagueId, userId) {
-        return axios.post(`/${leagueId}/${userId}`)
+        return axios.post(`/${leagueId}/${userId}`);
     },
 
     getLeagueGolfers(leagueId) {
-        return axios.get(`/users/${leagueId}`)
+        return axios.get(`/users/${leagueId}`);
     },
 
     getLeaguesByCoordinatorId(userId) {
-    return axios.get(`/league-organizer/${userId}`)
-    }
+        return axios.get(`/league-organizer/${userId}`);
+    },
 
-}
+    createMatch(match){
+        return axios.post(`/match`, match);
+    },
+
+    addUserToMatch(userId, match){
+        return axios.post(`/match/${userId}`, match);
+    },
+
+};

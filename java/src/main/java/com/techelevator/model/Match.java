@@ -25,7 +25,7 @@ public class Match {
 
     private List<UserInLeague> golfers;
 
-    public Match(int matchId, League matchLeague, LocalDate teeDate, LocalTime teeTime, List<UserInLeague> golfers, Map<User, Integer> matchGolferScores) {
+    public Match(int matchId, League matchLeague, LocalDate teeDate, LocalTime teeTime, List<UserInLeague> golfers) {
         this.matchId = matchId;
         this.matchLeague = matchLeague;
         this.teeDate = teeDate;

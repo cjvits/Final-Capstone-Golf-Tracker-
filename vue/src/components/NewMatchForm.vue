@@ -8,16 +8,7 @@
         <form class="new-match-maker" v-show="isFormShowing" v-on:submit.prevent="createNewMatch">
             <h1>Create a New Match</h1>
 
-            <div class="form-input-group">
-                <label for="match-players">New Match Player1</label>
-                <!-- <option v-for="user in users" :key="user.id">{{ user.username }}></option> -->
-                <input type="text" id="match-player-names" v-model="match.player1" required autofocus />
-            </div>
-
-            <div class="form-input-group">
-                <label for="match-players">New Match Player2</label>
-                <input type="text" id="match-player-names" v-model="match.player2" required autofocus />
-            </div>
+            <!-- this is where the players used to be, we will add those in after -->
 
             <div class="form-input-group">
                 <label for="match-date">New Match Date</label>
@@ -31,7 +22,22 @@
 
             
 
-            <button class="submitBtn" type="submit">create new match</button>
+            <button class="submitBtn" type="submit">Update Match</button>
+        </form>
+
+        <form class="new-match-maker" v-show="isFormShowing" v-on:submit.prevent="updateUsersInMatch">
+            
+            <div class="form-input-group">
+                <label for="match-player">Player 1</label>
+                <input type="text" id="match-player1" v-model="match.player1" required autofocus />
+            </div>
+
+            <div class="form-input-group">
+                <label for="match-player">Player 2</label>
+                <input type="text" id="match-player2" v-model="match.player2" required autofocus />
+            </div>
+            
+            <button class="submitBtn" type="submit">Update Match</button>
         </form>
     </div>
 </template>
@@ -63,8 +69,8 @@ export default {
     methods: {
         createNewMatch() {
             LeagueService
-            .createMatch(this.match)
-            .then((response) => {
+                .createMatch(this.match)
+                .then((response) => {
                     if (response.status == 201) {
                         this.$router.push({
                             path: '/league-organizer',
@@ -79,14 +85,32 @@ export default {
                         this.registrationErrorMsg = 'Bad Request: Validation Errors';
                     }
                 });
+            },
+        updateUsersInMatch(){
+            LeagueService
+                .addUserToMatch(this.user.id, this.match.id)
+                .then((response) => {
+                if (response.status == 201) {
+                    this.$router.push({
+                            path: '/league-organizer',
+                            query: { registration: 'success' },
+                        });
+                     }
+                })
+                .catch((error) => {
+                    const response = error.response;
+                    this.registrationErrors = true;
+                    if (response.status === 400) {
+                        this.registrationErrorMsg = 'Bad Request: Validation Errors';
+                    }
+                });
             }
-        },
-        created() {
-
+    },
+    created() {
         LeagueService
             .getAllGolfers()
             .then((response) => this.matches = response.data)
-        }
+    }
 
 }
 </script>
