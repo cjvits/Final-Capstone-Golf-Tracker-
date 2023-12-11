@@ -11,6 +11,16 @@ public class Match {
 
     private League matchLeague;
 
+    public String getLeagueName() {
+        return leagueName;
+    }
+
+    public void setLeagueName(String leagueName) {
+        this.leagueName = leagueName;
+    }
+
+    private String leagueName;
+
     public League getMatchLeague() {
         return matchLeague;
     }
