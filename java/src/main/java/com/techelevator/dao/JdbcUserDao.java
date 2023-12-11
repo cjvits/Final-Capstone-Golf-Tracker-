@@ -42,7 +42,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT user_id, username, first_name, last_name, email, password_hash, role FROM users ORDER BY first_name ASC;";
+        String sql = "SELECT user_id, username, first_name, last_name, email, password_hash, role FROM users WHERE first_name IS NOT NULL ORDER BY first_name ASC;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
