@@ -16,7 +16,7 @@
   </div>
   <div class="right-column">
     <NewLeagueCreator ></NewLeagueCreator>
-    <router-link v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
+    <router-link class="league-organizer-link" v-bind:to="{name: 'league-organizer'}">My League Organizer Page</router-link>
   </div>
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
@@ -99,6 +99,16 @@ h2 {
  color: #093708;
 }
 
+.league-organizer-link {
+  color: #093708;
+  justify-self: center;
+  padding: 2rem;
+}
+
+.league-organizer-link:hover {
+  color: #116110;
+}
+
 /* Container for flexboxes */
 .row {
   display: -webkit-flex;
@@ -117,6 +127,12 @@ h2 {
    background-color: darkkhaki;
    opacity: .9;
    padding: 1rem;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-grow: 1;
 }
 
 .left-column {
@@ -128,6 +144,7 @@ h2 {
    background-color: darkkhaki;
    opacity: .9;
    padding: 1rem;
+   height: auto;
 }
 
 /* Middle column */
@@ -141,6 +158,7 @@ h2 {
   opacity: .9;
   color: darkkhaki;
   padding: 1rem;
+  height: auto;
 }
 
 .leaderboard-title {
