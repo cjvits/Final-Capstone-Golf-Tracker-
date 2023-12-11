@@ -109,7 +109,7 @@ h2 {
   color: #093708;
 }
 
-.league-organizer-link {
+/* .league-organizer-link {
   color: #093708;
   justify-self: center;
   padding: 2rem;
@@ -118,7 +118,7 @@ h2 {
 .league-organizer-link:hover {
   color: #116110;
   text-decoration-line: underline;
-}
+} */
 
 /* Container for flexboxes */
 .row {

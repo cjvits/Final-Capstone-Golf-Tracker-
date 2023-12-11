@@ -37,7 +37,7 @@ export default {
 
     created () {
         LeagueService
-            .getLeaguesByCoordinatorId(this.$store.userId)
+            .getLeaguesByCoordinatorId(this.$store.state.user.id)
             .then((response) => this.leagues = response.data);
 
     }
@@ -50,7 +50,7 @@ export default {
 .league-organizer-link {
   color: #093708;
   justify-self: center;
-  padding: 2rem;
+  margin-top: 4em;
 }
 
 .league-organizer-link:hover {
