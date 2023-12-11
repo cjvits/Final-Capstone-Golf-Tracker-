@@ -13,6 +13,7 @@
     align-self: center;
 
     background-image: url("../assets/goldenGolf.jpeg");
+    background-color: #312917;
     backdrop-filter: blur(10px);
     height: 100vh;
     background-size: cover;
