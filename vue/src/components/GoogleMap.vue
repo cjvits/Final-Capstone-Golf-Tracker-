@@ -277,9 +277,9 @@ export default {
 </script>
 
 <!-- MAP STYLING -->
-<style>
+<style scoped>
     #map {
-      height: 600px;
+      height: 27rem;
       width: auto;
       border: 10px solid rgb(10, 81, 10);
       margin: 60px;
@@ -296,10 +296,10 @@ export default {
       text-align: center;
       text-decoration: none;
       display: inline-block;
+      justify-content: center;
       font-size: 16px;
-      margin: px 2px;
+      margin: 2em;
       cursor: pointer;
-      opacity: 75%;
       /*This is the position of the button*/
       position: absolute;
       top: 24.8%;
@@ -310,7 +310,7 @@ export default {
     #search-area {
       background-color: white;
       border: none;
-      width: 40%;
+      width: auto;
       height: 30px;
       color: rgb(28, 25, 25);
       padding: 1px;
@@ -323,12 +323,13 @@ export default {
     }
 
     .search-bar {
+      position: relative;
       text-align: left;
-      padding-left: 10px;
+      padding-left: 2rem;
     }
 
     .search-bar input[type="text"] {
-      width: 80%;
+      width: auto;
       padding: 10px;
       border: none;
     }
