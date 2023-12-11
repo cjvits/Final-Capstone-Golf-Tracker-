@@ -1,35 +1,31 @@
 <template>
     <div>
         <form class="new-course-maker" v-on:submit.prevent="createNewCourse">
-            <h1>Create a New Course</h1>
+            <h1>Add a Course</h1>
 
-            <!--courseName: '',
-                streetAddress: '',
-                city: '',
-                state: '',
-                zipCode: 0,-->
+           
             <div class="form-input-group">
-                <label for="course-name">New Course Name</label>
+                <label for="course-name">Course Name</label>
                 <input type="text" id="course-name" v-model="course.courseName" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="street-address">New Street Address Name</label>
+                <label for="street-address">Street Address </label>
                 <input type="text" id="street-address" v-model="course.streetAddress" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="city-name">New City Name</label>
-                <input type="text" id="city-name" v-model="course.cityName" required autofocus />
+                <label for="city-name">City </label>
+                <input type="text" id="city-name" v-model="course.city" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="state-name">New State Name</label>
-                <input type="text" id="state-name" v-model="course.stateName" required autofocus />
+                <label for="state-name">State</label>
+                <input type="text" id="state-name" v-model="course.state" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="zip-code">New ZipCode</label>
+                <label for="zip-code">Zip</label>
                 <input type="text" id="zip-code" v-model="course.zipCode" required autofocus />
             </div>
 
@@ -50,7 +46,7 @@ export default {
                 streetAddress: '',
                 city: '',
                 state: '',
-                zipCode: 0,
+                zipCode: ''
             }
         }
     },

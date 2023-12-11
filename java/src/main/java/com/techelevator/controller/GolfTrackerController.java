@@ -91,4 +91,9 @@ public class GolfTrackerController {
     public List<UserInLeague> getUsersInLeague(@PathVariable int leagueId) {
         return golfTrackerDao.getLeagueUsersByLeagueId(leagueId);
     }
+
+    @GetMapping("/match/{userId}")
+    public List<Match> getMatchesByUserId(@PathVariable int userId) {
+        return golfTrackerDao.getMatchesByUserId(userId);
+    }
 }
