@@ -26,6 +26,10 @@ export default {
 
     getLeagueGolfers(leagueId) {
         return axios.get(`/users/${leagueId}`)
+    },
+
+    getLeaguesByCoordinatorId(userId) {
+    return axios.get(`/league-organizer/${userId}`)
     }
 
 }
