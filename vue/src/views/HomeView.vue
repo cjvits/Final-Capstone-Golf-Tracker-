@@ -1,10 +1,10 @@
 <!-- src/views/HomeView.vue -->
 <template>
-<div class="home-container">
+  <div class="home-container">
 
-<div class="header">
-  <h2>Welcome Home Ya Golf'n Yinzer!</h2>
-</div>
+    <div class="header">
+      <h2>Welcome Home Ya Golf'n Yinzer!</h2>
+    </div>
 
 <div class="row">
   <div class="left-column">
@@ -21,11 +21,11 @@
 </div>
 <!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
 
-<!-- <div class="footer">
+    <!-- <div class="footer">
   <p>
   </p>
 </div> -->
-</div>
+  </div>
 </template>
 
 <script>
@@ -56,11 +56,12 @@ export default {
     };
   },
   methods: {
-    logOut(){
-      this.$store.commit("LOGOUT");
-      this.$router.push("/");
-    },
-    retrieveLeagues(){
+    // logOut(){
+    //   this.$store.commit("LOGOUT");
+    //   this.$router.push("/");
+    // },
+    //send to logout view in order to logout. Code written for us already in LogoutView
+    retrieveLeagues() {
       LeagueService
         .getLeaguesByUserId(this.$store.state.user.id)
         .then(response => {
@@ -71,7 +72,7 @@ export default {
         });
     }
   },
-  created(){
+  created() {
     this.retrieveLeagues();
   }
 
@@ -89,6 +90,7 @@ export default {
   text-align: center;
   font-size: 35px;
 }
+
 .loading-message {
   margin-top: 20px;
   font-style: italic;
@@ -101,7 +103,7 @@ h3 {
 }
 
 h2 {
- color: #093708;
+  color: #093708;
 }
 
 .league-organizer-link {
@@ -120,7 +122,8 @@ h2 {
   display: -webkit-flex;
   display: flex;
   padding: 10px;
-  height: 50%; /* adjust to auto after things are in them! */
+  height: 50%;
+  /* adjust to auto after things are in them! */
 }
 
 /* Left and right column */
@@ -202,5 +205,4 @@ h2 {
     flex-direction: column;
   }
 }
-
 </style>
