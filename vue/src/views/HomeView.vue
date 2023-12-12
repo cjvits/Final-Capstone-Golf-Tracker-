@@ -9,11 +9,11 @@
 <div class="row">
   <div class="left-column">
     <h3 class="teeTimeTitle">Upcoming Tee Times:</h3>
-    <TeeTimes v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users"/>
+    <TeeTimes v-for="(league, index) in $store.state.userLeagues" v-bind:key="index" :league="league" :users="$store.state.user.users"/>
   </div>
 
   <div class="center-column">
-    <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
+    <LeaderBoard v-for="(league, index) in $store.state.userLeagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
   </div>
   
   <div class="right-column">
@@ -59,26 +59,7 @@ export default {
       }
     };
   },
-  methods: {
-    // logOut(){
-    //   this.$store.commit("LOGOUT");
-    //   this.$router.push("/");
-    // },
-    //send to logout view in order to logout. Code written for us already in LogoutView
-    retrieveLeagues() {
-      LeagueService
-        .getLeaguesByUserId(this.$store.state.user.id)
-        .then(response => {
-          this.leagues = response.data;
-        })
-        .catch(error => {
-          this.handleErrorResponse(error, 'getting');
-        });
-    }
-  },
-  created() {
-    this.retrieveLeagues();
-  }
+  
 
 };
 </script> 
