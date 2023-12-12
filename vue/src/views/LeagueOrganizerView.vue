@@ -13,7 +13,6 @@
                     <li>LO will be able to click a button per match to add scores</li>
                     <li>Will update </li>
                 </ul>
-                
             </div>
 
             <div class="center-column">
@@ -27,6 +26,7 @@
             </div>
 
             <div class="right-column">
+            
                 <Golfers />
             </div>
         </div>
@@ -39,33 +39,40 @@ import LeagueService from '../services/LeagueService.js';
 import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
 import UpdateScore from '../components/UpdateScore.vue';
+import { BIconUiChecksGrid } from 'bootstrap-vue';
 
 export default {
     data() {
         return {
-            // isLeagueOrganizer: false
-        }
+            league: {}
+            // isLeagueOrganizer: false,
+        };
     },
 
     components: {
-    Golfers,
-    NewMatchForm,
-    UpdateScore,
-    // LeaderBoard,
-},
+        Golfers,
+        NewMatchForm,
+        UpdateScore,
+        // LeaderBoard,
+    },
 
-    // computed: {
-
+    computed: {
 
     //     togglePage() {
-    //       if (this.user.id === league.leagueCoordinatorId) {
-    //         return isLeagueOrganizer = true;
+    //       if (this.user.id === this.league.leagueCoordinatorId) {
+    //         return this.isLeagueOrganizer;
     //       }
     //       return 'Become a League Organizer';
     //     },
     //   },
+    
+        isLeagueOrganizer() {
+            return this.user.id === this.league?.leagueCoordinatorId;
+        },
+    },
 
     methods: {
+
         createNewMatch() {
             LeagueService
             .createMatch(this.match)
@@ -84,134 +91,151 @@ export default {
                         this.registrationErrorMsg = 'Bad Request: Validation Errors';
                     }
                 });
+        }
+    },
+        
+        created() {
+            // This is league data associated with the coordinator's ID
+            // coordinator must be only one allowed to view page but it's all currently blocked 
+            LeagueService
+                .getLeaguesByCoordinatorId(this.$store.state.user.id)
+                .then((response) => {
+                    // this should iterate through all of the leagues to match the league with the league ID
+                    this.league = response.data.find(league => league.leagueId == this.$route.params.leagueId);
+                })
+                .catch((error) => {
+                    if (error.response.status === 403) {
+                        this.$router.push('/access-denied');
+                    }
+                });
+
+            // If the user is not the coordinator and is not part of the league, block access
+            if (!this.isLeagueCoordinator) {
+                this.$router.push('/access-denied');
             }
+
+            // this should get all the golfers in the league? if not
+            LeagueService
+                .getAllGolfers()
+                .then((response) => (this.matches = response.data))
+                .catch((error) => {
+                    if (error.response.status === 403) {
+                        this.$router.push('/access-denied');
+                    }
+                });
         },
-        // created() {
-
-        // LeagueService
-        //     .getAllGolfers()
-        //     .then((response) => this.matches = response.data)
-        // }
-
-}
+};
 </script>
 
 <style scoped>
-* {
-    box-sizing: border-box;
-}
-.page-container {
-    background-image: url("../assets/goldenGolf.jpeg");
-    background-color: #312917;
-    height: 100vh;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: 'Hedvig Letters Serif', serif;
-    color: #093708;
-    font-weight: 600;
-    text-align: center;
-}
+    * {
+        box-sizing: border-box;
+    }  
+    .page-container {
+        padding-top: 15%;
+        background-image: url("../assets/goldenGolf.jpeg");
+        background-color: #312917;
+        height: 100vh;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: 'Hedvig Letters Serif', serif;
+        color: #06612f;
+        font-weight: 600;
+        text-align: center;
+    }
 
-.info {
-    background-color: darkkhaki;
-    opacity: .85;
-}
+    .info {
+        background-color: darkkhaki;
+        opacity: .85;
+    }
 
-h2 {
-    background-color: darkkhaki;
-}
+    h2 {
+        background-color: darkkhaki;
+    }
 
-.organizer-page-container {
-    padding-top: 3rem;
-    background-image: url("../assets/goldenGolf.jpeg");
-    height: 100vh;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: 'Hedvig Letters Serif', serif;
-    color: #093708;
-    font-weight: 600;
-    text-align: center;
-    align-items: stretch;
-}
+    .organizer-page-container {
+        padding-top: 15%;
+        background-image: url("../assets/goldenGolf.jpeg");
+        height: 100vh;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: 'Hedvig Letters Serif', serif;
+        color: #06612f;
+        font-weight: 600;
+        text-align: center;
+        align-items: stretch;
+    }
 
-/* Style the header */
-.header {
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-}
-.row {
-  display: -webkit-flex;
-  display: flex;
-}
+    /* Style the header */
+    .header {
+        padding: 30px;
+        text-align: center;
+        font-size: 35px;
+    }
+    .row {
+        display: -webkit-flex;
+        display: flex;
+    }
 
-/* Create three unequal columns that sits next to each other */
-.row {
-  padding: 10px;
-  height: 75%;
-}
+    /* Create three unequal columns that sits next to each other */
+    .row {
+        padding: 10px;
+        height: 75%;
+    }
 
-/* Left and right column */
-.right-column {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    border-radius: 15px;
-    margin: .5rem;
-    background-color: darkkhaki;
-    opacity: .9;
-    overflow: scroll;
-}
+    /* Left and right column */
+    .right-column {
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 15px;
+        margin: .5rem;
+        background-color: darkkhaki;
+        opacity: .9;
+        overflow: scroll;
+    }
 
-.left-column {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    border-radius: 15px;
-    margin: .5rem;
-    background-color: darkkhaki;
-    opacity: .9;
-    overflow: scroll;
-}
+    .left-column {
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 15px;
+        margin: .5rem;
+        background-color: darkkhaki;
+        opacity: .9;
+        overflow: scroll;
+    }
 
-.center-column {
-  -webkit-flex: 2;
-  -ms-flex: 2;
-  flex: 1.25;
-  border-radius: 15px;
-  margin: .5rem;
-  background-color: #093708;
-  opacity: .9;
-  color: darkkhaki;
-  overflow: scroll;
-}
-.left-column::-webkit-scrollbar,
-.right-column::-webkit-scrollbar,
-.center-column::-webkit-scrollbar {
-  width: 15px;
-}
-.left-column::-webkit-scrollbar-thumb,
-.right-column::-webkit-scrollbar-thumb{
-    background-color: darkkhaki;
-    border-radius: 15px;
-}
-.center-column::-webkit-scrollbar-thumb {
-  background-color: #093708;
-  border-radius: 15px;
-}
-.left-column::-webkit-scrollbar-corner,
-.right-column::-webkit-scrollbar-corner,
-.center-column::-webkit-scrollbar-corner {
-  display: none;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .row {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
-}
+    .center-column {
+        -webkit-flex: 2;
+        -ms-flex: 2;
+        flex: 1.25;
+        border-radius: 15px;
+        margin: .5rem;
+        background-color: #093708;
+        opacity: .9;
+        color: darkkhaki;
+        overflow: scroll;
+    }
+    .left-column::-webkit-scrollbar,
+    .right-column::-webkit-scrollbar,
+    .center-column::-webkit-scrollbar {
+        width: 15px;
+    }
+    .left-column::-webkit-scrollbar-thumb,
+    .right-column::-webkit-scrollbar-thumb{
+        background-color: darkkhaki;
+        border-radius: 15px;
+    }
+    .center-column::-webkit-scrollbar-thumb {
+        background-color: #093708;
+        border-radius: 15px;
+    }
+    .left-column::-webkit-scrollbar-corner,
+    .right-column::-webkit-scrollbar-corner,
+    .center-column::-webkit-scrollbar-corner {
+        display: none;
+    }
 </style>
