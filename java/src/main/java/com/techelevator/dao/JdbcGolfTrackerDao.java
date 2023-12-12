@@ -169,7 +169,6 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         int initialScore = 0;
         String sql = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?);";
         jdbcTemplate.update(sql, leagueId, userId, initialScore);
-
     }
 
 
