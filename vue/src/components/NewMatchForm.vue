@@ -37,13 +37,13 @@
 
         </form>
 
-        <form class="new-match-form" v-on:submit.prevent="updateUsersInMatch">
+        <!-- <form class="new-match-form" v-on:submit.prevent="updateUsersInMatch">
 
 
 
             <button class="submitBtn" type="submit">Add Yinzers to Match</button>
 
-        </form>
+        </form> -->
 
 
     </section>

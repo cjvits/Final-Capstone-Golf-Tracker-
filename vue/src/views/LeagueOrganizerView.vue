@@ -86,12 +86,12 @@ export default {
                 });
             }
         },
-        created() {
+        // created() {
 
-        LeagueService
-            .getAllGolfers()
-            .then((response) => this.matches = response.data)
-        }
+        // LeagueService
+        //     .getAllGolfers()
+        //     .then((response) => this.matches = response.data)
+        // }
 
 }
 </script>
