@@ -26,7 +26,7 @@
 
                     <ul id="list">
                         <li class="golfers" v-for="user in users" :key="user.id">
-                            <a @click.prevent="addGolfer(user.id)" class="names">{{ user.firstName }} {{ user.lastName }}</a>
+                            <a @click.prevent="addGolfer(user)" class="names">{{ user.firstName }} {{ user.lastName }}</a>
                         </li>
                     </ul>
 
@@ -70,15 +70,17 @@ export default {
         GolfersInLeague,
     },
 
+
     methods: {
         changeLeagueProgress() {
             this.isLeagueInProgress = !this.isLeagueInProgress
         },
 
-        addGolfer(userId) {
+        addGolfer(user) {
             LeagueService
-                .addGolferToLeague(this.$route.params.leagueId, userId)
+                .addGolferToLeague(this.$route.params.leagueId, user.id)
                 .then((response) => {
+                    this.$store.commit('ADD_GOLFER_TO_LEAGUE', user)
                     if (response.status == 201) {
                         console.log("yinzer added!!")
                     }
@@ -117,6 +119,11 @@ export default {
         LeagueService
             .getAllGolfers()
             .then((response) => this.users = response.data);
+  
+
+        LeagueService
+            .getLeagueGolfers(this.$route.params.leagueId)
+            .then((response) => this.$store.commit('SET_LEAGUE_GOLFERS', response.data));
     }
 }
 
