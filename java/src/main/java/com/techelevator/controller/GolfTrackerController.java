@@ -64,18 +64,21 @@ public class GolfTrackerController {
         return golfTrackerDao.addCourse(course);
     }
 
-    @PostMapping("/match")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Match addMatch(@RequestBody Match newMatch) {
-        return golfTrackerDao.createMatch(newMatch);
-    }
+//    @PostMapping("/match")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Match addMatch(@RequestBody Match newMatch) {
+//        return
+//    }
 //    you can make both of these here into ONE CALL
     @PostMapping("/match/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<UserInLeague> addGolferToMatch(@RequestBody Match match, @PathVariable int userId) {
-        return golfTrackerDao.addUserToMatch(userId, match.getMatchId());
+        Match newMatch = golfTrackerDao.createMatch(match);
+        return golfTrackerDao.addUserToMatch(userId, newMatch.getMatchId());
     }
-
+    //get rid of user ids, making a match dto, having the dto contain an array of userids and 1 match obj,
+    //take in DTO above, loop over array for addUserToMatch, return last one
+    
     @PostMapping("/{leagueId}/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<UserInLeague> addGolferToLeague(@PathVariable int leagueId, @PathVariable int userId) {
