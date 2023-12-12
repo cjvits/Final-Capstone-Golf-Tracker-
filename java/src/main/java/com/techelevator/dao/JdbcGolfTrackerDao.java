@@ -138,8 +138,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     public int updateMatchScore (int matchId,int userId, int golferScore) {
         String sqlUpdateMatchScore = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
         jdbcTemplate.update(sqlUpdateMatchScore, golferScore, userId, matchId);
-        String sqlGetSumOfMatcheScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
-        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatcheScores, Integer.class, userId);
+        String sqlGetSumOfMatchScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
+        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatchScores, Integer.class, userId);
         String sqlUpdateLeaderScore = "UPDATE league_golfer SET league_score = ? where user_id = ? AND league_id = (select league_id from matches where match_id = ?) returning league_score;";
         int leagueScoreInDatabase = jdbcTemplate.update(sqlUpdateLeaderScore, Integer.class, newLeagueScore, userId, matchId);
 

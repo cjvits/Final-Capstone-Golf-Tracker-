@@ -1,51 +1,50 @@
 <template>
-    <div>
-
+    
         <button v-on:click.prevent="isFormShowing = !isFormShowing">
             {{ isFormShowing ? "Hide Form" : "Create a new match" }}
         </button>
 
-        <form class="new-match-maker" v-show="isFormShowing" v-on:submit.prevent="createNewMatch">
-            <h1>Create a New Match</h1>
+        <section class="golfers-to-add" v-if=isFormShowing>
+        <form class="new-match-form" v-on:submit.prevent="addGolfer">
+            <h1>Add some yinzers to your match:</h1>
 
-            <!-- this is where the players used to be, we will add those in after -->
-
-            <div class="form-input-group">
-                <label for="match-date">New Match Date</label>
-                <input type="date" id="match-date" v-model="match.teeDate" required autofocus />
+            <div class="all-possible-golfers">
+                <label for="golfer1">Add Yinzer1: </label>
+                <select id="match-golfer1" v-model="selectedGolfer1">
+                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}</option>
+                </select>
             </div>
-
+            <div class="all-possible-golfers">
+                <label for="golfer2">Add Yinzer2: </label>
+                <select id="match-golfer2" v-model="selectedGolfer2">
+                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}</option>
+                </select>
+            </div>
             <div class="form-input-group">
-                <label for="match-time">New Match Time</label>
+                <label for="match-date">Match Date: </label>
+                <input type="date" id="match-date" v-model="match.teeDate"  />
+            </div>
+            <div class="form-input-group">
+                <label for="match-time">Match Time: </label>
                 <input type="time" id="match-time" v-model="match.teeTime" required autofocus />
             </div>
 
-            
-
-            <button class="submitBtn" type="submit">Create Match</button>
+            <button class="submitBtn" type="submit">add yinzer(s) to match</button>
+        
         </form>
+     
 
-        <form class="new-match-maker" v-show="isFormShowing" v-on:submit.prevent="updateUsersInMatch">
-            
-            <div class="form-input-group">
-                <label for="match-player">Player 1</label>
-                <input type="text" id="match-player1" v-model="match.player1" required autofocus />
-            </div>
-
-            <div class="form-input-group">
-                <label for="match-player">Player 2</label>
-                <input type="text" id="match-player2" v-model="match.player2" required autofocus />
-            </div>
-            
-            <button class="submitBtn" type="submit">Update Match</button>
-        </form>
-    </div>
+    </section>
+    <section class="golfers-in-league" v-else>
+        <GolfersInLeague></GolfersInLeague>
+    </section>
 </template>
 
-
+        
 <script>
 // import CourseService from '../services/CourseService.js'
-import LeagueService from '../services/LeagueService.js';
+import GolfersInLeague from './GolfersInLeague.vue';
+import LeagueService from '../services/LeagueService';
 
 export default {
     props: {
@@ -57,6 +56,8 @@ export default {
     data () {
         return {
             isFormShowing: false,
+            selectedGolfer1: null,
+            selectedGolfer2: null,
             match: {
                 leagueName: '', // will need to change to leagueID on the front
                 player1: '',
@@ -66,8 +67,12 @@ export default {
             },
         }
     },
-    methods: {
-        createNewMatch() {
+         components: {
+        GolfersInLeague,
+    },
+
+        methods: {
+        addGolfer() {
             // this.match.leagueName = this.currentLeague.leagueName;
             // this.match.leagueId = this.currentLeague.leagueId;
             this.match.matchLeague = this.currentLeague;
@@ -118,9 +123,9 @@ export default {
     },
     created() {
         LeagueService
-            .getAllGolfers()
-            .then((response) => this.matches = response.data)
-    }
+            .getLeagueGolfers(this.$route.params.leagueId)
+            .then((response) => this.users = response.data)
+        }
 
 }
 </script>

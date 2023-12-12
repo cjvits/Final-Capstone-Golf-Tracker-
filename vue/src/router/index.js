@@ -106,11 +106,12 @@ router.beforeEach((to, from, next) => {
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && !store.state.token) {
     next({ name: 'login' });
+    // Otherwise, do nothing and they'll go to their next destination
   } else {
     next();
   }
 
-  // Otherwise, do nothing and they'll go to their next destination
+  
 });
 
 export default router;
