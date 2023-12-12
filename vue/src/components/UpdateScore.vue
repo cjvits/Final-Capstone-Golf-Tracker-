@@ -20,16 +20,11 @@
             <!-- <div class="form-input-group">
                 <label for="league-name">New League Name</label>
                 <input type="text" id="league-name" v-model="league.username" required autofocus />
-            </div>
-
-            <div class="form-input-group">
-                <label for="course">Select League Golf Course:</label>
-                <select id="course" v-model="league.leagueCourseId">
-                    <option :value="course.courseId" v-for="course in courses" :key="course.courseId">{{ course.courseName }}</option>
-                </select>
             </div> -->
 
-            <button class="submitBtn" type="submit">Make it so!</button>
+    
+
+           <button class="submitBtn" type="submit">Make it so!</button> 
         </form>
     </div>
 </template>
