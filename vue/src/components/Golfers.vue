@@ -3,13 +3,19 @@
 
 <template>
     <div class="container">
-        <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
-            {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
-        </button>
 
         <section class="golfers-to-add" v-if=isLeagueInProgress>
 
-            <form class="new-member-form" v-on:submit.prevent="addGolfer">
+            <section class="invite-container">
+                <p>wanna play with non-registered yinzers? copy the link below and send it to your yinzers, so they can
+                    com'on
+                    dahn and join the fun!</p>
+                <p><router-link class="invite"
+                        v-bind:to="{ name: 'join-league', params: { leagueId: this.$route.params.leagueId } }">copy invite
+                        link</router-link></p>
+            </section>
+
+            <div class="new-member-form">
                 <h1>Add some yinzers to your new league:</h1>
 
                 <div class="all-possible-golfers">
@@ -18,35 +24,24 @@
                     <input id="searchbar" @keyup.enter="searchGolfers" type="text" name="search"
                         placeholder="search yinzers..." />
 
-                    <ol id="list">
-                        <li class="golfers" v-for="user in users" :key="user.id"><a href @click="addGolfer"> {{ user.firstName }} {{ user.lastName }}</a>
+                    <ul id="list">
+                        <li class="golfers" v-for="user in users" :key="user.id">
+                            <a @click.prevent="addGolfer(user.id)" class="names">{{ user.firstName }} {{ user.lastName }}</a>
                         </li>
-                    </ol>
+                    </ul>
 
-                    <!-- <select id="league-golfer" v-model="user.id">
-                        <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " +
-                            user.lastName }}</option>
-                    </select> -->
                 </div>
-
-                <!-- <button class="submitBtn" type="submit">add yinzer to league</button> -->
-
-            </form>
-
+            </div>
         </section>
+
 
         <section class="golfers-in-league" v-else>
-            <p>yinzers in league</p>
+            <h3>Yinzers In My League</h3>
             <GolfersInLeague></GolfersInLeague>
         </section>
-
-        <section class="invite-container">
-            <p>wanna play with non-registered yinzers? copy the link below and send it to your yinzers, so they can com'on
-                dahn and join the fun!</p>
-            <p><router-link class="invite"
-                    v-bind:to="{ name: 'join-league', params: { leagueId: this.$route.params.leagueId } }">copy invite
-                    link</router-link></p>
-        </section>
+        <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
+            {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
+        </button>
     </div>
 </template>
 
@@ -80,9 +75,9 @@ export default {
             this.isLeagueInProgress = !this.isLeagueInProgress
         },
 
-        addGolfer() {
+        addGolfer(userId) {
             LeagueService
-                .addGolferToLeague(this.$route.params.leagueId, this.user.id)
+                .addGolferToLeague(this.$route.params.leagueId, userId)
                 .then((response) => {
                     if (response.status == 201) {
                         console.log("yinzer added!!")
@@ -118,7 +113,6 @@ export default {
 
     },
 
-
     created() {
         LeagueService
             .getAllGolfers()
@@ -130,12 +124,19 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+    font-weight: bold;
+    font-size: large;
+    text-decoration-line: underline;
+    padding-top: 1.5rem;
+}
+
 button {
     background-color: #093708;
     color: darkkhaki;
     border-radius: .5em;
     padding: .5em;
-    margin: .5em;
+    margin: 1.5em;
     font-family: 'Hedvig Letters Serif', serif;
 }
 
@@ -145,7 +146,8 @@ button:hover {
 }
 
 .invite-container {
-    padding-top: 3em;
+    padding-top: 1.5rem;
+    padding-bottom: 2em;
     font-size: small;
 }
 
@@ -158,5 +160,14 @@ button:hover {
 
 .invite:hover {
     background-color: khaki;
+}
+
+.names {
+    color: #093708
+}
+
+.names:hover {
+    color: #116110;
+    text-decoration-line: underline;
 }
 </style>
