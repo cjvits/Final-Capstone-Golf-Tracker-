@@ -22,7 +22,7 @@
                 Since we are currently getting the boards by user, this won't work. 
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
-                <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.league.id" />
+                <!-- <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.league.id" /> -->
                 
 
             </div>
@@ -36,17 +36,18 @@
 
 <script>
 import LeagueService from '../services/LeagueService.js';
-import LeaderBoard from '../components/LeaderBoard.vue';
+// import LeaderBoard from '../components/LeaderBoard.vue';
 import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
 import UpdateScore from '../components/UpdateScore.vue';
+import GolfersInLeague from '../components/GolfersInLeague.vue'
 
 export default {
     components: {
         Golfers,
         NewMatchForm,
         UpdateScore,
-        LeaderBoard,
+        // LeaderBoard,
     },
     data() {
         return {
