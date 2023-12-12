@@ -1,20 +1,20 @@
 <template>
     <div class="page-container">
-        <div id="not-logged-in" v-if="this.$store.state.token = ''">
-            <div class="content">
-                <p>Hello! You've been invited to join LEAGUE ORGANIZER'S golf league!</p>
-                <p>If you'd like to accept the invite, you must first sign in: </p>
-                <p><router-link to="{name: 'login'}">Login Here</router-link></p>
-                <p><router-link to="{name: 'register'}">Register Here</router-link></p>
-            </div>
-        </div>
-        <div id="logged-in" v-else>
+        <div id="not-logged-in" v-if="this.$store.state.token != ''">
             <div class="content">
                 <p>Hello! You've been invited to join LEAGUE ORGANIZER'S golf league!</p>
                 <p>Click the button below to join the league!</p>
                 <button v-on:click="joinLeague">
                     Put me in the league!
                 </button>
+            </div>
+        </div>
+        <div id="logged-in" v-else>
+            <div class="content">
+                <p>Hello! You've been invited to join LEAGUE ORGANIZER'S golf league!</p>
+                <p>If you'd like to accept the invite, you must first sign in: </p>
+                <p><router-link to="/login" class="link">Login Here</router-link></p>
+                <p><router-link to="/register" class="link">Register Here</router-link></p>
             </div>
 
         </div>
@@ -70,5 +70,14 @@ export default {
      height: auto;
      padding: 5%;
      margin: 5% 30%;
+ }
+
+ .link {
+    color:#093708;
+    text-decoration-line: underline;
+ }
+
+ .link:hover {
+    color: #116110;
  }
 </style>

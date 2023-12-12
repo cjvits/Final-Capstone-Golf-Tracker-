@@ -70,11 +70,12 @@ export default {
                 .addGolferToLeague(this.$route.params.leagueId, this.user.id)
                 .then((response) => {
                     if (response.status == 201) {
-                        this.$router.push({
-                            path: '/league-organizer/',
-                            query: { registration: 'success' },
-                        });
-                    }
+                        console.log("yinzer added!!")}
+                        // this.$router.push({
+                        //     path: '/league-organizer/',
+                        //     query: { registration: 'success' },
+                        // });
+                    // }
                 })
                 .catch((error) => {
                     const response = error.response;
