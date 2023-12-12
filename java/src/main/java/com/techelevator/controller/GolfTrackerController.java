@@ -69,7 +69,7 @@ public class GolfTrackerController {
     public Match addMatch(@RequestBody Match newMatch) {
         return golfTrackerDao.createMatch(newMatch);
     }
-
+//    you can make both of these here into ONE CALL
     @PostMapping("/match/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<UserInLeague> addGolferToMatch(@RequestBody Match match, @PathVariable int userId) {

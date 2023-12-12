@@ -11,6 +11,51 @@
   </div>
 </template>
 
+<script>
+import LeagueService from './services/LeagueService';
+
+
+export default{
+
+  methods: {
+    // logOut(){
+    //   this.$store.commit("LOGOUT");
+    //   this.$router.push("/");
+    // },
+    //send to logout view in order to logout. Code written for us already in LogoutView
+    retrieveLeagues() {
+      if (this.$store.state.user == null) { // don't call service if not logged in
+        return;
+      }
+
+      LeagueService
+        .getLeaguesByUserId(this.$store.state.user.id)
+        .then(response => {
+          this.leagues = this.$store.commit("SET_USER_LEAGUES", response.data);
+        })
+        .catch(error => {
+          this.handleErrorResponse(error, 'getting');
+        });
+    }
+  },
+  created() {
+    this.retrieveLeagues();
+  },
+  computed: {
+    userLoggedIn() {
+      return this.$store.state.user;
+    }
+  },
+
+  watch: {
+    userLoggedIn() {
+      this.retrieveLeagues();
+    }
+  }
+
+}
+
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');

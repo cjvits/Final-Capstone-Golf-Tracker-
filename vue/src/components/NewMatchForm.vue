@@ -5,21 +5,8 @@
         </button>
 
         <section class="golfers-to-add" v-if=isFormShowing>
-        <form class="new-match-form" v-on:submit.prevent="addGolfer">
-            <h1>Add some yinzers to your match:</h1>
-
-            <div class="all-possible-golfers">
-                <label for="golfer1">Add Yinzer1: </label>
-                <select id="match-golfer1" v-model="selectedGolfer1">
-                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}</option>
-                </select>
-            </div>
-            <div class="all-possible-golfers">
-                <label for="golfer2">Add Yinzer2: </label>
-                <select id="match-golfer2" v-model="selectedGolfer2">
-                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}</option>
-                </select>
-            </div>
+        <form class="new-match-form" v-on:submit.prevent="createMatch">
+            
             <div class="form-input-group">
                 <label for="match-date">Match Date: </label>
                 <input type="date" id="match-date" v-model="match.teeDate"  />
@@ -29,8 +16,30 @@
                 <input type="time" id="match-time" v-model="match.teeTime" required autofocus />
             </div>
 
-            <button class="submitBtn" type="submit">add yinzer(s) to match</button>
+            <button class="submitBtn" type="submit">Create Match</button>
         
+        </form>
+
+        <form class="new-match-form" v-on:submit.prevent="updateUsersInMatch">
+        
+            <h1>Add some yinzers to your match:</h1>
+
+            <div class="all-possible-golfers">
+                <label for="golfer1">Add Yinzer1: </label>
+                <select id="match-golfer1" v-model="selectedGolfer1">
+                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}</option>
+                </select>
+            </div>
+
+            <div class="all-possible-golfers">
+                <label for="golfer2">Add Yinzer2: </label>
+                <select id="match-golfer2" v-model="selectedGolfer2">
+                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}</option>
+                </select>
+            </div>
+
+            <button class="submitBtn" type="submit">Add Yinzers to Match</button>
+
         </form>
      
 
@@ -72,7 +81,7 @@ export default {
     },
 
         methods: {
-        addGolfer() {
+        createMatch() {
             // this.match.leagueName = this.currentLeague.leagueName;
             // this.match.leagueId = this.currentLeague.leagueId;
             this.match.matchLeague = this.currentLeague;
