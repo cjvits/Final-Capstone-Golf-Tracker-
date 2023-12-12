@@ -14,8 +14,6 @@
                     <li>Will update </li>
                 </ul>
                 
-                
-         
             </div>
 
             <div class="center-column">
@@ -24,11 +22,9 @@
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
                 <NewMatchForm></NewMatchForm>
-
             </div>
 
             <div class="right-column">
-            
                 <Golfers />
             </div>
         </div>
@@ -103,7 +99,6 @@ export default {
     box-sizing: border-box;
 }
 .page-container {
-    padding-top: 5%;
     background-image: url("../assets/goldenGolf.jpeg");
     background-color: #312917;
     height: 100vh;

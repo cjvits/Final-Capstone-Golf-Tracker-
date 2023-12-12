@@ -2,6 +2,7 @@
 <!-- THE GOLFER COMPONENT WILL BE USED FOR A LEAGUE ORGANIZER TO SELECT GOLFERS FOR THEIR LEAGUE -->
 
 <template>
+    <div class="container">
     <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
         {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
     </button>
@@ -17,15 +18,20 @@
             </div>
 
             <button class="submitBtn" type="submit">add yinzer to league</button>
-        
+            
         </form>
-     
-
+        
     </section>
 
     <section class="golfers-in-league" v-else>
         <GolfersInLeague></GolfersInLeague>
     </section>
+
+    <section class="invite-container">
+        <p>wanna play with non-registered yinzers? copy the link below and send it to your yinzers, so they can com'on dahn and join the fun!</p>
+        <p><router-link class="invite" v-bind:to="{ name : 'join-league', params : { leagueId: this.$route.params.leagueId} }">copy invite link</router-link></p>
+    </section>
+</div>
 </template>
 
 <script>
@@ -35,6 +41,7 @@ import GolfersInLeague from './GolfersInLeague.vue';
 export default {
     data() {
         return {
+           
             isLeagueInProgress: false,
             users: [],
 
@@ -75,7 +82,7 @@ export default {
                         this.registrationErrorMsg = 'Bad Request: Validation Errors';
                     }
                 });
-        }
+        },
 
     },
 
@@ -104,4 +111,19 @@ button:hover {
     background-color: #116110;
     color: wheat;
 }
-</style>
+
+.invite-container {
+    padding-top: 3em;
+    font-size: small;
+}
+
+.invite {
+    color: #116110;
+    text-decoration-line: underline;
+    font-size: larger;
+}
+
+
+.invite:hover {
+   background-color: khaki;
+}
