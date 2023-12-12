@@ -47,7 +47,8 @@ export function createStore(currentToken, currentUser) {
       },
       ADD_GOLFER_TO_LEAGUE(state, user){
         state.golfersInLeague.push(user);
-      }
+      },
+     
     },
   });
   return store;
