@@ -24,6 +24,7 @@
     </section>
 
     <section class="golfers-in-league" v-else>
+        <p>yinzers in league</p>
         <GolfersInLeague></GolfersInLeague>
     </section>
 
@@ -97,7 +98,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 button {
     background-color: #093708;
     color: darkkhaki;
@@ -127,3 +128,5 @@ button:hover {
 .invite:hover {
    background-color: khaki;
 }
+
+</style>

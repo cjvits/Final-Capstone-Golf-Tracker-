@@ -121,7 +121,7 @@ h2 {
 }
 
 .organizer-page-container {
-    padding-top: 15%;
+    padding-top: 3rem;
     background-image: url("../assets/goldenGolf.jpeg");
     height: 100vh;
     background-size: 100%;
