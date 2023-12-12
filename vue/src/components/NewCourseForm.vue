@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form class="new-course-maker" v-on:submit.prevent="createNewCourse">
+        <form class="new-course-maker" name="courseMaker" v-on:submit.prevent="createNewCourse">
             <h1>Add a Course</h1>
 
            
@@ -47,7 +47,8 @@ export default {
                 city: '',
                 state: '',
                 zipCode: ''
-            }
+            },
+            
         }
     },
 
@@ -57,6 +58,8 @@ export default {
             .createCourse(this.course)
             .then((response) => {
                     if (response.status == 201) {
+                        alert('Course added'),
+                        document.courseMaker.reset();
                         this.$router.push({
                             path: '/admin',
                             query: { registration: 'success' },
