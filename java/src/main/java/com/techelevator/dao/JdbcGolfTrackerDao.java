@@ -125,7 +125,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         int initialScore = 0;
         String sql = "INSERT INTO match_golfer (match_id, user_id, match_score) VALUES (?, ?, ?);";
         jdbcTemplate.update(sql, matchId, userId, initialScore);
-        String sql2 = "SELECT users.user_id, username FROM users JOIN match_golfer ON users.user_id = match_golfer.user_id where match_id = ?;";
+        String sql2 = "SELECT users.user_id, username, match_score FROM users JOIN match_golfer ON users.user_id = match_golfer.user_id where match_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql2, matchId);
         while (rowSet.next()) {
             UserInLeague user = mapRowToUsersInLeagueForMatch(rowSet);
@@ -208,8 +208,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     private UserInLeague mapRowToUsersInLeagueForMatch(SqlRowSet rowSet) {
         UserInLeague result = new UserInLeague();
-        result.setId(rowSet.getInt("users.user_id"));
-        result.setUsername(rowSet.getString("users.username"));
+        result.setId(rowSet.getInt("user_id"));
+        result.setUsername(rowSet.getString("username"));
         result.setLeagueScore(rowSet.getInt("match_score"));
 //
         return result;

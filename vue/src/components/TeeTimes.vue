@@ -3,7 +3,7 @@
     <div v-else class="tee" v-for="match in league.matchesInLeague" v-bind:key="match.id">
         <h2>{{ league.leagueName }}</h2>
         <div class="time">
-            {{ match.teeTime.getHours() + ":" + + match.teeTime.getMinutes()}}
+            {{ match.teeTime }}
             <!-- This is where. the Time goes -->
         </div>
 
