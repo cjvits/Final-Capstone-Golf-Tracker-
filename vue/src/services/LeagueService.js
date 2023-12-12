@@ -31,12 +31,8 @@ export default {
         return axios.get(`/league-organizer/${userId}`);
     },
 
-    // createMatch(match){
-    //     return axios.post(`/match`, match);
-    // },
-
-    createMatch(userId, match){
-        return axios.post(`/match/${userId}`, match);
+    createMatch(match){
+        return axios.post(`/match`, match);
     },
 
 };
