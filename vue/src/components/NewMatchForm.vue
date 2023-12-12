@@ -59,6 +59,7 @@ export default {
             selectedGolfer1: null,
             selectedGolfer2: null,
             match: {
+                id: 0,
                 date: null,
                 time: null,
             
@@ -100,7 +101,7 @@ export default {
 
         created() {
         LeagueService
-            .getAllGolfers()
+            .getLeagueGolfers(this.$route.params.leagueId)
             .then((response) => this.users = response.data)
         }
 
