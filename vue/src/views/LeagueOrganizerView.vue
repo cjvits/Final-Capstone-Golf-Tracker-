@@ -22,6 +22,8 @@
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
                 <NewMatchForm></NewMatchForm>
+                
+
             </div>
 
             <div class="right-column">
@@ -56,7 +58,7 @@ export default {
 
 
     //     togglePage() {
-    //       if (this.user.id === leagueCoordinator.id) {
+    //       if (this.user.id === league.leagueCoordinatorId) {
     //         return isLeagueOrganizer = true;
     //       }
     //       return 'Become a League Organizer';

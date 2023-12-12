@@ -6,6 +6,8 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
+      leagues: [],
+      userLeagues: []
       // ...currentUser,
       // username: (currentUser && currentUser.username) || '',
       // users: [
@@ -30,7 +32,15 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+        state.leagues = [];
+        state.userLeagues = [];
       },
+      SET_LEAGUES(state,leagues){
+        state.leagues = leagues;
+      },
+      SET_USER_LEAGUES(state, leagues){
+        state.userLeagues = leagues;
+      }
     },
   });
   return store;

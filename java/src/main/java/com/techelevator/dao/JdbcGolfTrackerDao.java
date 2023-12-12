@@ -113,8 +113,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     @Override
     public Match createMatch(Match match) {
-        String sql = "INSERT INTO matches (league_id, tee_date, tee_time) VALUES (?, ?, ?) RETURNING id;";
-        int newId = jdbcTemplate.queryForObject(sql, Integer.class, match.getTeeDate(), match.getTeeTime());
+            String sql = "INSERT INTO matches (league_id, tee_date, tee_time) VALUES (?, ?, ?) RETURNING match_id;";
+        int newId = jdbcTemplate.queryForObject(sql, Integer.class, match.getLeagueId(), match.getTeeDate(), match.getTeeTime());
         match.setMatchId(newId);
         return match;
     }
@@ -138,8 +138,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     public int updateMatchScore (int matchId,int userId, int golferScore) {
         String sqlUpdateMatchScore = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
         jdbcTemplate.update(sqlUpdateMatchScore, golferScore, userId, matchId);
-        String sqlGetSumOfMatcheScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
-        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatcheScores, Integer.class, userId);
+        String sqlGetSumOfMatchScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
+        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatchScores, Integer.class, userId);
         String sqlUpdateLeaderScore = "UPDATE league_golfer SET league_score = ? where user_id = ? AND league_id = (select league_id from matches where match_id = ?) returning league_score;";
         int leagueScoreInDatabase = jdbcTemplate.update(sqlUpdateLeaderScore, Integer.class, newLeagueScore, userId, matchId);
 
@@ -167,14 +167,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     public void addUserToLeague(int leagueId, int userId) {
         List<UserInLeague> golfersInLeague = new ArrayList<>();
         int initialScore = 0;
-        String sql = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?) RETURNING league_id;";
+        String sql = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?);";
         jdbcTemplate.update(sql, leagueId, userId, initialScore);
-        String sql2 = "SELECT users.user_id, username FROM users JOIN league_golfer ON users.user_id = league_golfer.user_id where league_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql2, leagueId);
-        while (rowSet.next()) {
-            UserInLeague user = mapRowToUserInLeague(rowSet);
-            golfersInLeague.add(user);
-        }
     }
 
 

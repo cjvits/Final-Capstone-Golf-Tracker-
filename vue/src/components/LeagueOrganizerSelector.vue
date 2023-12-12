@@ -29,7 +29,7 @@ export default {
     created () {
         LeagueService
             .getLeaguesByCoordinatorId(this.$store.state.user.id)
-            .then((response) => this.leagues = response.data);
+            .then((response) => {this.leagues = response.data; this.$store.commit("SET_LEAGUES",response.data)});
 
     }
 }
