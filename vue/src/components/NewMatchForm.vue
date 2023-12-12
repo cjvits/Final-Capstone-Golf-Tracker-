@@ -11,7 +11,7 @@
             <div class="form-input-group">
                 <label for="match-players">New Match Player1</label>
                 <!-- <option v-for="user in users" :key="user.id">{{ user.username }}></option> -->
-                <input type="text" id="match-player-names" v-model="match.player1" required autofocus />
+                <input type="dropdown" id="match-player-names" v-model="match.player1" required autofocus />
             </div>
 
             <div class="form-input-group">
