@@ -1,5 +1,9 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -29,13 +33,15 @@ public class Match {
         this.matchLeague = matchLeague;
     }
 
+    @JsonDeserialize(using= LocalDateDeserializer.class)
     private LocalDate teeDate;
 
+    @JsonDeserialize(using= LocalTimeDeserializer.class)
     private LocalTime teeTime;
 
     private List<UserInLeague> golfers;
 
-    public Match(int matchId, League matchLeague, LocalDate teeDate, LocalTime teeTime, List<UserInLeague> golfers, Map<User, Integer> matchGolferScores) {
+    public Match(int matchId, League matchLeague, LocalDate teeDate, LocalTime teeTime, List<UserInLeague> golfers) {
         this.matchId = matchId;
         this.matchLeague = matchLeague;
         this.teeDate = teeDate;
