@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h2 class="leaderboard-title">Leaderboard for {{ league.leagueName }}</h2>
         <table class="leaderboard-table">
             <thead>
@@ -63,11 +63,19 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    margin-bottom: 4%;
+}
+
+h2{
+    font-size: larger;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    font-size: small;
 }
 
 th, td {
@@ -79,27 +87,5 @@ th, td {
 th {
     background-color: wheat;
 }
-
-/* .leaderboard-title {
-    font-size: 1.5em;
-    color: #607e1b;
-    margin-bottom: 10px;
-}
-
-.leaderboard-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.leaderboard-table th, leaderboard-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-.leaderboard-table th {
-    background-color: rgb(251, 210, 157);
-} */
 
 </style>
