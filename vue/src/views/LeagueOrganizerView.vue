@@ -7,6 +7,7 @@
         <div class="row">
             <div class="left-column">
                 <h3>Update Yinzer Scores</h3>
+                <NewMatchForm></NewMatchForm>
                 <UpdateScore></UpdateScore>
                 <ul>
                     <li>Will list Matches from league</li>
@@ -23,8 +24,8 @@
                 Since we are currently getting the boards by user, this won't work. 
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
-                <NewMatchForm></NewMatchForm>
-                <LeaderBoard></LeaderBoard>
+                <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
+                
 
             </div>
 
@@ -38,24 +39,28 @@
 
 <script>
 import LeagueService from '../services/LeagueService.js';
-// import LeaderBoard from '../components/LeaderBoard.vue';
+import LeaderBoard from '../components/LeaderBoard.vue';
 import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
 import UpdateScore from '../components/UpdateScore.vue';
 
 export default {
+    components: {
+        Golfers,
+        NewMatchForm,
+        UpdateScore,
+        LeaderBoard,
+    },
     data() {
         return {
             // isLeagueOrganizer: false
+            leagues: [{
+                
+            }]
         }
     },
 
-    components: {
-    Golfers,
-    NewMatchForm,
-    UpdateScore,
-    // LeaderBoard,
-},
+    
 
     // computed: {
 

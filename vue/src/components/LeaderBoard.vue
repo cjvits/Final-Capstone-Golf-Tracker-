@@ -7,8 +7,8 @@
                     <th>Rank</th>
                     <th>Name</th>
                     <th>Score</th>
-                    <th>Handicap</th>
-                    <!-- <th>Course</th> -->
+                    <!-- <th>Handicap</th> -->
+                    <th>Course</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +16,8 @@
                     <td>{{ index + 1 }}</td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.leagueScore }}</td>
-                    <td>{{ user.handicap }}</td>
-                    <!-- <td>{{ league.course?.courseName }}</td> -->
+                    <!-- <td>{{ user.handicap }}</td> -->
+                    <td>{{ league.course?.courseName }}</td>
                 </tr>
             </tbody>
         </table>
