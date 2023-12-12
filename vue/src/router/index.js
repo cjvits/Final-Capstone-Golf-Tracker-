@@ -116,6 +116,10 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth && !store.state.token) {
     next({ name: 'login' });
     // Otherwise, do nothing and they'll go to their next destination
+  } else if (store.state.token && to.query.redirect != null) { 
+    next({
+      path: to.query.redirect
+    })
   } else {
     next();
   }
