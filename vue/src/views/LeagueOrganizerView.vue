@@ -14,8 +14,6 @@
                     <li>Will update </li>
                 </ul>
                 
-                
-         
             </div>
 
             <div class="center-column">
@@ -24,12 +22,9 @@
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
                 <NewMatchForm></NewMatchForm>
-                <LeaderBoard></LeaderBoard>
-
             </div>
 
             <div class="right-column">
-            
                 <Golfers />
             </div>
         </div>
@@ -104,7 +99,6 @@ export default {
     box-sizing: border-box;
 }
 .page-container {
-    padding-top: 15%;
     background-image: url("../assets/goldenGolf.jpeg");
     background-color: #312917;
     height: 100vh;
@@ -112,7 +106,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Hedvig Letters Serif', serif;
-    color: #06612f;
+    color: #093708;
     font-weight: 600;
     text-align: center;
 }
@@ -127,14 +121,14 @@ h2 {
 }
 
 .organizer-page-container {
-    padding-top: 15%;
+    padding-top: 3rem;
     background-image: url("../assets/goldenGolf.jpeg");
     height: 100vh;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Hedvig Letters Serif', serif;
-    color: #06612f;
+    color: #093708;
     font-weight: 600;
     text-align: center;
     align-items: stretch;
@@ -209,5 +203,13 @@ h2 {
 .right-column::-webkit-scrollbar-corner,
 .center-column::-webkit-scrollbar-corner {
   display: none;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
 }
 </style>
