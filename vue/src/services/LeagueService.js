@@ -30,5 +30,5 @@ export default {
     getLeaguesByCoordinatorId(userId) {
     return axios.get(`/league-organizer/${userId}`)
     }
-
+    
 }
