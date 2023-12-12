@@ -3,8 +3,25 @@
         <h1>thanks for stahp'n dahn!</h1>
         <h2>see yinz late-ah!</h2>
         <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
+        <!-- <audio autoplay>
+            <source src="src\assets\Benny-hill-theme.mp3" type="audio/mp3">
+        </audio> -->
     </div>
 </template>
+
+<!-- <script>
+export default {
+    mounted() {
+        // Play the audio when the component is mounted
+        this.$refs.audio.play();
+
+        // Optional: stop the audio after a certain duration
+        setTimeout(() => {
+            this.$refs.audio.pause();
+        }, 15000); // Adjust the time in miliseconds
+    }
+}
+</script> -->
 
 <style scoped>
 .content {

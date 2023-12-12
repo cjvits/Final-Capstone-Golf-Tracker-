@@ -22,7 +22,7 @@
                 Since we are currently getting the boards by user, this won't work. 
                 We could get the board by league for this one. It's also not necessary.
                 <!-- <LeaderBoard></LeaderBoard> -->
-                <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
+                <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.league.id" />
                 
 
             </div>
