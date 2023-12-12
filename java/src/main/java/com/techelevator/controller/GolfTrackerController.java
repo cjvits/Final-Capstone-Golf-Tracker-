@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.techelevator.dao.GolfTrackerDao;
@@ -70,11 +71,17 @@ public class GolfTrackerController {
 //        return
 //    }
 //    you can make both of these here into ONE CALL
-    @PostMapping("/match/{userId}")
+    @PostMapping("/match")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<UserInLeague> addGolferToMatch(@RequestBody Match match, @PathVariable int userId) {
-        Match newMatch = golfTrackerDao.createMatch(match);
-        return golfTrackerDao.addUserToMatch(userId, newMatch.getMatchId());
+    public List<UserInLeague> addGolferToMatch(@RequestBody MatchDto match) {
+        Match newMatch = golfTrackerDao.createMatch(match.getMatch());
+        int[] users = match.getPlayersInMatch();
+        List<UserInLeague> golfers = new ArrayList<>();
+        for (int userId : users) {
+            golfers = golfTrackerDao.addUserToMatch(userId, newMatch.getMatchId());
+        }
+
+        return golfers;
     }
     //get rid of user ids, making a match dto, having the dto contain an array of userids and 1 match obj,
     //take in DTO above, loop over array for addUserToMatch, return last one
