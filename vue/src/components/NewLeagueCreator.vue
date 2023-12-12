@@ -49,8 +49,7 @@ export default {
                 .then((response) => {
                     if (response.status == 201) {
                         this.$router.push({
-                            path: '/league-organizer/' + this.$store.leagueId,
-                            query: { registration: 'success' },
+                            path: '/league-organizer/' + response.data.leagueId
                         });
                     }
                 })

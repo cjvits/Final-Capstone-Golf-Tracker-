@@ -64,9 +64,14 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
+              const queryParams = { registration: 'success'}
+              if (this.$route.query.redirect) {
+                queryParams.redirect = this.$route.query.redirect
+              }
+
               this.$router.push({
                 path: '/login',
-                query: { registration: 'success' },
+                query: queryParams
               });
             }
           })
