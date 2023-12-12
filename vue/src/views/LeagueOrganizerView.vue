@@ -58,7 +58,7 @@ export default {
 
 
     //     togglePage() {
-    //       if (this.user.id === leagueCoordinator.id) {
+    //       if (this.user.id === league.leagueCoordinatorId) {
     //         return isLeagueOrganizer = true;
     //       }
     //       return 'Become a League Organizer';

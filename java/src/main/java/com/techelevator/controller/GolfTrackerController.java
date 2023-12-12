@@ -81,8 +81,8 @@ public class GolfTrackerController {
     
     @PostMapping("/{leagueId}/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<UserInLeague> addGolferToLeague(@PathVariable int leagueId, @PathVariable int userId) {
-        return golfTrackerDao.addUserToLeague(leagueId, userId);
+    public void addGolferToLeague(@PathVariable int leagueId, @PathVariable int userId) {
+        golfTrackerDao.addUserToLeague(leagueId, userId);
     }
 
     @GetMapping("/users")
