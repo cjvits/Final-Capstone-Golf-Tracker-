@@ -1,7 +1,6 @@
 <template>
     <option v-for="user in users" :key="user.id">{{ user.firstName }} {{ user.lastName }}
     </option>
-    
 
 </template>
 
