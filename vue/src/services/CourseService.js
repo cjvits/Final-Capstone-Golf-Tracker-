@@ -1,21 +1,21 @@
 import axios from "axios";
 
-const http = axios.create({
-    baseURL: "http://localhost:5173"
-});
+// const http = axios.create({
+//     baseURL: "http://localhost:5173"
+// });
 
 export default {
 
     getAllCourses(){
-        return http.get(`/course`)
+        return axios.get(`/course`)
     },
 
     createCourse(course){
-        return http.post(`/course`, course)
+        return axios.post(`/course`, course)
     },
 
     updateCourse(courseId, course){
-        return http.put(`/course/${courseId}`, course)
+        return axios.put(`/course/${courseId}`, course)
     }
 
 }
