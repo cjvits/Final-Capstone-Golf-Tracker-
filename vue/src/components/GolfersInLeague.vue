@@ -1,5 +1,5 @@
 <template>
-    <option v-for="user in users" :key="user.id">{{ user.firstName }} {{ user.lastName }}
+    <option v-for="user in this.$store.state.golfersInLeague" :key="user.id">{{ user.firstName }} {{ user.lastName }}
     </option>
 
 </template>
@@ -14,11 +14,7 @@ export default {
         }
     },
 
-    created() {
-        LeagueService
-            .getLeagueGolfers(this.$route.params.leagueId)
-            .then((response) => this.users = response.data)
-    }
+
 }
 
 
