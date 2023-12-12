@@ -164,7 +164,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
 
     @Override
-    public List<UserInLeague> addUserToLeague(int leagueId, int userId) {
+    public void addUserToLeague(int leagueId, int userId) {
         List<UserInLeague> golfersInLeague = new ArrayList<>();
         int initialScore = 0;
         String sql = "INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?) RETURNING league_id;";
@@ -175,7 +175,6 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             UserInLeague user = mapRowToUserInLeague(rowSet);
             golfersInLeague.add(user);
         }
-        return golfersInLeague;
     }
 
 

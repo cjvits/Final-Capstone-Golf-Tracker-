@@ -28,7 +28,7 @@ export default {
     methods: {
         joinLeague(leagueId, userId) {
             LeagueService
-                .addGolferToLeague(this.$route.params.leagueId, this.$store.user.id)
+                .addGolferToLeague(this.$route.params.leagueId, this.$store.state.user.id)
                 .then((response) => {
                     if (response.status == 201) {
                         this.$router.push({
