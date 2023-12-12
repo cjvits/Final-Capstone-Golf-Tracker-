@@ -41,7 +41,7 @@ import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
 import UpdateScore from '../components/UpdateScore.vue';
 import GolfersInLeague from '../components/GolfersInLeague.vue'
-import { BIconUiChecksGrid } from 'bootstrap-vue';
+// import { BIconUiChecksGrid } from 'bootstrap-vue';
 
 export default {
     components: {
@@ -60,12 +60,6 @@ export default {
         };
     },
 
-    components: {
-        Golfers,
-        NewMatchForm,
-        UpdateScore,
-        // LeaderBoard,
-    },
 
     computed: {
 
@@ -105,36 +99,36 @@ export default {
         }
     },
         
-        created() {
-            // This is league data associated with the coordinator's ID
-            // coordinator must be only one allowed to view page but it's all currently blocked 
-            LeagueService
-                .getLeaguesByCoordinatorId(this.$store.state.user.id)
-                .then((response) => {
-                    // this should iterate through all of the leagues to match the league with the league ID
-                    this.league = response.data.find(league => league.leagueId == this.$route.params.leagueId);
-                })
-                .catch((error) => {
-                    if (error.response.status === 403) {
-                        this.$router.push('/access-denied');
-                    }
-                });
+   created() {
+    // Fetch all leagues associated with the coordinator's ID
+    LeagueService
+        .getLeaguesByCoordinatorId(this.$store.state.user.id)
+        .then((response) => {
+            // Find the league with the matching league ID
+            const league = response.data.find(league => league.leagueId == this.$route.params.leagueId);
 
-            // If the user is not the coordinator and is not part of the league, block access
-            if (!this.isLeagueCoordinator) {
+            if (league) {
+                // Check if the user is the coordinator of the found league
+                if (league.coordinatorId == this.$store.state.user.id) { // Use loose comparison (==) here
+                    // Allow access because the user is the coordinator of the league
+                    this.league = league;
+
+                    // You can also load the golfers or perform other actions here
+                } else {
+                    // If the user is not the coordinator, redirect to access denied
+                    this.$router.push('/access-denied');
+                }
+            } else {
+                // If the league with the specified ID doesn't exist, redirect to access denied
                 this.$router.push('/access-denied');
             }
-
-            // this should get all the golfers in the league? if not
-            LeagueService
-                .getAllGolfers()
-                .then((response) => (this.matches = response.data))
-                .catch((error) => {
-                    if (error.response.status === 403) {
-                        this.$router.push('/access-denied');
-                    }
-                });
-        },
+        })
+        .catch((error) => {
+            if (error.response.status === 403) {
+                this.$router.push('/access-denied');
+            }
+        });
+},
 };
 </script>
 
