@@ -55,7 +55,11 @@ export default {
             // userId = 3; //this is hardcoded, use line above to get real number
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push(`/home`);
+            if (this.$route.query.redirect) {
+              this.$router.push({ path: this.$route.query.redirect })
+            } else {
+              this.$router.push(`/home`);
+            }
           }
         })
         .catch(error => {
