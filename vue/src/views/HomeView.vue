@@ -12,7 +12,7 @@
     <TeeTimes v-for="(league, index) in $store.state.userLeagues" v-bind:key="index" :league="league" :users="$store.state.user.users"/>
   </div>
 
-  <div class="center-column">
+  <div class="center-column" v-if="$store.state.userLeagues.length > 0">
     <LeaderBoard v-for="(league, index) in $store.state.userLeagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
 
   </div>

@@ -71,7 +71,7 @@ export default {
             selectedGolfer1: null,
             selectedGolfer2: null,
             match: {
-                leagueName: '', // will need to change to leagueID on the front
+                // leagueName: '', // will need to change to leagueID on the front
                 player1: '',
                 player2: '',
                 teeDate: '',
