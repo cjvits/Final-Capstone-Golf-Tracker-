@@ -141,6 +141,11 @@ export default {
         background-color: darkkhaki;
     }
 
+    h3 {
+        padding-top: 20px;
+        font-weight: bold;
+    }
+
     .organizer-page-container {
         padding-top: 15%;
         background-image: url("../assets/goldenGolf.jpeg");
@@ -205,6 +210,7 @@ export default {
         opacity: .9;
         color: darkkhaki;
         overflow: scroll;
+        padding: 1rem;
     }
     .left-column::-webkit-scrollbar,
     .right-column::-webkit-scrollbar,

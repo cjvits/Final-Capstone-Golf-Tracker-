@@ -14,7 +14,7 @@
                 <label for="match-time">Match Time: </label>
                 <input type="time" id="match-time" v-model="match.teeTime" required autofocus />
             </div>
-
+            
             <h1>Add some yinzers to your match:</h1>
 
             <div class="all-possible-golfers">
