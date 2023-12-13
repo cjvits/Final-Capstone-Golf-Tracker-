@@ -5,7 +5,7 @@
         </button>
 
         <form class="update-score" v-show="isFormShowing" v-on:submit.prevent="updateScore">
-            <!-- <h1>Update player scores</h1> -->
+            <h1>Update player scores</h1>
 
             <!-- <div class="form-input-group">
                 <label for="player1-score">Golfer1 score</label>
