@@ -104,24 +104,9 @@ export default {
             
         }
 
-                    // You can also load the golfers or perform other actions here
-                } else {
-                    // If the user is not the coordinator, redirect to access denied
-                    this.$router.push('/access-denied');
-                }
-            } else {
-                // If the league with the specified ID doesn't exist, redirect to access denied
-                this.$router.push('/access-denied');
-            }
-        })
-        .catch((error) => {
-            if (error.response.status === 403) {
-                this.$router.push('/access-denied');
-            }
-        });
-},
-};
+}
 </script>
+
 
 <style scoped>
     * {
