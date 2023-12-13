@@ -106,9 +106,28 @@ public class GolfTrackerController {
         golfTrackerDao.addLeagueUsersByLeagueId(leagueId, users);
     }
 
-    @GetMapping("/match/{userId}")
-    public List<Match> getMatchesByUserId(@PathVariable int userId) {
-        return golfTrackerDao.getMatchesByUserId(userId);
+//    @GetMapping("/match/{userId}")
+//    public List<Match> getMatchesByUserId(@PathVariable int userId) {
+//        return golfTrackerDao.getMatchesByUserId(userId);
+//    }
+
+    @PutMapping("/match/{matchId}/user/{userId}/score/{golferScore}")
+    public int updateMatchScore(@PathVariable int matchId, @PathVariable int userId, @PathVariable int golferScore) {
+        //needs to take in a matchId, userId, and the score for that user
+        //the jdbc method updateMatchScore will automatically update the users score to the leaderboard
+        //the jdbc method updateMatchScore will return the leagueScore
+        return golfTrackerDao.updateMatchScore(matchId, userId, golferScore);
+        //a match contains all the info needed except the score associated with the match.
+    }
+
+    @GetMapping("/match/{leagueId}")
+    public List <Match> getMatches(@PathVariable int leagueId){
+        List <Match> matchesInLeague = new ArrayList<>();
+        // we need to get league by league id
+        matchesInLeague = golfTrackerDao.getMatchesByLeagueId(leagueId);
+        //then we need to take the list of matches in that league and return it
+
+        return matchesInLeague;
     }
 
 
