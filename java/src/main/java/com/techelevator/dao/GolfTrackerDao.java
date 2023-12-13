@@ -25,6 +25,8 @@ public interface GolfTrackerDao {
 
     public List<UserInLeague> addUserToMatch(int matchId, int userId);
 
+    List<Match> getMatchesByLeagueId(int leagueId);
+
     public int updateMatchScore(int matchId, int userId, int golferScore);
 
     public List<Match> getMatchesByUserId (int userId);

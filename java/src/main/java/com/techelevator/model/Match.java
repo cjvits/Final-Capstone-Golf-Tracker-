@@ -15,23 +15,7 @@ public class Match {
 
     private League matchLeague;
 
-    public String getLeagueName() {
-        return leagueName;
-    }
-
-    public void setLeagueName(String leagueName) {
-        this.leagueName = leagueName;
-    }
-
     private String leagueName;
-
-    public League getMatchLeague() {
-        return matchLeague;
-    }
-
-    public void setMatchLeague(League matchLeague) {
-        this.matchLeague = matchLeague;
-    }
 
     @JsonDeserialize(using= LocalDateDeserializer.class)
     private LocalDate teeDate;
@@ -78,6 +62,22 @@ public class Match {
 //    public void setLeagueId(int leagueId) {
 //       this.matchLeague.getLeagueId() = leagueId;
 //    }
+
+    public String getLeagueName() {
+        return leagueName;
+    }
+
+    public void setLeagueName(String leagueName) {
+        this.leagueName = leagueName;
+    }
+
+    public League getMatchLeague() {
+        return matchLeague;
+    }
+
+    public void setMatchLeague(League matchLeague) {
+        this.matchLeague = matchLeague;
+    }
 
     public LocalDate getTeeDate() {
         return teeDate;

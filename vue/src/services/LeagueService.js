@@ -39,4 +39,12 @@ export default {
         return axios.post(`/match`, match);
     },
 
+    updateScore(matchId, userId, score){
+        return axios.put(`/match/${matchId}/user/${userId}/score/${score}`);
+    },
+
+    getAllMatches(leagueId){
+        return axios.get(`/match/${leagueId}`);
+    },
+
 };

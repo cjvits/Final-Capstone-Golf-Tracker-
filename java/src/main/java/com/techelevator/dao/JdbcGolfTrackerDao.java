@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.model.*;
 
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -83,19 +82,20 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         }
         return matchesByUser;
     }
+
     @Override
     public Match getMatch(int matchId) {
         Match match = new Match();
         String sql = "Select matches.match_id, tee_date, tee_time, users.user_id, users.username, match_score FROM matches JOIN match_golfer on match_golfer.match_id = matches.match_id JOIN users on match_golfer.user_id = users.user_id WHERE matches.match_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, matchId);
         if (rowSet.next()) {
-            match.setMatchId(rowSet.getInt("matches.match_id"));
+            match.setMatchId(rowSet.getInt("match_id"));
             match.setTeeDate(rowSet.getDate("tee_date").toLocalDate());
             match.setTeeTime(rowSet.getTime("tee_time").toLocalTime());
             List<UserInLeague> golfersInMatch = new ArrayList<>();
             UserInLeague User1 = new UserInLeague();
-            User1.setId(rowSet.getInt("users.user_id"));
-            User1.setUsername(rowSet.getString("users.username"));
+            User1.setId(rowSet.getInt("user_id"));
+            User1.setUsername(rowSet.getString("username"));
             User1.setMatchScore(rowSet.getInt("match_score"));
             golfersInMatch.add(User1);
             while (rowSet.next()) {
@@ -135,13 +135,29 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     }
 
     @Override
-    public int updateMatchScore (int matchId,int userId, int golferScore) {
+    public List<Match> getMatchesByLeagueId(int leagueId) {
+        List<Match> matchesInLeague = new ArrayList<>();
+        String sql = "SELECT match_id, tee_time, tee_date FROM matches where league_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
+        while (rowSet.next()) {
+            Match match = mapRowToMatch(rowSet);
+            matchesInLeague.add(match);
+        }
+        for (Match match: matchesInLeague) {
+            match.setGolfers(getUsersByMatchId(match.getMatchId()));
+        }
+        return matchesInLeague;
+    }
+
+
+    @Override
+    public int updateMatchScore (int matchId, int userId, int golferScore) {
         String sqlUpdateMatchScore = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
         jdbcTemplate.update(sqlUpdateMatchScore, golferScore, userId, matchId);
         String sqlGetSumOfMatchScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
         int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatchScores, Integer.class, userId);
         String sqlUpdateLeaderScore = "UPDATE league_golfer SET league_score = ? where user_id = ? AND league_id = (select league_id from matches where match_id = ?) returning league_score;";
-        int leagueScoreInDatabase = jdbcTemplate.update(sqlUpdateLeaderScore, Integer.class, newLeagueScore, userId, matchId);
+        Integer leagueScoreInDatabase = jdbcTemplate.queryForObject(sqlUpdateLeaderScore, Integer.class, newLeagueScore, userId, matchId);
 
         return leagueScoreInDatabase;
 
@@ -273,20 +289,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             return result;
         }
 
-    public List<Match> getMatchesByLeagueId(int leagueId) {
-        List<Match> matchesInLeague = new ArrayList<>();
-        String sql = "SELECT match_id, tee_time, tee_date FROM matches where league_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, leagueId);
-        while (rowSet.next()) {
-            Match match = mapRowToMatch(rowSet);
-            matchesInLeague.add(match);
-        }
-        for (Match match: matchesInLeague) {
-            getUsersByMatchId(match.getMatchId());
 
-        }
-        return matchesInLeague;
-    }
 
     public List<UserInLeague> getUsersByMatchId(int matchId) {
         List<UserInLeague> usersInMatch = new ArrayList<>();
