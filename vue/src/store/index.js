@@ -36,7 +36,7 @@ export function createStore(currentToken, currentUser) {
         state.leagues = [];
         state.userLeagues = [];
       },
-      SET_LEAGUES(state,leagues){
+      SET_LEAGUES(state, leagues){
         state.leagues = leagues;
       },
       SET_USER_LEAGUES(state, leagues){
