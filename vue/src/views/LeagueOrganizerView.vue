@@ -21,8 +21,7 @@
                 INSERT LEAGUE LEADER BOARD:
                 Since we are currently getting the boards by user, this won't work. 
                 We could get the board by league for this one. It's also not necessary.
-             <LeaderBoard :league="league" :users="$store.state.user.users" />
-                <!-- <LeaderBoard v-for="(league, index) in leagues" v-bind:key="index" :league="league" :users="$store.state.league.id" /> -->
+                <leader-board :league="leagueById" :users="$store.state.user.users" />
                 
 
             </div>
@@ -47,14 +46,21 @@ export default {
         Golfers,
         NewMatchForm,
         UpdateScore,
-        // LeaderBoard,
+        LeaderBoard,
     },
     data() {
         return {
             league: {}
         }
     },
-
+    computed: {
+        leagueById(){
+            let leagueId = this.$route.params.leagueId;
+            return this.$store.state.userLeagues.find((item) => {
+                return item.leagueId == leagueId;
+            })
+        }
+    },
     
 
     methods: {
