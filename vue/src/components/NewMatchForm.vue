@@ -66,8 +66,15 @@ export default {
     data() {
         return {
             isFormShowing: false,
-            selectedGolfer1: null,
-            selectedGolfer2: null,
+            selectedGolfer1: {
+                name: "",
+                id: 0},
+
+            selectedGolfer2:{
+                name: "",
+                id: 0,
+            },
+
             match: {
                 leagueName: '', // will need to change to leagueID on the front
                 player1: '',
@@ -89,7 +96,7 @@ export default {
 
             const dto = {
                 match: this.match,
-                playersInMatch: [this.selectedGolfer1, this.selectedGolfer2]
+                playersInMatch: [this.selectedGolfer1.id, this.selectedGolfer2]
             };
 
             LeagueService

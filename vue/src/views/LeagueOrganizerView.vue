@@ -18,7 +18,7 @@
             </div>
 
             <div class="center-column">
-                <leader-board :league="leagueById" :users="$store.state.user.users" />
+                <leader-board :league="leagueById" :users="$store.state.user.users" v-if="leagueById"/>
         
             </div>
 
