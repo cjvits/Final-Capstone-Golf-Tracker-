@@ -40,7 +40,7 @@
             <GolfersInLeague></GolfersInLeague>
         </section>
         <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
-            {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
+            {{ isLeagueInProgress ? "Start League Now!" : "Add More Yinzers" }}
         </button>
     </div>
 </template>

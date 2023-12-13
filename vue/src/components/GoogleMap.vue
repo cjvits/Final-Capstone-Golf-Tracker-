@@ -174,6 +174,55 @@ export default {
               longitude: -80.1730783,
               Website: 'https://www.southpointegolfclub.com/',
           },
+          {
+              name: 'Pittsburgh North Golf Course',
+              address: '3800 Bakerstown Rd, Gibsonia, PA 15044',
+              latitude: 40.657740,
+              longitude: -79.954330,
+              Website: 'http://www.pittsburghnorthgolf.com/',
+          },
+          {
+              name: 'Pittsburgh National Golf Club',
+              address: '287 Monier Rd, Gibsonia, PA 15044',
+              latitude: 40.650600,
+              longitude: -79.879740,
+              Website: 'https://pittsburghnationalgolfclub.net/',
+          },
+          {
+              name: 'Birdsfoot Golf Course',
+              address: '225 Furnace Run Rd, Freeport, PA 16229',
+              latitude: 40.745152,
+              longitude: -79.665367,
+              Website: 'https://www.birdsfoot.com/',
+          },
+          {
+              name: 'Diamond Run Golf Club',
+              address: '132 Laurel Oak Dr, Sewickley, PA 15143',
+              latitude: 40.559010,
+              longitude: -80.102230,
+              Website: 'https://www.invitedclubs.com/clubs/diamond-run-golf-club',
+          },
+          {
+              name: 'Latrobe Country Club',
+              address: '346 Arnold Palmer Dr, Latrobe, PA 15650',
+              latitude: 40.275980,
+              longitude: -79.372290,
+              Website: 'https://www.latrobecountryclub.com/',
+          },
+          {
+              name: 'Rolling Rock Golf Club',
+              address: '167 Club House, Laughlintown, PA 15655',
+              latitude: 40.2095341,
+              longitude: -79.2122536,
+              Website: 'https://rollingrockclub1917.com/',
+          },
+          {
+              name: 'Cranberry Highlands Golf Course',
+              address: '5601 Freshcorn Rd, Cranberry Twp, PA 16066',
+              latitude: 40.7299311,
+              longitude: -80.1383182,
+              Website: 'https://www.cranberryhighlands.com/2838/Golf-Course',
+          },
       ];
 
       golfCourses.forEach((course) => {
@@ -213,7 +262,7 @@ export default {
         // Find my location marker "green"
         icon: "https://maps.google.com/mapfiles/kml/paddle/grn-circle.png",
       });
-      this.map.setZoom(12);
+      this.map.setZoom(11);
     },
 
 

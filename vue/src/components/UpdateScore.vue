@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="button">
         <button v-on:click.prevent="isFormShowing = !isFormShowing">
             {{ isFormShowing ? "Hide Form" : "Update Score" }}
         </button>
@@ -88,3 +88,18 @@ export default {
 
 </script>
 
+<style>
+    button {
+    background-color: #093708;
+    color: darkkhaki;
+    border-radius: .5em;
+    padding: .5em;
+    margin: 1.5em;
+    font-family: 'Hedvig Letters Serif', serif;
+}
+
+button:hover {
+    background-color: #116110;
+    color: wheat;
+}
+</style>

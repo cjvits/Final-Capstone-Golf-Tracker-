@@ -14,7 +14,6 @@
                     <li>LO will be able to click a button per match to add scores</li>
                     <li>Will update </li>
                 </ul>
-                
             </div>
 
             <div class="center-column">
@@ -27,6 +26,7 @@
             </div>
 
             <div class="right-column">
+            
                 <Golfers />
             </div>
         </div>
@@ -40,6 +40,7 @@ import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
 import UpdateScore from '../components/UpdateScore.vue';
 import GolfersInLeague from '../components/GolfersInLeague.vue'
+// import { BIconUiChecksGrid } from 'bootstrap-vue';
 
 export default {
     components: {
@@ -64,6 +65,7 @@ export default {
     
 
     methods: {
+
         createNewMatch() {
             LeagueService
             .createMatch(this.match)
@@ -111,122 +113,122 @@ export default {
 }
 </script>
 
+
 <style scoped>
-* {
-    box-sizing: border-box;
-}
-.page-container {
-    background-image: url("../assets/goldenGolf.jpeg");
-    background-color: #312917;
-    height: 100vh;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: 'Hedvig Letters Serif', serif;
-    color: #093708;
-    font-weight: 600;
-    text-align: center;
-}
+    * {
+        box-sizing: border-box;
+    }  
+    .page-container {
+        padding-top: 15%;
+        background-image: url("../assets/goldenGolf.jpeg");
+        background-color: #312917;
+        height: 100vh;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: 'Hedvig Letters Serif', serif;
+        color: #06612f;
+        font-weight: 600;
+        text-align: center;
+    }
 
-.info {
-    background-color: darkkhaki;
-    opacity: .85;
-}
+    .info {
+        background-color: darkkhaki;
+        opacity: .85;
+    }
 
-h2 {
-    background-color: darkkhaki;
-}
+    h2 {
+        background-color: darkkhaki;
+    }
 
-.organizer-page-container {
-    padding-top: 3rem;
-    background-image: url("../assets/goldenGolf.jpeg");
-    height: 100vh;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: 'Hedvig Letters Serif', serif;
-    color: #093708;
-    font-weight: 600;
-    text-align: center;
-    align-items: stretch;
-}
+    h3 {
+        padding-top: 20px;
+        font-weight: bold;
+    }
 
-/* Style the header */
-.header {
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-}
-.row {
-  display: -webkit-flex;
-  display: flex;
-}
+    .organizer-page-container {
+        padding-top: 15%;
+        background-image: url("../assets/goldenGolf.jpeg");
+        height: 100vh;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: 'Hedvig Letters Serif', serif;
+        color: #06612f;
+        font-weight: 600;
+        text-align: center;
+        align-items: stretch;
+    }
 
-/* Create three unequal columns that sits next to each other */
-.row {
-  padding: 10px;
-  height: 75%;
-}
+    /* Style the header */
+    .header {
+        padding: 30px;
+        text-align: center;
+        font-size: 35px;
+    }
+    .row {
+        display: -webkit-flex;
+        display: flex;
+    }
 
-/* Left and right column */
-.right-column {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    border-radius: 15px;
-    margin: .5rem;
-    background-color: darkkhaki;
-    opacity: .9;
-    overflow: scroll;
-}
+    /* Create three unequal columns that sits next to each other */
+    .row {
+        padding: 10px;
+        height: 75%;
+    }
 
-.left-column {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    border-radius: 15px;
-    margin: .5rem;
-    background-color: darkkhaki;
-    opacity: .9;
-    overflow: scroll;
-}
+    /* Left and right column */
+    .right-column {
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 15px;
+        margin: .5rem;
+        background-color: darkkhaki;
+        opacity: .9;
+        overflow: scroll;
+    }
 
-.center-column {
-  -webkit-flex: 2;
-  -ms-flex: 2;
-  flex: 1.25;
-  border-radius: 15px;
-  margin: .5rem;
-  background-color: #093708;
-  opacity: .9;
-  color: darkkhaki;
-  overflow: scroll;
-}
-.left-column::-webkit-scrollbar,
-.right-column::-webkit-scrollbar,
-.center-column::-webkit-scrollbar {
-  width: 15px;
-}
-.left-column::-webkit-scrollbar-thumb,
-.right-column::-webkit-scrollbar-thumb{
-    background-color: darkkhaki;
-    border-radius: 15px;
-}
-.center-column::-webkit-scrollbar-thumb {
-  background-color: #093708;
-  border-radius: 15px;
-}
-.left-column::-webkit-scrollbar-corner,
-.right-column::-webkit-scrollbar-corner,
-.center-column::-webkit-scrollbar-corner {
-  display: none;
-}
+    .left-column {
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 15px;
+        margin: .5rem;
+        background-color: darkkhaki;
+        opacity: .9;
+        overflow: scroll;
+    }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .row {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
-}
+    .center-column {
+        -webkit-flex: 2;
+        -ms-flex: 2;
+        flex: 1.25;
+        border-radius: 15px;
+        margin: .5rem;
+        background-color: #093708;
+        opacity: .9;
+        color: darkkhaki;
+        overflow: scroll;
+        padding: 1rem;
+    }
+    .left-column::-webkit-scrollbar,
+    .right-column::-webkit-scrollbar,
+    .center-column::-webkit-scrollbar {
+        width: 15px;
+    }
+    .left-column::-webkit-scrollbar-thumb,
+    .right-column::-webkit-scrollbar-thumb{
+        background-color: darkkhaki;
+        border-radius: 15px;
+    }
+    .center-column::-webkit-scrollbar-thumb {
+        background-color: #093708;
+        border-radius: 15px;
+    }
+    .left-column::-webkit-scrollbar-corner,
+    .right-column::-webkit-scrollbar-corner,
+    .center-column::-webkit-scrollbar-corner {
+        display: none;
+    }
 </style>
