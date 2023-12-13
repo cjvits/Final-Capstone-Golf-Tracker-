@@ -71,7 +71,7 @@ export default {
             selectedGolfer1: null,
             selectedGolfer2: null,
             match: {
-                leagueName: '', // will need to change to leagueID on the front
+                // leagueName: '', // will need to change to leagueID on the front
                 player1: '',
                 player2: '',
                 teeDate: '',
@@ -98,7 +98,9 @@ export default {
                 .createMatch(dto)
                 .then((response) => {
                     if (response.status == 201) {
+                        this.$store.commit('ADD_MATCH_TO_LEAGUE', dto.match);
                         this.match = response.data;
+
                         // this.$router.push({
                         //     path: '/league-organizer',
                         //     params: {leagueId: this.currentLeague.leagueId},

@@ -8,18 +8,18 @@
             <div class="left-column">
                 <h3>Update Yinzer Scores</h3>
                 <NewMatchForm></NewMatchForm>
-                <UpdateScore></UpdateScore>
-                <ul>
+                <MatchList></MatchList>
+                <!-- <ul>
                     <li>Will list Matches from league</li>
                     <li>LO will be able to click a button per match to add scores</li>
                     <li>Will update </li>
-                </ul>
+                </ul> -->
             </div>
 
             <div class="center-column">
-                INSERT LEAGUE LEADER BOARD:
+                <!-- INSERT LEAGUE LEADER BOARD:
                 Since we are currently getting the boards by user, this won't work. 
-                We could get the board by league for this one. It's also not necessary.
+                We could get the board by league for this one. It's also not necessary. -->
                 <leader-board :league="leagueById" :users="$store.state.user.users" />
                 
 
@@ -40,18 +40,20 @@ import Golfers from '../components/Golfers.vue';
 import NewMatchForm from '../components/NewMatchForm.vue'
 import UpdateScore from '../components/UpdateScore.vue';
 import GolfersInLeague from '../components/GolfersInLeague.vue'
+import MatchList from '../components/MatchList.vue';
 // import { BIconUiChecksGrid } from 'bootstrap-vue';
 
 export default {
     components: {
         Golfers,
         NewMatchForm,
-        UpdateScore,
         LeaderBoard,
+        MatchList
     },
     data() {
         return {
-            league: {}
+            league: {},
+            matches: []
         }
     },
     computed: {
@@ -107,7 +109,16 @@ export default {
                         this.$router.push('/access-denied');
                     }
                 });
-            
+            LeagueService
+                .getAllMatches(this.$route.params.leagueId)
+                .then((response) => {
+                    this.$store.commit("SET_LEAGUE_MATCHES", response.data);
+                    this.matches = response.data;
+                });
+            // here is where we need to call a GET ALL MATCHES method 
+            // pulling all the matches from the backend
+
+            // 
         }
 
 }
