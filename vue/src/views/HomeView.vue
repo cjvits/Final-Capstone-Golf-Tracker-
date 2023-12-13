@@ -14,6 +14,7 @@
 
   <div class="center-column">
     <LeaderBoard v-for="(league, index) in $store.state.userLeagues" v-bind:key="index" :league="league" :users="$store.state.user.users" />
+
   </div>
   
   <div class="right-column">
