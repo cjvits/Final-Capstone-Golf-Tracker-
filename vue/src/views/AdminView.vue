@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-page-container">
+    <div class="admin-page-container" >
         Administrator Page
         <NewCourseForm></NewCourseForm>
     </div>
@@ -19,9 +19,11 @@
 
         components: {
             NewCourseForm,
-        },
+        }
 
     }
+
+    
 </script>
 
 <style scoped>
