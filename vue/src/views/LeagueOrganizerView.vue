@@ -51,25 +51,11 @@ export default {
     },
     data() {
         return {
-            // isLeagueOrganizer: false
-            // leagues: [{
-                
-            // }]
+            league: {}
         }
     },
 
     
-
-    // computed: {
-
-
-    //     togglePage() {
-    //       if (this.user.id === league.leagueCoordinatorId) {
-    //         return isLeagueOrganizer = true;
-    //       }
-    //       return 'Become a League Organizer';
-    //     },
-    //   },
 
     methods: {
         createNewMatch() {
@@ -92,12 +78,29 @@ export default {
                 });
             }
         },
-        // created() {
 
-        // LeagueService
-        //     .getAllGolfers()
-        //     .then((response) => this.matches = response.data)
-        // }
+        created() {
+            // This is league data associated with the coordinator's ID
+            // coordinator must be only one allowed to view page but it's all currently blocked
+            LeagueService
+                .getLeaguesByCoordinatorId(this.$store.state.user.id)
+                .then((response) => {
+                    // this should iterate through all of the leagues to match the league with the league ID
+                    this.league = response.data.find(league => league.leagueId == this.$route.params.leagueId);
+                    console.log(this.league)
+
+                    // If the user is not the coordinator and is not part of the league, block access
+                    if (!this.league) {
+                        this.$router.push('/access-denied');
+                    }
+                })
+                .catch((error) => {
+                    if (error.response.status === 403) {
+                        this.$router.push('/access-denied');
+                    }
+                });
+            
+        }
 
 }
 </script>
