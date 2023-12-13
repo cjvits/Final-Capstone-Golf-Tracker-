@@ -9,6 +9,7 @@ export function createStore(currentToken, currentUser) {
       leagues: [],
       userLeagues: [],
       golfersInLeague: [],
+      matches: []
       // ...currentUser,
       // username: (currentUser && currentUser.username) || '',
       // users: [
@@ -48,7 +49,9 @@ export function createStore(currentToken, currentUser) {
       ADD_GOLFER_TO_LEAGUE(state, user){
         state.golfersInLeague.push(user);
       },
-     
+      ADD_MATCH_TO_LEAGUE(state, match){
+        state.matches.push(match);
+      }
     },
   });
   return store;

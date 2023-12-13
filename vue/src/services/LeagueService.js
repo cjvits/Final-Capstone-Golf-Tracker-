@@ -35,4 +35,9 @@ export default {
         return axios.post(`/match`, match);
     },
 
+    updateScore(matchId, score){
+        return axios.post(`/match/${matchId}`, score)
+    },
+
+    
 };

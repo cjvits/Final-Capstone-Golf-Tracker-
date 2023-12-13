@@ -98,7 +98,9 @@ export default {
                 .createMatch(dto)
                 .then((response) => {
                     if (response.status == 201) {
+                        this.$store.commit('ADD_MATCH_TO_LEAGUE', dto.match);
                         this.match = response.data;
+
                         // this.$router.push({
                         //     path: '/league-organizer',
                         //     params: {leagueId: this.currentLeague.leagueId},

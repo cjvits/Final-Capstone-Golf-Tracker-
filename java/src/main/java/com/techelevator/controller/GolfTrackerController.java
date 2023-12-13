@@ -106,4 +106,13 @@ public class GolfTrackerController {
     public List<Match> getMatchesByUserId(@PathVariable int userId) {
         return golfTrackerDao.getMatchesByUserId(userId);
     }
+
+    public Match updateMatchScore(){
+        //needs to take in a matchId, userId, and the score for that user
+        //the jdbc method updateMatchScore will automatically update the users score to the leaderboard
+        //the jdbc method updateMatchScore will return the leagueScore
+        
+        //a match contains all the info needed except the score associated with the match.
+        return null;
+    }
 }

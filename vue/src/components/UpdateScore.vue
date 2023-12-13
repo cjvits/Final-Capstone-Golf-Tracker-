@@ -43,41 +43,34 @@ export default {
     data() {
         return {
             isFormShowing: false,
-            // score: {
-            //     match: this.$store.state.match,
-            //     player1: '',
-            //     player2: '',
+            score: {
+                match: this.$store.state.match,
+                player1: '',
+                player2: '',
+                player1Score: 0,
+                player2Score: 0
 
-            // }
+            }
         }
     },
-    // methods: {
-    //     updateScore() {
-    //         LeagueService
-    //         .updateScore(this.match)
-    //         .then((response) => {
-    //                 if (response.status == 201) {
-    //                     this.$router.push({
-    //                         path: '/league-organizer',
-    //                         query: { registration: 'success' },
-    //                     });
-    //                 }
-    //             })
-    //             .catch((error) => {
-    //                 const response = error.response;
-    //                 this.registrationErrors = true;
-    //                 if (response.status === 400) {
-    //                     this.registrationErrorMsg = 'Bad Request: Validation Errors';
-    //                 }
-    //             });
-    //         }
-    //     },
-    //     created() {
-
-    //     LeagueService
-    //         .getAllGolfers()
-    //         .then((response) => this.matches = response.data)
-    //     }
+    methods: {
+        updateScore() {
+            LeagueService
+            .updateScore(this.match)
+            .then((response) => {
+                
+                    // unsure what to put here for now
+            })
+            .catch((error) => {
+             const response = error.response;
+                 this.registrationErrors = true;
+                if (response.status === 400) {
+                    this.registrationErrorMsg = 'Bad Request: Validation Errors';
+                }
+            });
+            
+        }  
+    }    
 
 }
 
