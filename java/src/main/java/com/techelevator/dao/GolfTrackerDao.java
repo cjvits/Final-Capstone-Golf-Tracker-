@@ -35,7 +35,7 @@ public interface GolfTrackerDao {
 
     public List<UserInLeague> getLeagueUsersByLeagueId(int leagueId);
 
-
+    public void addLeagueUsersByLeagueId(int leagueId, List<User> users);
 
 }
 

@@ -29,7 +29,7 @@ public class User {
       this.id = id;
       this.username = username;
       this.password = password;
-      if (authorities != null) this.setAuthorities(authorities);
+      if (authorities != null) this.setAuthoritiesFromString(authorities);
       this.activated = true;
    }
 
@@ -73,7 +73,7 @@ public class User {
       this.authorities = authorities;
    }
 
-   public void setAuthorities(String authorities) {
+   public void setAuthoritiesFromString(String authorities) {
       String[] roles = authorities.split(",");
       for (String role : roles) {
          String authority = role.contains("ROLE_") ? role : "ROLE_" + role;
