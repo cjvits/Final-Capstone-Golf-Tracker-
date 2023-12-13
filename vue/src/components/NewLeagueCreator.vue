@@ -19,7 +19,7 @@
                 </select>
             </div>
 
-            <button class="submitBtn" type="submit">create new league</button>
+            <button class="submitBtn" type="submit">Create New League</button>
         </form>
     </div>
 </template>

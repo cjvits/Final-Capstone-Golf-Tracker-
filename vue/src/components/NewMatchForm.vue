@@ -3,7 +3,7 @@
         {{ isFormShowing ? "Hide Form" : "Create a new match" }}
     </button>
 
-    <section class="golfers-to-add" v-if=isFormShowing>
+    <section id="button" class="golfers-to-add" v-if=isFormShowing>
         <form class="new-match-form" v-on:submit.prevent="createMatch">
 
             <div class="form-input-group">
@@ -151,5 +151,18 @@ export default {
 <style scoped>
 .new-course-maker {
     background-color: darkkhaki;
+}
+button {
+    background-color: #093708;
+    color: darkkhaki;
+    border-radius: .5em;
+    padding: .5em;
+    margin: 1.5em;
+    font-family: 'Hedvig Letters Serif', serif;
+}
+
+button:hover {
+    background-color: #116110;
+    color: wheat;
 }
 </style>
