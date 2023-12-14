@@ -1,17 +1,15 @@
 <template>
     <div class="content">
-        <h1>thanks for stahp'n dahn!</h1>
-        <h2>see yinz late-ah!</h2>
+        <h1>Thanks for stahp'n dahn!</h1>
+        <h2>See yinz late-ah!</h2>
         <img src="https://media.giphy.com/media/Moo8SpSUk6R4A/giphy.gif" />
     </div>
 </template>
 
 <style scoped>
 .content {
-
     justify-self: center;
     align-self: center;
-
     background-image: url("../assets/goldenGolf.jpeg");
     background-color: #312917;
     backdrop-filter: blur(10px);

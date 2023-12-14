@@ -35,24 +35,12 @@
 
         </form>
 
-        <!-- <form class="new-match-form" v-on:submit.prevent="updateUsersInMatch">
-
-
-
-            <button class="submitBtn" type="submit">Add Yinzers to Match</button>
-
-        </form> -->
-
-
     </section>
-    <!-- <section class="golfers-in-league" v-else>
-        <GolfersInLeague></GolfersInLeague>
-    </section> -->
+
 </template>
 
         
 <script>
-// import CourseService from '../services/CourseService.js'
 import GolfersInLeague from './GolfersInLeague.vue';
 import LeagueService from '../services/LeagueService';
 
@@ -70,7 +58,6 @@ export default {
             selectedGolfer2: null,
 
             match: {
-                // leagueName: '', // will need to change to leagueID on the front
                 player1: '',
                 player2: '',
                 teeDate: '',
@@ -84,8 +71,6 @@ export default {
 
     methods: {
         createMatch() {
-            // this.match.leagueName = this.currentLeague.leagueName;
-            // this.match.leagueId = this.currentLeague.leagueId;
             this.match.matchLeague = this.currentLeague;
 
             const dto = {
@@ -99,12 +84,7 @@ export default {
                     if (response.status == 201) {
                         this.$store.commit('ADD_MATCH_TO_LEAGUE', dto.match);
                         this.match = response.data;
-
-                        // this.$router.push({
-                        //     path: '/league-organizer',
-                        //     params: {leagueId: this.currentLeague.leagueId},
-                        //     query: { registration: 'success' },
-                        // });
+                        location.reload();
                     }
                 })
                 .catch((error) => {
@@ -115,25 +95,7 @@ export default {
                     }
                 });
         },
-        // updateUsersInMatch(){
-        //     LeagueService
-        //         .addUserToMatch(this.user.id, this.match.id)
-        //         .then((response) => {
-        //         if (response.status == 201) {
-        //             this.$router.push({
-        //                     path: '/league-organizer',
-        //                     query: { registration: 'success' },
-        //                 });
-        //              }
-        //         })
-        //         .catch((error) => {
-        //             const response = error.response;
-        //             this.registrationErrors = true;
-        //             if (response.status === 400) {
-        //                 this.registrationErrorMsg = 'Bad Request: Validation Errors';
-        //             }
-        //         });
-        //     }
+
     },
     computed: {
         currentLeague() {

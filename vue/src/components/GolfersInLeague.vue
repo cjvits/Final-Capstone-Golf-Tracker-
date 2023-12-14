@@ -5,18 +5,6 @@
 </template>
 
 <script>
-// import LeagueService from '../services/LeagueService.js';
-
-// export default {
-//     data() {
-//         return{
-//              users: []  
-//         }
-//     },
-
-
-// }
-
 
 </script>
 

@@ -9,20 +9,13 @@
                 <h3>Update Yinzer Scores</h3>
                 <NewMatchForm></NewMatchForm>
                 <MatchList></MatchList>
-                <!-- <ul>
-                    <li>Will list Matches from league</li>
-                    <li>LO will be able to click a button per match to add scores</li>
-                    <li>Will update </li>
-                </ul> -->
             </div>
 
             <div class="center-column">
                 <leader-board :league="leagueById" :users="$store.state.user.users" v-if="leagueById"/>
-        
             </div>
 
             <div class="right-column">
-            
                 <Golfers />
             </div>
         </div>
@@ -111,12 +104,7 @@ export default {
                     this.$store.commit("SET_LEAGUE_MATCHES", response.data);
                     this.matches = response.data;
                 });
-            // here is where we need to call a GET ALL MATCHES method 
-            // pulling all the matches from the backend
-
-            // 
         }
-
 }
 </script>
 
@@ -141,7 +129,7 @@ export default {
 
     .info {
         background-color: darkkhaki;
-        opacity: .85;
+        opacity: .9;
     }
 
     h2 {
@@ -149,17 +137,16 @@ export default {
     }
 
     h3 {
-        padding-top: 20px;
+        padding-top: 5%;
         font-weight: bold;
     }
 
     .organizer-page-container {
-        padding-top: 15%;
+        padding-top: 2%;
         background-image: url("../assets/goldenGolf.jpeg");
         height: 100vh;
         background-size: 100%;
         background-repeat: no-repeat;
-        background-position: center;
         font-family: 'Hedvig Letters Serif', serif;
         color: #06612f;
         font-weight: 600;
@@ -169,7 +156,7 @@ export default {
 
     /* Style the header */
     .header {
-        padding: 30px;
+        padding: 2%;
         text-align: center;
         font-size: 35px;
     }
@@ -192,7 +179,7 @@ export default {
         border-radius: 15px;
         margin: .5rem;
         background-color: darkkhaki;
-        opacity: .9;
+        opacity: .95;
         overflow: scroll;
     }
 
@@ -203,7 +190,7 @@ export default {
         border-radius: 15px;
         margin: .5rem;
         background-color: darkkhaki;
-        opacity: .9;
+        opacity: .95;
         overflow: scroll;
     }
 
@@ -214,7 +201,7 @@ export default {
         border-radius: 15px;
         margin: .5rem;
         background-color: #093708;
-        opacity: .9;
+        opacity: .95;
         color: darkkhaki;
         overflow: scroll;
         padding: 1rem;
