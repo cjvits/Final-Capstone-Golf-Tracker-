@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-page-container" >
+    <div class="admin-page-container" v-if="this.$store.state.user.authorities.some((obj) => obj.name === 'ROLE_ADMIN')" >
         Administrator Page
         <NewCourseForm></NewCourseForm>
     </div>
@@ -19,9 +19,19 @@
 
         components: {
             NewCourseForm,
+        },
+
+        methods: {
+            navigateToAdminPage(){
+            if (this.$store.state.user.authorities.some((obj) => obj.name != 'ROLE_ADMIN')) {
+                        this.$router.push('/access-denied');
+            }
+            
+
         }
 
     }
+}
 
     
 </script>

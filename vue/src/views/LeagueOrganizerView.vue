@@ -97,7 +97,7 @@ export default {
 
                     // If the user is not the coordinator and is not part of the league, block access
                     if (!this.league) {
-                        this.$router.push('/access-denied');
+                        this.$router.push({ name: 'access-denied' });
                     }
                 })
                 .catch((error) => {
