@@ -13,7 +13,6 @@ import com.techelevator.dao.GolfTrackerDao;
 
 @RestController
 @CrossOrigin
-
 public class GolfTrackerController {
 
     private final GolfTrackerDao golfTrackerDao;
@@ -102,11 +101,10 @@ public class GolfTrackerController {
         return golfTrackerDao.getLeagueUsersByLeagueId(leagueId);
     }
 
-    // this is redundant, not being used
-//    @GetMapping("/match/{userId}")
-//    public List<Match> getMatchesByUserId(@PathVariable int userId) {
-//        return golfTrackerDao.getMatchesByUserId(userId);
-//    }
+    @PostMapping("/league/{leagueId}/users")
+    public void addUsersInLeague(@PathVariable int leagueId, @RequestBody List<Integer> userIds) {
+        golfTrackerDao.addLeagueUsersByLeagueId(leagueId, userIds);
+    }
 
     @PutMapping("/match/{matchId}/user/{userId}/score/{golferScore}")
     public int updateMatchScore(@PathVariable int matchId, @PathVariable int userId, @PathVariable int golferScore) {
@@ -126,4 +124,6 @@ public class GolfTrackerController {
 
         return matchesInLeague;
     }
+
+
 }

@@ -49,6 +49,9 @@ export function createStore(currentToken, currentUser) {
       ADD_GOLFER_TO_LEAGUE(state, user){
         state.golfersInLeague.push(user);
       },
+      ADD_GOLFERS_TO_LEAGUE(state, users){
+        state.golfersInLeague.push.apply(state.golfersInLeague, users);
+      },
       ADD_MATCH_TO_LEAGUE(state, match){
         state.matches.push(match);
       },

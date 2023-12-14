@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
     //you cannot know the league id on the front end, you only know who is logged in
-    
-    getLeaguesByUserId(userId){
+
+    getLeaguesByUserId(userId) {
         return axios.get(`/league/${userId}`);
     },
 
@@ -13,7 +13,7 @@ export default {
 
     newLeague(league) {
         return axios.post(`/league`, league);
-    }, 
+    },
 
     getAllGolfers() {
         return axios.get(`/users`);
@@ -21,6 +21,10 @@ export default {
 
     addGolferToLeague(leagueId, userId) {
         return axios.post(`/${leagueId}/${userId}`);
+    },
+
+    addGolfersToLeague(leagueId, users) {
+        return axios.post(`/league/${leagueId}/users`, users)
     },
 
     getLeagueGolfers(leagueId) {
@@ -31,7 +35,7 @@ export default {
         return axios.get(`/league-organizer/${userId}`);
     },
 
-    createMatch(match){
+    createMatch(match) {
         return axios.post(`/match`, match);
     },
 
