@@ -106,11 +106,6 @@ public class GolfTrackerController {
         golfTrackerDao.addLeagueUsersByLeagueId(leagueId, users);
     }
 
-//    @GetMapping("/match/{userId}")
-//    public List<Match> getMatchesByUserId(@PathVariable int userId) {
-//        return golfTrackerDao.getMatchesByUserId(userId);
-//    }
-
     @PutMapping("/match/{matchId}/user/{userId}/score/{golferScore}")
     public int updateMatchScore(@PathVariable int matchId, @PathVariable int userId, @PathVariable int golferScore) {
         //needs to take in a matchId, userId, and the score for that user
