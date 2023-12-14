@@ -14,8 +14,6 @@
                     {{ match.matchScore }}
                 </div>
             </div>
-            <!-- {{ match.user }} -->
-            
         </section>
     </div>
 </template>
@@ -58,7 +56,8 @@ export default {
                     this.isEditingScore = false;
                     this.editedGolfer = null;
                     this.scoreToUpdate = null;
-                    this.loadMatches(); 
+                    // this.loadMatches(); 
+                    location.reload();
                 });
                 
         }
@@ -68,5 +67,6 @@ export default {
 
 </script>
 
-<style></style>
+<style scoped>
+</style>
 

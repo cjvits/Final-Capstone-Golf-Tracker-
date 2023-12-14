@@ -19,15 +19,9 @@
   
   <div class="right-column">
     <LeagueOrganizerSelector></LeagueOrganizerSelector>
-    <NewLeagueCreator ></NewLeagueCreator>
+    <NewLeagueCreator></NewLeagueCreator>
   </div>
 </div>
-<!-- <router-link v-bind:to="{name: 'login', params:{'id': 1}}">Home</router-link> -->
-
-    <!-- <div class="footer">
-  <p>
-  </p>
-</div> -->
   </div>
 </template>
 
