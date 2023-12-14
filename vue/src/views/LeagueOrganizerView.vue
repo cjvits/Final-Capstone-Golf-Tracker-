@@ -17,12 +17,8 @@
             </div>
 
             <div class="center-column">
-                <!-- INSERT LEAGUE LEADER BOARD:
-                Since we are currently getting the boards by user, this won't work. 
-                We could get the board by league for this one. It's also not necessary. -->
-                <leader-board :league="leagueById" :users="$store.state.user.users" />
-                
-
+                <leader-board :league="leagueById" :users="$store.state.user.users" v-if="leagueById"/>
+        
             </div>
 
             <div class="right-column">

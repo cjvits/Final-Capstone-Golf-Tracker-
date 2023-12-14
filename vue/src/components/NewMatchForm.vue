@@ -20,16 +20,14 @@
             <div class="all-possible-golfers">
                 <label for="golfer1">Add Yinzer1: </label>
                 <select id="match-golfer1" v-model="selectedGolfer1">
-                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}
-                    </option>
+                    <GolfersInLeague />
                 </select>
             </div>
 
             <div class="all-possible-golfers">
                 <label for="golfer2">Add Yinzer2: </label>
                 <select id="match-golfer2" v-model="selectedGolfer2">
-                    <option :value="user.id" v-for="user in users" :key="user.id">{{ user.firstName + " " + user.lastName }}
-                    </option>
+                    <GolfersInLeague />
                 </select>
             </div>
 
@@ -47,9 +45,9 @@
 
 
     </section>
-    <section class="golfers-in-league" v-else>
+    <!-- <section class="golfers-in-league" v-else>
         <GolfersInLeague></GolfersInLeague>
-    </section>
+    </section> -->
 </template>
 
         
@@ -70,6 +68,7 @@ export default {
             isFormShowing: false,
             selectedGolfer1: null,
             selectedGolfer2: null,
+
             match: {
                 // leagueName: '', // will need to change to leagueID on the front
                 player1: '',

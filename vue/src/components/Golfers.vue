@@ -24,12 +24,17 @@
                     <input id="searchbar" @keyup.enter="searchGolfers" type="text" name="search"
                         placeholder="search yinzers..." />
 
+                
                     <ul id="list">
+                        <button @click="addAllUsers">Add all yinzers</button>
+                        <button v-if="checkedUsers.length != 0" @click="checkedUsers = []">Reset</button>
                         <li class="golfers" v-for="user in users" :key="user.id">
-                            <a @click.prevent="addGolfer(user)" class="names">{{ user.firstName }} {{ user.lastName }}</a>
+                            <label class="checkbox">
+                                <input type="checkbox" v-model="checkedUsers" :value="user" />
+                                {{ user.firstName }} {{ user.lastName }}
+                            </label>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </section>
@@ -39,8 +44,8 @@
             <h3>Yinzers In My League</h3>
             <GolfersInLeague></GolfersInLeague>
         </section>
-        <button v-on:click.prevent="isLeagueInProgress = !isLeagueInProgress">
-            {{ isLeagueInProgress ? "Start League Now!" : "Add More Yinzers" }}
+        <button @click="addGolfersToLeague">
+            {{ isLeagueInProgress ? "start league now!" : "add more yinzers" }}
         </button>
     </div>
 </template>
@@ -54,6 +59,7 @@ export default {
         return {
 
             isLeagueInProgress: false,
+            checkedUsers: [],
             users: [],
 
             user: {
@@ -76,19 +82,20 @@ export default {
             this.isLeagueInProgress = !this.isLeagueInProgress
         },
 
-        addGolfer(user) {
+        addAllUsers() {
+            this.checkedUsers = [...this.users];
+        },
+
+        addGolfersToLeague() {
+            this.isLeagueInProgress = !this.isLeagueInProgress
             LeagueService
-                .addGolferToLeague(this.$route.params.leagueId, user.id)
+                .addGolfersToLeague(this.$route.params.leagueId, this.checkedUsers.map(user => user.id))
                 .then((response) => {
-                    this.$store.commit('ADD_GOLFER_TO_LEAGUE', user)
+                    this.$store.commit('ADD_GOLFERS_TO_LEAGUE', this.checkedUsers)
                     if (response.status == 201) {
-                        console.log("yinzer added!!")
+                        console.log("Golfers were successfully added to the league! Good job, yinzer!")
                     }
-                    // this.$router.push({
-                    //     path: '/league-organizer/',
-                    //     query: { registration: 'success' },
-                    // });
-                    // }
+                    this.checkedUsers = [];
                 })
                 .catch((error) => {
                     const response = error.response;
@@ -111,15 +118,16 @@ export default {
                     x[i].style.display = "list-item";
                 }
             }
-        }
+        },
 
     },
+
 
     created() {
         LeagueService
             .getAllGolfers()
             .then((response) => this.users = response.data);
-  
+
 
         LeagueService
             .getLeagueGolfers(this.$route.params.leagueId)

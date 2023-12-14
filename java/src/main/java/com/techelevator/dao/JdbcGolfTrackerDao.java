@@ -187,6 +187,16 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
         jdbcTemplate.update(sql, leagueId, userId, initialScore);
     }
 
+    public void addLeagueUsersByLeagueId(int leagueId, List<Integer> userIds){
+        List<UserInLeague> newUsersInLeague = new ArrayList<>();
+        int initialScore = 0;
+        String sql ="INSERT INTO league_golfer (league_id, user_id, league_score) VALUES (?, ?, ?);";
+        for (Integer userId : userIds){
+            jdbcTemplate.update(sql, leagueId, userId, initialScore);
+        }
+
+    }
+
 
 
 
