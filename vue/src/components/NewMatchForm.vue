@@ -84,6 +84,7 @@ export default {
                     if (response.status == 201) {
                         this.$store.commit('ADD_MATCH_TO_LEAGUE', dto.match);
                         this.match = response.data;
+                        location.reload();
                     }
                 })
                 .catch((error) => {

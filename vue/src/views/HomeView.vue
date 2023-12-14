@@ -41,21 +41,14 @@ export default {
   },
   data() {
     return {
-      teeTimes: [
-        // Your tee time data goes here
-        // { id: 1, time: '08:00 AM', date: '2023-12-01', users: [{ id: 1, username: 'User1' }, { id: 2, username: 'User2' }] },
-      ],
-      users: [
-        // Your user data goes here
-      ],
+      teeTimes: [],
+      users: [],
       leagues: [],
       newLeague: {
         name: '',
       }
     };
   },
-  
-
 };
 </script> 
 
@@ -64,21 +57,15 @@ export default {
   box-sizing: border-box;
 }
 
-/* Style the header */
 .header {
   padding: 30px;
   text-align: center;
   font-size: 35px;
 }
 
-.loading-message {
-  margin-top: 20px;
-  font-style: italic;
-  color: darkkhaki;
-}
-
 h3 {
   font-weight: bold;
+  font-size: large;
   text-decoration-line: underline;
 }
 
@@ -86,18 +73,6 @@ h2 {
   color: #093708;
 }
 
-/* .league-organizer-link {
-  color: #093708;
-  justify-self: center;
-  padding: 2rem;
-}
-
-.league-organizer-link:hover {
-  color: #116110;
-  text-decoration-line: underline;
-} */
-
-/* Container for flexboxes */
 .row {
   display: -webkit-flex;
   display: flex;
@@ -105,7 +80,6 @@ h2 {
   height: 75%;
 }
 
-/* Left and right column */
 .right-column {
    -webkit-flex: 1;
    -ms-flex: 1;
@@ -136,7 +110,6 @@ h2 {
    overflow: scroll;
 }
 
-/* Middle column */
 .center-column {
   -webkit-flex: 2;
   -ms-flex: 2;
@@ -166,20 +139,6 @@ h2 {
 .center-column::-webkit-scrollbar-corner {
   display: none;
 }
-
-
-.leaderboard-title {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-/* Style the footer */
-/* .footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-} */
 
 .home-container {
   background-image: url("../assets/goldenGolf.jpeg");

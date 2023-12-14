@@ -2,7 +2,7 @@
     <div class="page-container">
         <div id="not-logged-in" v-if="this.$store.state.token != ''">
             <div class="content">
-                <p>Hello! You've been invited to join LEAGUE ORGANIZER'S golf league!</p>
+                <p>Hello! You've been invited to join CHANGEME!!!! golf league!</p>
                 <p>Click the button below to join the league!</p>
                 <button v-on:click="joinLeague">
                     Put me in the league!
@@ -11,7 +11,7 @@
         </div>
         <div id="logged-in" v-else>
             <div class="content">
-                <p>Hello! You've been invited to join LEAGUE ORGANIZER'S golf league!</p>
+                <p>Hello! You've been invited to join CHANGEME!!!!! golf league!</p>
                 <p>If you'd like to accept the invite, you must first sign in: </p>
                 <p><router-link :to="`/login?redirect=${$route.path}`" class="link">Login Here</router-link></p>
                 <p><router-link :to="`/register?redirect=${$route.path}`" class="link">Register Here</router-link></p>
