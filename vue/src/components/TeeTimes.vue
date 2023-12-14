@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading" class="loading-message">Loading tee times...</div>
-    <div v-else class="tee" v-for="match in league.matchesInLeague" v-bind:key="match.id">
+    <div v-else class="tee-time-container" v-for="match in league.matchesInLeague" v-bind:key="match.id">
         <h2>{{ league.leagueName }}</h2>
         <div class="time">
            {{ formatTime(match.teeTime) }}
@@ -70,9 +70,21 @@ export default {
 </script>
 
 <style scoped>
+.tee-time-container {
+  background-color: darkolivegreen;
+  opacity: .95;
+  border-radius: 5%;
+  margin-bottom: 1em;
+  margin-top: .25em;
+  margin-left: 15%;
+  margin-right: 10%;
+  color: khaki;
+  font-weight: 100;
+  padding-bottom: 2%;
+}
 
 h2{
-  font-weight: bold;
+  text-decoration-line: underline;
   padding-top: .8em;
 }
 
