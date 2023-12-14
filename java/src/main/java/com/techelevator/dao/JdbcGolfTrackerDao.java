@@ -20,7 +20,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     public List<League> getLeaguesByUserId(int userId){
         List<League> leaguesByUser = new ArrayList<>();
-        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ?;";
+        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ? ORDER BY league_golfer.league_score;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, userId);
         while (rowSet.next()){
             League league = mapRowToLeagueIdAndName(rowSet);
@@ -33,6 +33,14 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             }
 
         return leaguesByUser;
+    }
+
+    @Override
+    public String getLeagueNameByLeagueId(int leagueId) {
+        String sql = "Select league_name FROM leagues where league_id = ?;";
+        String leagueName = jdbcTemplate.queryForObject(sql, String.class, leagueId);
+        return leagueName;
+
     }
 
     @Override
@@ -154,8 +162,8 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
     public int updateMatchScore (int matchId, int userId, int golferScore) {
         String sqlUpdateMatchScore = "UPDATE match_golfer SET match_score = ? where user_id = ? AND match_id = ?;";
         jdbcTemplate.update(sqlUpdateMatchScore, golferScore, userId, matchId);
-        String sqlGetSumOfMatchScores = "SELECT SUM (match_score) FROM match_golfer where user_id = ?;";
-        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatchScores, Integer.class, userId);
+        String sqlGetSumOfMatchScores = "SELECT SUM (match_score) FROM match_golfer JOIN matches on match_golfer.match_id = matches.match_id where user_id = ? AND league_id = (select league_id from matches where match_id = ?);";
+        int newLeagueScore = jdbcTemplate.queryForObject(sqlGetSumOfMatchScores, Integer.class, userId, matchId);
         String sqlUpdateLeaderScore = "UPDATE league_golfer SET league_score = ? where user_id = ? AND league_id = (select league_id from matches where match_id = ?) returning league_score;";
         Integer leagueScoreInDatabase = jdbcTemplate.queryForObject(sqlUpdateLeaderScore, Integer.class, newLeagueScore, userId, matchId);
 

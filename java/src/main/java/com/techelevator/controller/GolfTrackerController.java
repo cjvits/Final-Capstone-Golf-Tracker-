@@ -44,6 +44,10 @@ public class GolfTrackerController {
 
 
     }
+    @GetMapping("/league/league-name/{leagueId}")
+    public String getLeagueNameById (@PathVariable int leagueId){
+        return golfTrackerDao.getLeagueNameByLeagueId(leagueId);
+    }
 
     @GetMapping("/league-organizer/{userId}")
     public List <League> getLeaguesByCoordinatorId (@PathVariable int userId) {
