@@ -1,31 +1,31 @@
 <template>
     <div>
         <form class="new-course-maker" name="courseMaker" v-on:submit.prevent="createNewCourse">
-            <h1>Add a Course</h1>
+            <h3>Add a Course</h3>
 
            
             <div class="form-input-group">
-                <label for="course-name">Course Name</label>
+                <label for="course-name">Course Name:  </label>
                 <input type="text" id="course-name" v-model="course.courseName" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="street-address">Street Address </label>
+                <label for="street-address">Street Address:  </label>
                 <input type="text" id="street-address" v-model="course.streetAddress" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="city-name">City </label>
+                <label for="city-name">City:  </label>
                 <input type="text" id="city-name" v-model="course.city" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="state-name">State</label>
+                <label for="state-name">State:  </label>
                 <input type="text" id="state-name" v-model="course.state" required autofocus />
             </div>
 
             <div class="form-input-group">
-                <label for="zip-code">Zip</label>
+                <label for="zip-code">Zip:  </label>
                 <input type="text" id="zip-code" v-model="course.zipCode" required autofocus />
             </div>
 
@@ -87,5 +87,12 @@ export default {
 <style scoped>
 .new-course-maker {
     background-color: darkkhaki;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: large;
+    text-decoration-line: underline;
+    padding-top: 1.5rem;
 }
 </style>
