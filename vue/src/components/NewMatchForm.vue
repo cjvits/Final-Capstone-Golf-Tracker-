@@ -90,7 +90,7 @@ export default {
 
             const dto = {
                 match: this.match,
-                playersInMatch: [this.selectedGolfer1.id, this.selectedGolfer2.id]
+                playersInMatch: [this.selectedGolfer1, this.selectedGolfer2]
             };
 
             LeagueService

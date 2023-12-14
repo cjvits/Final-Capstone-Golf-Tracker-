@@ -1,5 +1,5 @@
 <template>
-    <option v-for="user in this.$store.state.golfersInLeague" :key="user.id">{{ user.firstName }} {{ user.lastName }}
+    <option v-for="user in this.$store.state.golfersInLeague" :key="user.id" :value="user.id">{{ user.firstName }} {{ user.lastName }}
     </option>
 
 </template>

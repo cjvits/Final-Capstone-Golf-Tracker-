@@ -102,8 +102,8 @@ public class GolfTrackerController {
     }
 
     @PostMapping("/league/{leagueId}/users")
-    public void addUsersInLeague(@PathVariable int leagueId, @RequestBody List<User> users) {
-        golfTrackerDao.addLeagueUsersByLeagueId(leagueId, users);
+    public void addUsersInLeague(@PathVariable int leagueId, @RequestBody List<Integer> userIds) {
+        golfTrackerDao.addLeagueUsersByLeagueId(leagueId, userIds);
     }
 
     @PutMapping("/match/{matchId}/user/{userId}/score/{golferScore}")

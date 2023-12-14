@@ -24,12 +24,7 @@
                     <input id="searchbar" @keyup.enter="searchGolfers" type="text" name="search"
                         placeholder="search yinzers..." />
 
-                    <!-- <div v-for="album in allAlbumObjs" :key="album['id']">
-                        <input type="checkbox" v-model="checkedAlbums" :value="album['id']" />
-                        <label>
-                            {{ album["name"] }} by {{ album["artists"] }}
-                        </label>
-                    </div> -->
+                
                     <ul id="list">
                         <button @click="addAllUsers">Add all yinzers</button>
                         <button v-if="checkedUsers.length != 0" @click="checkedUsers = []">Reset</button>
@@ -94,7 +89,7 @@ export default {
         addGolfersToLeague() {
             this.isLeagueInProgress = !this.isLeagueInProgress
             LeagueService
-                .addGolfersToLeague(this.$route.params.leagueId, this.checkedUsers)
+                .addGolfersToLeague(this.$route.params.leagueId, this.checkedUsers.map(user => user.id))
                 .then((response) => {
                     this.$store.commit('ADD_GOLFERS_TO_LEAGUE', this.checkedUsers)
                     if (response.status == 201) {
