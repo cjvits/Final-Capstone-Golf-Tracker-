@@ -20,7 +20,7 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
 
     public List<League> getLeaguesByUserId(int userId){
         List<League> leaguesByUser = new ArrayList<>();
-        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ? ORDER BY leauge_golfer.leauge_score;";
+        String sqlLeagueInfo = "Select leagues.league_id, league_name, course_name FROM leagues JOIN league_golfer on league_golfer.league_id = leagues.league_id JOIN courses on courses.course_id = leagues.course_id JOIN users on league_golfer.user_id = users.user_id WHERE league_golfer.user_id = ? ORDER BY league_golfer.league_score;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sqlLeagueInfo, userId);
         while (rowSet.next()){
             League league = mapRowToLeagueIdAndName(rowSet);
@@ -33,6 +33,14 @@ public class JdbcGolfTrackerDao implements GolfTrackerDao{
             }
 
         return leaguesByUser;
+    }
+
+    @Override
+    public String getLeagueNameByLeagueId(int leagueId) {
+        String sql = "Select league_name FROM leagues where league_id = ?;";
+        String leagueName = jdbcTemplate.queryForObject(sql, String.class, leagueId);
+        return leagueName;
+
     }
 
     @Override

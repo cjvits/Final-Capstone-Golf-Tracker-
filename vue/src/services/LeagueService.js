@@ -47,4 +47,8 @@ export default {
         return axios.get(`/match/${leagueId}`);
     },
 
+    getLeagueName(leagueId){
+        return axios.get(`league/league-name/${leagueId}`)
+    }
+
 };
