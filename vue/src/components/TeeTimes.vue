@@ -3,13 +3,12 @@
     <div v-else class="tee" v-for="match in league.matchesInLeague" v-bind:key="match.id">
         <h2>{{ league.leagueName }}</h2>
         <div class="time">
-            {{ match.teeTime }}
-            <!-- This is where. the Time goes -->
+           {{ formatTime(match.teeTime) }}
         </div>
 
         <div class="date">
             <!-- This is where the date goes -->
-            {{ match.teeDate }}
+            {{ formatDateAndDay(match.teeDate) }}
         </div>
 
         <div class="user" v-for="user in users" v-bind:key="user.id">
@@ -40,6 +39,21 @@ export default {
         teeTime: [],
         loading: false, // loading state
     };
+  },
+
+  methods: {
+    formatDateAndDay(dateString) {
+      const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', options);
+    },
+  
+  
+    formatTime(timeString) {
+      const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+      const time = new Date(`2000-01-01T${timeString}`); //Creates a Date object by combining the timeString with a date (January 1, 2000)
+      return time.toLocaleTimeString('en-US', options);
+    },
   },
   async mounted() {
     try {

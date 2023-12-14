@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="button">
         <button v-on:click.prevent="isFormShowing = !isFormShowing">
             {{ isFormShowing ? "Hide Form" : "Update Score" }}
         </button>
@@ -20,16 +20,11 @@
             <!-- <div class="form-input-group">
                 <label for="league-name">New League Name</label>
                 <input type="text" id="league-name" v-model="league.username" required autofocus />
-            </div>
-
-            <div class="form-input-group">
-                <label for="course">Select League Golf Course:</label>
-                <select id="course" v-model="league.leagueCourseId">
-                    <option :value="course.courseId" v-for="course in courses" :key="course.courseId">{{ course.courseName }}</option>
-                </select>
             </div> -->
 
-            <button class="submitBtn" type="submit">Make it so!</button>
+    
+
+           <button class="submitBtn" type="submit">Make it so!</button> 
         </form>
     </div>
 </template>
@@ -48,43 +43,51 @@ export default {
     data() {
         return {
             isFormShowing: false,
-            // score: {
-            //     match: this.$store.state.match,
-            //     player1: '',
-            //     player2: '',
+            score: {
+                match: this.$store.state.match,
+                player1: '',
+                player2: '',
+                player1Score: 0,
+                player2Score: 0
 
-            // }
+            }
         }
     },
-    // methods: {
-    //     updateScore() {
-    //         LeagueService
-    //         .updateScore(this.match)
-    //         .then((response) => {
-    //                 if (response.status == 201) {
-    //                     this.$router.push({
-    //                         path: '/league-organizer',
-    //                         query: { registration: 'success' },
-    //                     });
-    //                 }
-    //             })
-    //             .catch((error) => {
-    //                 const response = error.response;
-    //                 this.registrationErrors = true;
-    //                 if (response.status === 400) {
-    //                     this.registrationErrorMsg = 'Bad Request: Validation Errors';
-    //                 }
-    //             });
-    //         }
-    //     },
-    //     created() {
-
-    //     LeagueService
-    //         .getAllGolfers()
-    //         .then((response) => this.matches = response.data)
-    //     }
+    methods: {
+        updateScore() {
+            LeagueService
+            .updateScore(this.match)
+            .then((response) => {
+                
+                    // unsure what to put here for now
+            })
+            .catch((error) => {
+             const response = error.response;
+                 this.registrationErrors = true;
+                if (response.status === 400) {
+                    this.registrationErrorMsg = 'Bad Request: Validation Errors';
+                }
+            });
+            
+        }  
+    }    
 
 }
 
 </script>
 
+<style>
+    button {
+    background-color: #093708;
+    color: darkkhaki;
+    border-radius: .5em;
+    padding: .5em;
+    margin: 1.5em;
+    font-family: 'Hedvig Letters Serif', serif;
+}
+
+button:hover {
+    background-color: #116110;
+    color: wheat;
+}
+</style>
