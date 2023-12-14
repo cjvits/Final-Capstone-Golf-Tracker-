@@ -129,7 +129,7 @@ export default {
 
     .info {
         background-color: darkkhaki;
-        opacity: .85;
+        opacity: .9;
     }
 
     h2 {
@@ -179,7 +179,7 @@ export default {
         border-radius: 15px;
         margin: .5rem;
         background-color: darkkhaki;
-        opacity: .9;
+        opacity: .95;
         overflow: scroll;
     }
 
@@ -190,7 +190,7 @@ export default {
         border-radius: 15px;
         margin: .5rem;
         background-color: darkkhaki;
-        opacity: .9;
+        opacity: .95;
         overflow: scroll;
     }
 
@@ -201,7 +201,7 @@ export default {
         border-radius: 15px;
         margin: .5rem;
         background-color: #093708;
-        opacity: .9;
+        opacity: .95;
         color: darkkhaki;
         overflow: scroll;
         padding: 1rem;

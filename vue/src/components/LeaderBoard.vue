@@ -66,6 +66,7 @@ export default {
 .container {
     margin-bottom: 4%;
     margin-left: 1.5%;
+    font-weight: 100;
 }
 
 h2{

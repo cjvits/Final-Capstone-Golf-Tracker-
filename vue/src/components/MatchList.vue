@@ -2,8 +2,8 @@
 <!-- WE NEED TO DISPLAY ALL THE MATCHES FOR A LEAGUE -->
 <template>
     <div class="match-info">
-        <section v-for="match in $store.state.matches" :key="match.id">
-               Match Number:  {{ match.matchId }}
+        <section class="match-container" v-for="match in $store.state.matches" :key="match.id">
+              <h1>Match Number:  {{ match.matchId }} </h1> 
             <div v-for="golfer in match.golfers" :key="golfer.id">
                 {{ golfer.username }} | 
                 Score: {{ golfer.matchScore }}
@@ -56,7 +56,7 @@ export default {
                     this.isEditingScore = false;
                     this.editedGolfer = null;
                     this.scoreToUpdate = null;
-                    // this.loadMatches(); 
+                    this.loadMatches(); 
                     location.reload();
                 });
                 
@@ -68,5 +68,24 @@ export default {
 </script>
 
 <style scoped>
+.match-container {
+    background-color: darkolivegreen;
+    border-radius: 5%;
+    margin-top: 1.25em;
+    margin-left: 3em;
+    margin-right: 2.5em;
+    padding-top: 1em;
+    font-size: medium;
+    color: khaki;
+    font-weight: 100;
+}
+
+h1{
+    text-decoration-line: underline;
+    font-size: large;
+}
+button{
+    margin: 2%;
+}
 </style>
 
